@@ -67,7 +67,7 @@ add_action('wp_footer', 'add_unlock_event_listener');
 function load_unlock_blocks() {
   wp_enqueue_script(
     'locked_block',
-    plugin_dir_url(__FILE__) . 'unlock-blocks.js',
+    plugin_dir_url(__FILE__) . 'build/index.js',
     array('wp-blocks','wp-editor'),
     true
   );

@@ -1,4 +1,5 @@
 const { registerBlockType, getBlockTypes } = window.wp.blocks
+const { RichText } = wp.editor
 
 // Block for content that is only available to owners of keys!
 registerBlockType("unlock/unlocked-box", {
@@ -13,7 +14,7 @@ registerBlockType("unlock/unlocked-box", {
     const onChangeContent = value => {
       props.setAttributes({ content: value })
     }
-    return wp.element.createElement(wp.editor.RichText, {
+    return wp.element.createElement(RichText, {
       placeholder:
         "Add your content which will only be visible by key holders!",
       value: props.attributes.content,
@@ -23,7 +24,7 @@ registerBlockType("unlock/unlocked-box", {
   },
 
   save: props => {
-    return wp.element.createElement(wp.editor.RichText.Content, {
+    return wp.element.createElement(RichText.Content, {
       tagName: "p",
       className: "unlock-protocol__unlocked",
       value: props.attributes.content
@@ -44,7 +45,7 @@ registerBlockType("unlock/locked-box", {
     const onChangeContent = value => {
       props.setAttributes({ content: value })
     }
-    return wp.element.createElement(wp.editor.RichText, {
+    return wp.element.createElement(RichText, {
       placeholder:
         "Add your content which will only be visible by users who do not have a key yet!",
       value: props.attributes.content,
@@ -54,7 +55,7 @@ registerBlockType("unlock/locked-box", {
   },
 
   save: props => {
-    return wp.element.createElement(wp.editor.RichText.Content, {
+    return wp.element.createElement(RichText.Content, {
       tagName: "p",
       className: "unlock-protocol__locked",
       value: props.attributes.content
@@ -76,7 +77,7 @@ registerBlockType("unlock/checkout-button", {
     const onChangeContent = value => {
       props.setAttributes({ anchor: value })
     }
-    const button = wp.element.createElement(wp.editor.RichText, {
+    const button = wp.element.createElement(RichText, {
       placeholder: "Become a member now!",
       value: props.attributes.anchor,
       onChange: onChangeContent,
@@ -92,7 +93,7 @@ registerBlockType("unlock/checkout-button", {
   },
 
   save: props => {
-    const button = wp.element.createElement(wp.editor.RichText.Content, {
+    const button = wp.element.createElement(RichText.Content, {
       tagName: "a",
       onClick:
         "window.unlockProtocol && window.unlockProtocol.loadCheckoutModal()",
