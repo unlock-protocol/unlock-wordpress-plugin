@@ -1,63 +1,48 @@
 const { registerBlockType } = window.wp.blocks;
-const { RichText } = wp.editor;
+const { RichText, InnerBlocks, InspectorControls } = wp.editor;
+const { PanelBody, SelectControl } = wp.components;
 
 // Block for content that is only available to owners of keys!
-registerBlockType( 'unlock/unlocked-box', {
-	title: 'Unlocked Box - Visible to members only',
+registerBlockType( 'unlock/unlock-box', {
+	title: 'Unlock Protocol Block',
 	icon: 'lock',
 	category: 'common',
 	attributes: {
-		content: { type: 'string' },
+		unlockState: {
+			type: 'string',
+			default: 'locked',
+		},
 	},
 
-	edit: ( { setAttributes, attributes } ) => {
-		const onChangeContent = ( value ) => {
-			setAttributes( { content: value } );
-		};
-		return <RichText
-			placeholder="Add your content which will only be visible by key holders!"
-			value={ attributes.content }
-			onChange={ onChangeContent }
-			className="unlock__unlocked-box"
-		/>;
-	},
-
-	save: ( { attributes } ) => {
-		return <RichText.Content
-			tagName="p"
-			className="unlock-protocol__unlocked"
-			value={ attributes.content }
-		/>;
-	},
-} );
-
-// Block for content that is only available for people with no key
-registerBlockType( 'unlock/locked-box', {
-	title: 'Locked Box - Visible to non members only',
-	icon: 'lock',
-	category: 'common',
-	attributes: {
-		content: { type: 'string' },
-	},
-
-	edit: ( { setAttributes, attributes } ) => {
-		const onChangeContent = ( value ) => {
-			setAttributes( { content: value } );
-		};
-
-		return <RichText
-			placeholder="Add your content which will only be visible by users who do not have a key yet!"
-			value={ attributes.content }
-			onChange={ onChangeContent }
-			className="lock__unlocked-box" />;
+	edit: ( { attributes, setAttributes, className } ) => {
+		return [
+			<InspectorControls>
+				<PanelBody title={ 'Content Settings' }>
+					<SelectControl
+						label={ 'Hide this if user:' }
+						value={ attributes.unlockState }
+						options={
+							[
+								{ label: 'Is not a member', value: 'locked' },
+								{ label: 'Is a member', value: 'unlocked' },
+							]
+						}
+						onChange={ ( unlockState ) => {
+							setAttributes( { unlockState } );
+						} }
+					/>
+				</PanelBody>
+			</InspectorControls>,
+			<div className={ [ className, `unlock-protocol__${ attributes.unlockState }` ].join( ' ' ) }>
+				<InnerBlocks />
+			</div>,
+		];
 	},
 
 	save: ( { attributes } ) => {
-		return <RichText.Content
-			tagName="p"
-			className="unlock-protocol__locked"
-			value={ attributes.content }
-		/>;
+		return <div className={ `unlock-protocol__${ attributes.unlockState }` }>
+			<InnerBlocks.Content />
+		</div>;
 	},
 } );
 
