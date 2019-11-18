@@ -44,17 +44,19 @@ function add_unlock_event_listener() {
       element.style.display = "none";
     })
     if (state === 'locked') {
-      document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
+      console.log('Unlock: visitor is not a member')
+      document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
         element.style.display = "none";
       })
-      document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
+      document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
         element.style.display = "block";
       })
     } else if (state === 'unlocked') {
-      document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
+      console.log('Unlock: visitor is a member')
+      document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
         element.style.display = "block";
       })
-      document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
+      document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
         element.style.display = "none";
       })
     }
@@ -69,12 +71,13 @@ function load_unlock_blocks() {
   wp_enqueue_script(
     'locked_block',
     plugin_dir_url(__FILE__) . 'build/index.js',
-    array('wp-blocks','wp-editor'),
+    array('wp-blocks', 'wp-editor'),
     true
   );
+  wp_enqueue_style( 'block-styles-stylesheet',
+    plugins_url( 'src/editor.css', __FILE__ ));
 }
 add_action('enqueue_block_editor_assets', 'load_unlock_blocks');
-
 
 // Adds Menu item for Unlock settings
 function add_unlock_menu_items() {

@@ -1,0 +1,19 @@
+.unlock-protocol__unlocked::before {
+  color: grey;
+  font-size: 0.5em;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  content: "The section below is only visible by non-members";
+}
+
+.wp-block[data-type="unlock/unlock-box"] {
+  border-left: 1px solid #d3d3d3;
+}
+
+.unlock-protocol__locked::before {
+  color: grey;
+  font-size: 0.5em;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  content: "The section below is only visible by members";
+}
