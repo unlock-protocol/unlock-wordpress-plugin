@@ -16,7 +16,7 @@ function load_unlock() {
   <script>
   var unlockProtocolConfig = {
     "locks": {
-      "<?php echo get_option('lock_address'); ?>":{}
+      "<?php echo esc_html(get_option('lock_address')); ?>":{}
     },
     "icon": "https://unlock-protocol.com/static/images/svg/unlock-word-mark.svg",
     "callToAction": {
@@ -130,7 +130,7 @@ function display_header_options_content() {
 // Section for the unlock options
 function lock_address_form_element() {
   ?>
-  <input type="text" name="lock_address" id="lock_address" value="<?php echo get_option('lock_address'); ?>" />
+  <input type="text" name="lock_address" id="lock_address" value="<?php echo esc_html(get_option('lock_address')); ?>" />
   <?php
 }
 
