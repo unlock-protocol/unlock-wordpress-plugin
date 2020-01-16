@@ -16,7 +16,7 @@ function load_unlock() {
   <script>
   var unlockProtocolConfig = {
     "locks": {
-      "<?php echo esc_html(get_option('lock_address')); ?>":{}
+      "<?php echo get_option('lock_address'); ?>":{}
     },
     "icon": "https://unlock-protocol.com/static/images/svg/unlock-word-mark.svg",
     "callToAction": {
@@ -103,13 +103,20 @@ function unlock_options_page() {
 
   ?>
   </form>
+  	<h3>Writing locked stories</h3>
+  	<p>The plugin provides you with “Blocks” which can be used in the Gutemberg Editor, for both posts and pages. We provide 2 different blocks:</p>
+  	<ol>
+		<li>The “Unlock” block: a block whose content (and nested blocks) can be set to be visible to only members or non-members. Once the block has been added to the editor you can change its setting in the right column of the Gutemberg editor</li>
+		<li>The “checkout button” block: a block with a button to let you add a button for people to become members. This button will not be visible for members.</li>
+	</ol>
+	<p>Once your story includes the content you need, you can preview its content like any other WordPress post or page. We recommend the use of a web3 wallet which supports multiple accounts so that you can easily toggle between accounts which are already members and accounts which are not members yet!</p>
   <?php
 }
 
 // Displays the unlock options
 function display_unlock_options() {
   //section name, display name, callback to print description of section, page to which section is attached.
-  add_settings_section("header_section", "", "display_header_options_content", "unlock-settings");
+  add_settings_section("header_section", "", "display_header_options_content", "unlock-settings", "display_body_content");
 
   //setting name, display name, callback to print form element, page in which field is displayed, section to which it belongs.
   //last field section is optional.
@@ -123,14 +130,18 @@ add_action("admin_init", "display_unlock_options");
 // Header for the unlock options
 function display_header_options_content() {
   ?>
-  <p>Once you have <a href="https://unlock-protocol.com/" target="_blank">deployed your lock</a>, please enter its address.</p>
+  <h3>Getting Started</h3>
+  <ol>
+	  <li>Create a lock on the <a href="https://app.unlock-protocol.com/dashboard/" target="_blank">Unlock Dashboard</a>.</li>
+	  <li>Copy and paste the Lock Address below.</li>
+  </ol>
   <?php
 }
 
 // Section for the unlock options
 function lock_address_form_element() {
   ?>
-  <input type="text" name="lock_address" id="lock_address" value="<?php echo esc_html(get_option('lock_address')); ?>" />
+  <input type="text" name="lock_address" id="lock_address" value="<?php echo get_option('lock_address'); ?>" />
   <?php
 }
 
@@ -144,7 +155,5 @@ function unlock_settings_link($links) {
   array_push($links, $settings_link);
   return $links;
 }
-
-
 
 ?>
