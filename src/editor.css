@@ -1,19 +1,19 @@
-.unlock-protocol__unlocked::before {
-  color: grey;
-  font-size: 0.5em;
-  text-transform: uppercase;
-  font-family: "Courier New", Courier, monospace;
-  content: "The section below is only visible by non-members";
-}
 
 .wp-block[data-type="unlock/unlock-box"] {
-  border-left: 1px solid #d3d3d3;
 }
 
-.unlock-protocol__locked::before {
-  color: grey;
-  font-size: 0.5em;
+
+
+.wp-block[data-type="unlock/unlock-box"]::before {
+  content: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22rgb(255%2C103%2C113)%22%20version%3D%221.1%22%20height%3D%2220%22%20width%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M12.522%2011.121c.023-.165.032-.334.032-.5l.001-1.724v-.432H7.577a3914.548%203914.548%200%20000%202.225c.001%201.083.656%201.985%201.702%202.35%201.43.5%203.044-.454%203.243-1.919zm2.981-7.096v.178a860.597%20860.597%200%2001-.005%202.866h.825v1.446h-.825c0%20.725.003%201.449.01%202.173.022%202.295-1.451%204.179-3.416%204.902-2.075.763-4.02.466-5.74-.929-1.195-.967-1.839-2.25-1.852-3.796-.007-.783-.009-1.566-.01-2.35h-.815V7.07h.816l.001-.894.002-2.055c0-.018.002-.036.004-.056l.003-.035h3.05v3.04h4.892V4.025h3.06z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+}
+
+.filter {
+  font-size: 0.6em;
+  margin:0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  align-items: center;
   text-transform: uppercase;
   font-family: "Courier New", Courier, monospace;
-  content: "The section below is only visible by members";
 }
