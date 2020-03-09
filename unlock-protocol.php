@@ -11,40 +11,21 @@
 
 // Add the config to the head + styles
 function load_unlock() {
-  // TODO: add more settings (CTA, more locks... etc)
-  // DO we need this page?
   $unlockConfig = get_post_meta( get_the_ID(), '_unlock_protocol_config', true );
+  // Only on posts with a an unlock config
   if($unlockConfig) {
+    wp_enqueue_script( 'unlock_paywall_script', 'https://paywall.unlock-protocol.com/static/unlock.1.0.min.js');
     ?>
     <script>
     var unlockProtocolConfig = <?php echo $unlockConfig; ?>
     </script>
-    <?php
-  } else {
-    // This is DEPRECATED!
-    ?>
-    <script>
-    var unlockProtocolConfig = {
-      "locks": {
-        "<?php echo esc_html(get_option('lock_address')); ?>":{}
-      },
-      "icon": "https://unlock-protocol.com/static/images/svg/unlock-word-mark.svg",
-      "callToAction": {
-        "default": "Become a member today!"
+    <style>
+      .unlock-protocol__unlocked, .unlock-protocol__locked {
+        display: none;
       }
-    }
-    </script>
-    <?php
-  }
-  ?>
-
-  <style>
-  .unlock-protocol__unlocked, .unlock-protocol__locked {
-    display: none;
-  }
-  </style>
+    </style>
   <?php
-  wp_enqueue_script( 'unlock_paywall_script', 'https://paywall.unlock-protocol.com/static/unlock.1.0.min.js');
+  }
 }
 add_action('wp_head', 'load_unlock');
 
