@@ -19,10 +19,10 @@
   "scripts": {
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses --prod --gpl2 --ignore=abab",
-    "start": "wp-scripts start",
-    "build": "wp-scripts build",
-    "lint:js": "wp-scripts lint-js src/index.js",
-    "lint:js-fix": "wp-scripts lint-js src/index.js --fix",
+    "start": "wp-scripts start src/*.js",
+    "build": "wp-scripts build src/*.js",
+    "lint:js": "wp-scripts lint-js src/*.js",
+    "lint:js-fix": "wp-scripts lint-js src/*.js --fix",
     "lint:css": "wp-scripts lint-style '**/*.css'"
   }
 }

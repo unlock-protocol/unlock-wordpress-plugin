@@ -18,7 +18,7 @@ registerBlockType("unlock/unlock-box", {
 		return <div className={[className, `unlock-protocol__${attributes.unlockState}`].join(" ")}>
 			<BlockControls>
 				<div className='filter components-toolbar'>
-					<span>Only visible by</span>
+					<span>Only visible by&nbsp;</span>
 					<select onChange={event => setAttributes({ unlockState: event.target.value })}>
 						<option value="locked" selected={attributes.unlockState === 'locked'} >Members</option>
 						<option value="unlocked" selected={attributes.unlockState === 'unlocked'}>Non Members</option>
