@@ -15,14 +15,18 @@ registerBlockType("unlock/unlock-box", {
 	},
 
 	edit: ({ attributes, setAttributes, className }) => {
+		const unlockConfig = wp.data.select('core/editor').getEditedPostAttribute('meta')['_unlock_protocol_config']
+
 		return <div className={[className, `unlock-protocol__${attributes.unlockState}`].join(" ")}>
 			<BlockControls>
 				<div className='filter components-toolbar'>
+					{unlockConfig && <>
 					<span>Only visible by&nbsp;</span>
 					<select onChange={event => setAttributes({ unlockState: event.target.value })}>
 						<option value="locked" selected={attributes.unlockState === 'locked'} >Members</option>
 						<option value="unlocked" selected={attributes.unlockState === 'unlocked'}>Non Members</option>
-					</select>
+					</select></>}
+					{!unlockConfig && <span class="warning">Please set Unlock config for document</span>}
 				</div>
 			</BlockControls>
 			<InnerBlocks />

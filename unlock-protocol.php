@@ -31,33 +31,37 @@ add_action('wp_head', 'load_unlock');
 
 // Add the event listener at the end of the <body>
 function add_unlock_event_listener() {
-  ?>
-  <script>
-  window.addEventListener('unlockProtocol', function(e) {
-    var state = e.detail
-    document.querySelectorAll('.unlock-protocol__pending').forEach(element => {
-      element.style.display = "none";
+  $unlockConfig = get_post_meta( get_the_ID(), '_unlock_protocol_config', true );
+  // Only on posts with a an unlock config
+  if($unlockConfig) {
+    ?>
+    <script>
+    window.addEventListener('unlockProtocol', function(e) {
+      var state = e.detail
+      document.querySelectorAll('.unlock-protocol__pending').forEach(element => {
+        element.style.display = "none";
+      })
+      if (state === 'locked') {
+        console.log('Unlock: visitor is not a member')
+        document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
+          element.style.display = "none";
+        })
+        document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
+          element.style.display = "block";
+        })
+      } else if (state === 'unlocked') {
+        console.log('Unlock: visitor is a member')
+        document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
+          element.style.display = "block";
+        })
+        document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
+          element.style.display = "none";
+        })
+      }
     })
-    if (state === 'locked') {
-      console.log('Unlock: visitor is not a member')
-      document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
-        element.style.display = "none";
-      })
-      document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
-        element.style.display = "block";
-      })
-    } else if (state === 'unlocked') {
-      console.log('Unlock: visitor is a member')
-      document.querySelectorAll('.unlock-protocol__locked').forEach(element => {
-        element.style.display = "block";
-      })
-      document.querySelectorAll('.unlock-protocol__unlocked').forEach(element => {
-        element.style.display = "none";
-      })
-    }
-  })
-  </script>
-  <?php
+    </script>
+    <?php
+  }
 }
 add_action('wp_footer', 'add_unlock_event_listener');
 
@@ -84,8 +88,7 @@ function sidebar_plugin_register() {
 }
 add_action( 'enqueue_block_editor_assets', 'sidebar_plugin_register' );
 
-// Register meta for posts
-// TODO: add for page as well?
+// Register meta for posts and pages
 function register_meta_unlock_protocol_config() {
   register_meta('post', '_unlock_protocol_config', array(
     'show_in_rest' => true,

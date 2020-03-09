@@ -17,3 +17,7 @@
   text-transform: uppercase;
   font-family: "Courier New", Courier, monospace;
 }
+
+.warning {
+  color: red;
+}
