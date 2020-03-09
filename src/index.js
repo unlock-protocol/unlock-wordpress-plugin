@@ -54,7 +54,7 @@ registerBlockType("unlock/unlock-box", {
 // Block for content that is only visible while the status of the lock is pending (loading)
 // We just extend the coreButton functionality when it's loaded
 registerBlockType("unlock/checkout-button", {
-  title: "Checkout Button - Visible to non members only",
+  title: "Checkout Button",
   icon: "lock",
   category: "common",
   attributes: {
