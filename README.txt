@@ -66,6 +66,9 @@ To be completed with questions!
 
 == Changelog ==
 
+= 2.1 =
+* Uses the latest Unlock paywall script https://unlock-protocol.com/blog/introducing-latest-paywall/
+
 = 2.0 =
 * each post/page can have a different configuration
 * block setting is now visible inside of the Editor

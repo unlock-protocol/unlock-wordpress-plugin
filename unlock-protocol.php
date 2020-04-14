@@ -4,7 +4,7 @@
 * Plugin URI: https://github.com/unlock-protocol/unlock-wordpress-plugin
 * Description: A plugin to add lock(s) to blocks of content inside of Wordpress, on both pages and posts.
   See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation
-* Version: 2.0.0
+* Version: 2.1.0
 * Author: Unlock
 * Author URI: https://unlock-protocol.com
 */
@@ -14,7 +14,7 @@ function load_unlock() {
   $unlockConfig = get_post_meta( get_the_ID(), '_unlock_protocol_config', true );
   // Only on posts with a an unlock config
   if($unlockConfig) {
-    wp_enqueue_script( 'unlock_paywall_script', 'https://paywall.unlock-protocol.com/static/unlock.1.0.min.js');
+    wp_enqueue_script( 'unlock_paywall_script', 'https://paywall.unlock-protocol.com/static/unlock.latest.min.js');
     ?>
     <script>
     var unlockProtocolConfig = <?php echo $unlockConfig; ?>
