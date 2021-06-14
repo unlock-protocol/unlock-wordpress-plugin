@@ -14,7 +14,7 @@
   "homepage": "https://github.com/unlock-protocol/unlock-wordpress-plugin#readme",
   "dependencies": {},
   "devDependencies": {
-    "@wordpress/scripts": "7.1.2"
+    "@wordpress/scripts": "12.0.0"
   },
   "scripts": {
     "check-engines": "wp-scripts check-engines",
