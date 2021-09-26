@@ -35,7 +35,7 @@ Here is an example:
 { locks: { '0xB0114bbDCe17e0AF91b2Be32916a1e236cf6034F': { } }, callToAction: { } }
 ```
 
-The plugin provides you with "Blocks" which can be used in the Gutemberg Editor, for both posts and pages. We provide 2 different blocks:
+The plugin provides you with "Blocks" which can be used in the Gutenberg Editor, for both posts and pages. We provide 2 different blocks:
 
 - The "Unlock" block: a block whose content (and nested blocks) can be set to be visible to only members or non-members. Each block can be customized
 
