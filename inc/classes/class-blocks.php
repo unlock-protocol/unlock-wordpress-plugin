@@ -24,7 +24,6 @@ class Blocks {
 
 		$this->setup_hooks();
 
-		Example_Dynamic_Block::get_instance();
 	}
 
 	/**
