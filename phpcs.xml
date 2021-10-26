@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
-<ruleset name="unlock-protocol-features">
+<ruleset name="unlock-protocol">
 	<description>WordPress and VIP Go Coding Standards</description>
+
+	<rule ref="WordPress" />
 
 	<rule ref="WordPress-VIP-Go" />
 
