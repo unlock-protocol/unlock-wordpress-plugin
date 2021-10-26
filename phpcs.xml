@@ -2,11 +2,6 @@
 <ruleset name="unlock-protocol-features">
 	<description>WordPress and VIP Go Coding Standards</description>
 
-	<rule ref="WordPress">
-		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
-	</rule>
-
 	<rule ref="WordPress-VIP-Go" />
 
 	<rule ref="WordPressVIPMinimum" />
