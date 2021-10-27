@@ -140,7 +140,11 @@ class Login {
 			$email_address    = $this->get_email_address( $ethereum_address );
 
 			if ( email_exists( $email_address ) ) {
-				return get_user_by( 'email', $email_address );
+				$user = get_user_by( 'email', $email_address );
+
+				update_user_meta( $user->ID, 'unlock_ethereum_address', $ethereum_address );
+
+				return $user;
 			}
 
 			/**
@@ -154,7 +158,6 @@ class Login {
 		} catch ( \Throwable $e ) {
 			return new WP_Error( 'unlock_login_failed', $e->getMessage() );
 		}
-
 	}
 
 	/**
@@ -223,6 +226,8 @@ class Login {
 
 			$user = get_user_by( 'id', $uid );
 
+			update_user_meta( $user->ID, 'unlock_ethereum_address', $ethereum_address );
+
 			/**
 			 * Fires once the user has been registered successfully.
 			 */
@@ -230,7 +235,6 @@ class Login {
 
 			return $user;
 		} catch ( \Throwable $e ) {
-
 			throw $e;
 		}
 
