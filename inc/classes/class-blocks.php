@@ -12,6 +12,8 @@ use Unlock_Protocol\Inc\Blocks\Example_Dynamic_Block;
 
 /**
  * Class Blocks
+ *
+ * @since 3.0.0
  */
 class Blocks {
 
@@ -19,6 +21,8 @@ class Blocks {
 
 	/**
 	 * Construct method.
+	 *
+	 * @since 3.0.0
 	 */
 	protected function __construct() {
 
@@ -29,6 +33,8 @@ class Blocks {
 	/**
 	 * Setup hooks.
 	 *
+	 * @since 3.0.0
+	 *
 	 * @return void
 	 */
 	public function setup_hooks() {
@@ -37,6 +43,8 @@ class Blocks {
 
 	/**
 	 * Enqueue scripts.
+	 *
+	 * @since 3.0.0
 	 *
 	 * @return void
 	 */

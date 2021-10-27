@@ -22,6 +22,8 @@
  *
  * If you specifically need multiple objects, then use a normal class.
  *
+ * @since 3.0.0
+ *
  * @package unlock-protocol
  */
 
@@ -35,12 +37,16 @@ trait Singleton {
 	 * This is meant to be overridden in the classes which implement
 	 * this trait. This is ideal for doing stuff that you only want to
 	 * do once, such as hooking into actions and filters, etc.
+	 *
+	 * @since 3.0.0
 	 */
 	protected function __construct() {
 	}
 
 	/**
 	 * Prevent object cloning
+	 *
+	 * @since 3.0.0
 	 */
 	final protected function __clone() {
 	}
@@ -51,6 +57,8 @@ trait Singleton {
 	 * as final intentionally, it is not meant to be overridden.
 	 *
 	 * @return object Singleton instance of the class.
+	 *
+	 * @since 3.0.0
 	 */
 	final public static function get_instance() {
 

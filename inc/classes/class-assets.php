@@ -2,6 +2,8 @@
 /**
  * Assets class.
  *
+ * @since 3.0.0
+ *
  * @package unlock-protocol
  */
 
@@ -11,6 +13,8 @@ use Unlock_Protocol\Inc\Traits\Singleton;
 
 /**
  * Class Assets
+ *
+ * @since 3.0.0
  */
 class Assets {
 
@@ -18,6 +22,8 @@ class Assets {
 
 	/**
 	 * Construct method.
+	 *
+	 * @since 3.0.0
 	 */
 	protected function __construct() {
 		$this->setup_hooks();
@@ -25,6 +31,8 @@ class Assets {
 
 	/**
 	 * To setup action/filter.
+	 *
+	 * @since 3.0.0
 	 *
 	 * @return void
 	 */
@@ -41,6 +49,8 @@ class Assets {
 	/**
 	 * To enqueue scripts and styles.
 	 *
+	 * @since 3.0.0
+	 *
 	 * @return void
 	 */
 	public function enqueue_scripts() {}
@@ -49,6 +59,8 @@ class Assets {
 	 * To enqueue scripts and styles. in admin.
 	 *
 	 * @param string $hook_suffix Admin page name.
+	 *
+	 * @since 3.0.0
 	 *
 	 * @return void
 	 */
