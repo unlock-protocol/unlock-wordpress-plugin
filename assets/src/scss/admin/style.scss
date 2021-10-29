@@ -1,0 +1,79 @@
+/* stylelint-disable */
+.unlock-protocol-container {
+    .components-notice {
+        margin: 5px 0 2px;
+    }
+}
+
+.settings_container {
+    margin: 20px 0;
+
+    .input-container {
+        background: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px #ddd;
+
+        h4 {
+            margin-top: 0;
+        }
+
+        .form-inputs {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            .group {
+                flex: 1;
+                margin-right: 15px;
+
+                input {
+                    border-color: #bebcbc;
+                    height: 36px;
+                }
+            }
+        }
+    }
+
+    .all_networks_container {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .single_network {
+            background: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 2px 2px 5px #ddd;
+            margin-bottom: 15px;
+            flex: 1 0 40%;
+            margin-right: 10px;
+            position: relative;
+
+            p {
+                span {
+                    font-weight: 600;
+                }
+            }
+
+            button.remove-network {
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-weight: bold;
+                color: red;
+
+                &:focus:not(:disabled) {
+                    outline: 0;
+                    box-shadow: 0 0 0;
+                }
+            }
+
+        }
+    }
+}

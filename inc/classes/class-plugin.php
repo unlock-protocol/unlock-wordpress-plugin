@@ -31,6 +31,8 @@ class Plugin {
 		Assets::get_instance();
 		Login::get_instance();
 		Blocks::get_instance();
+		Menu::get_instance();
+		API::get_instance();
 
 	}
 

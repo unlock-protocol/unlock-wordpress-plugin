@@ -17,6 +17,7 @@
 	<arg name="extensions" value="php"/>
 	<arg value="s"/>
 
+	<exclude-pattern>*/assets/build</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>.github/</exclude-pattern>
