@@ -2,6 +2,8 @@
 /**
  * Autoloader file for plugin.
  *
+ * @since 3.0.0
+ *
  * @package unlock-protocol
  */
 
@@ -11,6 +13,8 @@ namespace Unlock_Protocol\Inc\Helpers;
  * Auto loader function.
  *
  * @param string $resource Source namespace.
+ *
+ * @since 3.0.0
  *
  * @return void
  */
@@ -55,6 +59,7 @@ function autoloader( $resource = '' ) {
 			case 'post-types':
 			case 'taxonomies':
 			case 'blocks':
+			case 'utils':
 			case 'meta-boxes':
 			case 'widgets':
 			case 'plugin-configs': // phpcs:ignore PSR2.ControlStructures.SwitchDeclaration.TerminatingComment

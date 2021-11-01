@@ -22,6 +22,8 @@ require_once UNLOCK_PROTOCOL_PATH . '/inc/helpers/custom-functions.php';
 /**
  * To load plugin manifest class.
  *
+ * @since 3.0.0
+ *
  * @return void
  */
 function unlock_protocol_plugin_loader() {

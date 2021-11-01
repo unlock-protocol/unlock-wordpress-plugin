@@ -2,6 +2,8 @@
 /**
  * Plugin manifest class.
  *
+ * @since 3.0.0
+ *
  * @package unlock-protocol
  */
 
@@ -11,6 +13,8 @@ use \Unlock_Protocol\Inc\Traits\Singleton;
 
 /**
  * Class Plugin
+ *
+ * @since 3.0.0
  */
 class Plugin {
 
@@ -18,11 +22,14 @@ class Plugin {
 
 	/**
 	 * Construct method.
+	 *
+	 * @since 3.0.0
 	 */
 	protected function __construct() {
 
 		// Load plugin classes.
 		Assets::get_instance();
+		Login::get_instance();
 		Blocks::get_instance();
 
 	}
