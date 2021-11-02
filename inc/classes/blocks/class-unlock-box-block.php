@@ -9,6 +9,7 @@
 
 namespace Unlock_Protocol\Inc\Blocks;
 
+use Unlock_Protocol\Inc\Login;
 use Unlock_Protocol\Inc\Traits\Singleton;
 
 /**
@@ -92,7 +93,8 @@ class Unlock_Box_Block {
 			return $content;
 		}
 
-		return unlock_protocol_get_template( 'login/button' );
-	}
+		$login = Login::get_instance();
 
+		return unlock_protocol_get_template( 'login/button', array( 'login_url' => $login->get_login_url() ) );
+	}
 }

@@ -10,5 +10,5 @@
 ?>
 
 <div class="login-button-container">
-	<a href="#" class="login-button"><?php esc_html_e( 'Login', 'unlock-protocol' ); ?></a>
+	<a href="<?php echo esc_url( $login_url ); ?>" class="login-button"><?php esc_html_e( 'Login', 'unlock-protocol' ); ?></a>
 </div>

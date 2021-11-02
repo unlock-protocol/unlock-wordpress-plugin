@@ -71,18 +71,9 @@ class Login {
 	 * @return void
 	 */
 	public function login_button() {
-		$login_url = add_query_arg(
-			array(
-				'client_id'    => $this->get_client_id(),
-				'redirect_uri' => $this->get_redirect_uri(),
-				'state'        => time(),
-			),
-			self::BASE_URL
-		);
-
 		printf(
 			'<a href="%1$s">%2$s</a>',
-			esc_url( $login_url ),
+			esc_url( $this->get_login_url() ),
 			esc_html__( 'Login With Unlock', 'unlock-protocol' )
 		);
 	}
@@ -237,6 +228,25 @@ class Login {
 		} catch ( \Throwable $e ) {
 			throw $e;
 		}
+	}
 
+	/**
+	 * Get login url.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+	public function get_login_url() {
+		$login_url = add_query_arg(
+			array(
+				'client_id'    => $this->get_client_id(),
+				'redirect_uri' => $this->get_redirect_uri(),
+				'state'        => time(),
+			),
+			self::BASE_URL
+		);
+
+		return $login_url;
 	}
 }
