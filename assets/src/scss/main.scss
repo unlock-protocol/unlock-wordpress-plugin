@@ -1,2 +1,15 @@
-// Components
-@import 'components/menu';
+.login-button-container {
+  .login-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all ease 0.2s;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+}

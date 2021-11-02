@@ -9,4 +9,4 @@
  */
 import '../scss/main.scss';
 
-window.$ = window.$ || jQuery;
+// window.$ = window.$ || jQuery;

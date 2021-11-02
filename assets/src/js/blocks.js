@@ -5,7 +5,4 @@
  */
 
 // Blocks
-/**
- * Internal dependencies
- */
-
+import './blocks/unlock-content/index';

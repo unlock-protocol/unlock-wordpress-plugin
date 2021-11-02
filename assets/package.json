@@ -4,12 +4,16 @@
 	"description": "A plugin to add lock(s) to blocks of content inside of Wordpress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.",
 	"main": "src/js/index.js",
 	"scripts": {
-		"build": "wp-scripts build",
+		"build": "wp-scripts build ./src/js/main.js --output-path=./build/js",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
-		"start": "wp-scripts start",
+		"start": "wp-scripts start ./src/js/main.js --output-path=./build/js",
+		"start:blocks": "wp-scripts start ./src/js/blocks.js --output-path=./build/js",
+		"build:blocks": "wp-scripts build ./src/js/blocks.js --output-path=./build/js",
 		"start:admin": "wp-scripts start ./src/js/admin/admin.js --output-path=./build/js",
-		"build:admin": "wp-scripts build ./src/js/admin/admin.js --output-path=./build/js"
+		"build:admin": "wp-scripts build ./src/js/admin/admin.js --output-path=./build/js",
+		"build:all": "npm run build && npm run build:admin && npm run build:blocks",
+		"clean": "rimraf ./build/css && rimraf ./build/js"
 	},
 	"keywords": [
 		"unlock-protocol"
@@ -17,9 +21,12 @@
 	"author": "unlock",
 	"license": "ISC",
 	"devDependencies": {
-		"@wordpress/scripts": "^19.0.0"
+		"@wordpress/scripts": "^19.0.0",
+		"rimraf": "^3.0.2"
 	},
 	"dependencies": {
+		"@wordpress/api-fetch": "^5.2.4",
+		"@wordpress/server-side-render": "^3.0.4",
 		"sweetalert2": "^11.1.9"
 	}
 }

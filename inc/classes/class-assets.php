@@ -53,7 +53,11 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_scripts() {}
+	public function enqueue_scripts() {
+		$this->register_styles();
+
+		wp_enqueue_style( 'unlock-protocol' );
+	}
 
 	/**
 	 * To enqueue scripts and styles. in admin.
@@ -162,6 +166,10 @@ class Assets {
 			'unlock-protocol-admin' => array(
 				'src'  => 'css/style-admin.css',
 				'deps' => array( 'wp-components' ),
+			),
+			'unlock-protocol'       => array(
+				'src'  => 'css/main.css',
+				'deps' => array(),
 			),
 		);
 
