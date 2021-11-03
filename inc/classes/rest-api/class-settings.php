@@ -48,7 +48,7 @@ class Settings extends Rest_Base {
 				),
 				array(
 					'methods'             => WP_REST_Server::EDITABLE,
-					'callback'            => array( $this, 'update_items' ),
+					'callback'            => array( $this, 'update_settings' ),
 					'args'                => $this->get_endpoint_args_for_item_schema( WP_REST_Server::EDITABLE ),
 					'permission_callback' => array( $this, 'admin_permissions_check' ),
 				),
@@ -62,7 +62,7 @@ class Settings extends Rest_Base {
 			array(
 				array(
 					'methods'             => WP_REST_Server::EDITABLE,
-					'callback'            => array( $this, 'delete_item' ),
+					'callback'            => array( $this, 'delete_network' ),
 					'args'                => $this->get_endpoint_args_for_item_schema( WP_REST_Server::DELETABLE ),
 					'permission_callback' => array( $this, 'admin_permissions_check' ),
 				),
@@ -81,47 +81,38 @@ class Settings extends Rest_Base {
 	 * @return \WP_Error|\WP_REST_Response
 	 */
 	public function get_settings_data( $request ) {
-		$settings = array(
-			'unlock_protocol_networks' => get_option( 'unlock_protocol_networks', array() ),
-		);
+		$settings = get_option( 'unlock_protocol_settings', array() );
 
 		return rest_ensure_response( $settings );
 	}
 
 	/**
-	 * Update items.
+	 * Update settings.
 	 *
 	 * @param object $request Request Object.
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return \WP_Error|\WP_REST_Response
+	 * @return bool|void|\WP_Error|\WP_REST_Response
 	 */
-	public function update_items( $request ) {
-		$network_id           = sanitize_text_field( $request->get_param( 'network_id' ) );
-		$network_name         = sanitize_text_field( $request->get_param( 'network_name' ) );
-		$network_rpc_endpoint = sanitize_text_field( $request->get_param( 'network_rpc_endpoint' ) );
+	public function update_settings( $request ) {
+		$section = sanitize_text_field( $request->get_param( 'section' ) );
 
-		if ( empty( $network_id ) || empty( $network_name ) || empty( $network_rpc_endpoint ) ) {
-			return new \WP_Error(
-				'unlock_protocol_empty_data',
-				__( 'Inputs can not be empty!', 'unlock-protocol' ),
-				[ 'status' => WP_Http::BAD_REQUEST ]
-			);
+		if ( 'general' === $section ) {
+			$update = $this->update_general_settings( $request->get_param( 'settings' ) );
+
+			if ( is_wp_error( $update ) ) {
+				return $update;
+			}
 		}
 
-		$existing_networks = get_option( 'unlock_protocol_networks', array() );
+		if ( 'networks' === $section ) {
+			$update = $this->update_networks_setting( $request->get_param( 'network_id' ), $request->get_param( 'network_name' ), $request->get_param( 'network_rpc_endpoint' ) );
 
-		array_push(
-			$existing_networks,
-			array(
-				'network_id'           => $network_id,
-				'network_name'         => $network_name,
-				'network_rpc_endpoint' => $network_rpc_endpoint,
-			)
-		);
-
-		update_option( 'unlock_protocol_networks', $existing_networks, false );
+			if ( is_wp_error( $update ) ) {
+				return $update;
+			}
+		}
 
 		return $this->get_settings_data( $request );
 	}
@@ -135,7 +126,7 @@ class Settings extends Rest_Base {
 	 *
 	 * @return \WP_Error|\WP_REST_Response
 	 */
-	public function delete_item( $request ) {
+	public function delete_network( $request ) {
 		$network_index = (int) sanitize_text_field( $request->get_param( 'network_index' ) );
 
 		if ( '' === $network_index || ! is_int( $network_index ) ) {
@@ -146,16 +137,91 @@ class Settings extends Rest_Base {
 			);
 		}
 
-		$existing_networks = get_option( 'unlock_protocol_networks', array() );
+		$networks = array();
+
+		$settings = get_option( 'unlock_protocol_settings', array() );
+
+		if ( isset( $settings['networks'] ) ) {
+			$networks = $settings['networks'];
+		}
 
 		// Removing network.
-		unset( $existing_networks[ $network_index ] );
+		unset( $networks[ $network_index ] );
 
 		// Reindexing array.
-		$networks = array_values( $existing_networks );
+		$settings['networks'] = array_values( $networks );
 
-		update_option( 'unlock_protocol_networks', $networks, false );
+		update_option( 'unlock_protocol_settings', $settings, false );
 
 		return $this->get_settings_data( $request );
+	}
+
+	/**
+	 * Update general settings.
+	 *
+	 * @param array $data General settings data.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return bool
+	 */
+	public function update_general_settings( $data ) {
+		$data = array_map( 'sanitize_text_field', $data );
+
+		$settings = get_option( 'unlock_protocol_settings', array() );
+
+		$settings['general'] = $data;
+
+		$update = update_option( 'unlock_protocol_settings', $settings, false );
+
+		return $update;
+	}
+
+	/**
+	 * Update network settings.
+	 *
+	 * @param string $network_id Network ID.
+	 * @param string $network_name Network Name.
+	 * @param string $network_rpc_endpoint Network RPC endpoint.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return \WP_Error|bool
+	 */
+	public function update_networks_setting( $network_id, $network_name, $network_rpc_endpoint ) {
+		$network_id           = sanitize_text_field( $network_id );
+		$network_name         = sanitize_text_field( $network_name );
+		$network_rpc_endpoint = sanitize_text_field( $network_rpc_endpoint );
+
+		if ( empty( $network_id ) || empty( $network_name ) || empty( $network_rpc_endpoint ) ) {
+			return new \WP_Error(
+				'unlock_protocol_empty_data',
+				__( 'Inputs can not be empty!', 'unlock-protocol' ),
+				[ 'status' => WP_Http::BAD_REQUEST ]
+			);
+		}
+
+		$networks = array();
+
+		$settings = get_option( 'unlock_protocol_settings', array() );
+
+		if ( isset( $settings['networks'] ) ) {
+			$networks = $settings['networks'];
+		}
+
+		array_push(
+			$networks,
+			array(
+				'network_id'           => $network_id,
+				'network_name'         => $network_name,
+				'network_rpc_endpoint' => $network_rpc_endpoint,
+			)
+		);
+
+		$settings['networks'] = $networks;
+
+		$update = update_option( 'unlock_protocol_settings', $settings, false );
+
+		return $update;
 	}
 }
