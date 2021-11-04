@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { Button, TextControl, Notice } from '@wordpress/components';
+import { Button, TextControl, Notice, ColorPalette } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import Swal from 'sweetalert2';
@@ -93,23 +93,47 @@ function General() {
                         <div className="group">
                             <TextControl
                                 label={ __( 'Login Button Text', 'unlock-protocol' ) }
-                                className={ 'login--button-text-input' }
-                                value={ generalSettings?.login_text }
-                                onChange={ ( value ) => onChangeValue( 'login_text', value ) }
+                                className={ 'login-button-text-input' }
+                                value={ generalSettings?.login_button_text }
+                                onChange={ ( value ) => onChangeValue( 'login_button_text', value ) }
                             />
                         </div>
-                    </div>
 
-                    <Button
-                        type="submit"
-                        isPrimary={ true }
-                        onClick={ () => saveGeneralSettings() }
-                        isBusy={ isSubmitted }
-                        disabled={ isSubmitted }
-                    >
-                        { isSubmitted ? __( 'Saving', 'unlock-protocol' ) : __( 'Save', 'unlock-protocol' ) }
-                    </Button>
+                        <div className="group">
+							<p>{ __( 'Login Button Background Color', 'unlock-protocol' ) }</p>
+
+							<div className="color-picker-container">
+								<ColorPalette
+									colors={ [] }
+									value={ generalSettings?.login_button_bg_color }
+									onChange={ ( color ) =>  onChangeValue( 'login_button_bg_color', color ) }
+								/>
+							</div>
+                        </div>
+
+                        <div className="group">
+							<p>{ __( 'Login Button Text Color', 'unlock-protocol' ) }</p>
+
+							<div className="color-picker-container">
+								<ColorPalette
+									colors={ [] }
+									value={ generalSettings?.login_button_text_color }
+									onChange={ ( color ) =>  onChangeValue( 'login_button_text_color', color ) }
+								/>
+							</div>
+                        </div>
+                    </div>
                 </div>
+
+				<Button
+					type="submit"
+					isPrimary={ true }
+					onClick={ () => saveGeneralSettings() }
+					isBusy={ isSubmitted }
+					disabled={ isSubmitted }
+				>
+					{ isSubmitted ? __( 'Saving', 'unlock-protocol' ) : __( 'Save', 'unlock-protocol' ) }
+				</Button>
             </div>
 		</>
 	);

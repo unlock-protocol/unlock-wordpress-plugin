@@ -74,10 +74,16 @@
                 }
             }
         }
+
+        .color-picker-container {
+            width: 200px;
+        }
     }
 
     &__general {
         .input-container {
+            margin-bottom: 15px;
+
             .form-inputs {
                 display: block;
             }
