@@ -95,6 +95,14 @@ class Unlock_Box_Block {
 
 		$login = Login::get_instance();
 
-		return unlock_protocol_get_template( 'login/button', array( 'login_url' => $login->get_login_url() ) );
+		$login_button_text = get_general_settings( 'login_text', __( 'Login with Unlock', 'unlock-protocol' ) );
+
+		return unlock_protocol_get_template(
+			'login/button',
+			array(
+				'login_url'         => $login->get_login_url(),
+				'login_button_text' => $login_button_text,
+			)
+		);
 	}
 }

@@ -12,7 +12,7 @@
 		"build:blocks": "wp-scripts build ./src/js/blocks.js --output-path=./build/js",
 		"start:admin": "wp-scripts start ./src/js/admin/admin.js --output-path=./build/js",
 		"build:admin": "wp-scripts build ./src/js/admin/admin.js --output-path=./build/js",
-		"build:all": "npm run build && npm run build:admin && npm run build:blocks",
+		"build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks",
 		"clean": "rimraf ./build/css && rimraf ./build/js"
 	},
 	"keywords": [

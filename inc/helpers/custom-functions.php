@@ -88,3 +88,29 @@ function unlock_protocol_get_template( $template, $variables = [], $echo = false
 
 	echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output escaped already in template.
 }
+
+/**
+ * Get general settings.
+ *
+ * @param string|null $key Option key.
+ * @param string      $default Default value.
+ *
+ * @since 3.0.0
+ *
+ * @return string|array
+ */
+function get_general_settings( $key = null, $default = '' ) {
+	$settings = get_option( 'unlock_protocol_settings', array() );
+
+	if ( ! isset( $settings['general'] ) ) {
+		return $default;
+	}
+
+	$general = $settings['general'];
+
+	if ( ! $key ) {
+		return $general;
+	}
+
+	return isset( $general[ $key ] ) ? $general[ $key ] : $default;
+}

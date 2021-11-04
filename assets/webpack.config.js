@@ -32,6 +32,19 @@ module.exports = {
 
 	plugins,
 
+    module: {
+		rules: [
+            ...defaultConfig.module.rules,
+            {
+				test: /\.(bmp|png|jpe?g|gif)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: '../images/[name].[hash:8][ext]',
+				},
+			},
+        ]
+    },
+
 	output: {
 		filename: '[name].js',
 		path: resolve( 'assets', 'js' ),

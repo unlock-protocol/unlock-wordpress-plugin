@@ -13,13 +13,13 @@ export default function Edit( { attributes, setAttributes } ) {
 			path: '/unlock-protocol/v1/settings'
 		} )
 			.then( ( resp ) => {
-				let networks = resp.unlock_protocol_networks;
+				let networks = resp.networks;
                 let selectOptions = [];
 
-                networks.map( item => {
+                networks.map( ( item, index ) => {
                     selectOptions.push( {
                         label: item.network_name,
-                        value: item.network_id
+                        value: index
                     } );
                 } );
 
