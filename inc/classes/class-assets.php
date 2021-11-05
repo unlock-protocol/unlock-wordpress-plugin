@@ -41,8 +41,9 @@ class Assets {
 		/**
 		 * Action
 		 */
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'login_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
 	}
 

@@ -71,10 +71,24 @@ class Login {
 	 * @return void
 	 */
 	public function login_button() {
-		printf(
-			'<a href="%1$s">%2$s</a>',
-			esc_url( $this->get_login_url() ),
-			esc_html__( 'Login With Unlock', 'unlock-protocol' )
+//		printf(
+//			'<a href="%1$s">%2$s</a>',
+//			esc_url( $this->get_login_url() ),
+//			esc_html__( 'Login With Unlock', 'unlock-protocol' )
+//		);
+
+		$login_button_text       = get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
+		$login_button_bg_color   = get_general_settings( 'login_button_bg_color', '#000' );
+		$login_button_text_color = get_general_settings( 'login_button_text_color', '#fff' );
+
+		echo unlock_protocol_get_template( // phpcs:ignore
+			'login/button',
+			array(
+				'login_url'               => $this->get_login_url(),
+				'login_button_text'       => $login_button_text,
+				'login_button_bg_color'   => $login_button_bg_color,
+				'login_button_text_color' => $login_button_text_color,
+			)
 		);
 	}
 
