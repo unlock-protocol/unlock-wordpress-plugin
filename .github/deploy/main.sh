@@ -172,6 +172,12 @@ function deploy() {
 	dep deploy "$GITHUB_BRANCH"
 }
 
+function fix_ownership() {
+
+	cd "$PROJECT_ROOT"
+	chmod 755 current
+}
+
 function main() {
 	init_checks
 	setup_hosts_file
@@ -180,6 +186,7 @@ function main() {
 	maybe_install_submodules
 	setup_wordpress_files
 	deploy
+	fix_ownership
 }
 
 main
