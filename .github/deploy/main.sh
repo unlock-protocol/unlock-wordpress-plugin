@@ -176,7 +176,7 @@ function fix_ownership() {
 	export plugin_symlink=$(cat "$hosts_file" | shyaml get-value "$GITHUB_BRANCH.deploy_path")
 	echo "**** $plugin_symlink ****"
 	ls
-	chmod 755 "$plugin_symlink"/current
+	chmod 755 .
 }
 
 function main() {
