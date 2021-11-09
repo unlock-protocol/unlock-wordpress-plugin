@@ -174,8 +174,7 @@ function deploy() {
 
 function fix_ownership() {
 
-	cd "$PROJECT_ROOT"
-	chmod 755 current
+	chmod 755 "$PROJECT_ROOT"/current
 }
 
 function main() {
