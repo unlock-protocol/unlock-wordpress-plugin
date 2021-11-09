@@ -173,8 +173,8 @@ function deploy() {
 }
 
 function fix_ownership() {
-
-	chmod 755 "$PROJECT_ROOT"/current
+	export plugin_symlink=$(cat "$hosts_file" | shyaml get-value "$GITHUB_BRANCH.deploy_path")
+	chmod 755 "$plugin_symlink"/current
 }
 
 function main() {
