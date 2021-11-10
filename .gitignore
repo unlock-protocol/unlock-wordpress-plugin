@@ -1,1 +1,29 @@
 build/*
+
+# Ignore editor config
+.idea/
+.vscode/
+.DS_Store
+
+# Log files
+*.log
+
+# Build artifact
+.grunt
+
+# local
+node_modules/
+vendor/
+
+# Ignore temporary OS files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+debug.log
+/node_modules/
+node_modules
+psysh_history
+/cache

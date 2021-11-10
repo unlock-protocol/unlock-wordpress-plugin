@@ -19,7 +19,7 @@ export default function Edit( { attributes, setAttributes } ) {
                 networks.map( ( item, index ) => {
                     selectOptions.push( {
                         label: item.network_name,
-                        value: index
+                        value: item.network_rpc_endpoint
                     } );
                 } );
 
@@ -35,6 +35,9 @@ export default function Edit( { attributes, setAttributes } ) {
      * @param {*} value
      */
 	const onChangeValue = ( key, value ) => {
+
+		console.log( key, value );
+
 		setAttributes( { [ key ] : value } );
 	}
 

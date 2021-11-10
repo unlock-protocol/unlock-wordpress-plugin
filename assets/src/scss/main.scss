@@ -50,8 +50,10 @@
 }
 // wp admin login css end
 
-.login-button-container {
-  .login-button {
+.login-button-container,
+.checkout-button-container {
+  .login-button,
+  .checkout-button {
     background-color: #000;
     color: #fff;
     padding: 10px 20px;

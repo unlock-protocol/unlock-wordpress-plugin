@@ -11,6 +11,7 @@ namespace Unlock_Protocol\Inc\Blocks;
 
 use Unlock_Protocol\Inc\Login;
 use Unlock_Protocol\Inc\Traits\Singleton;
+use Unlock_Protocol\Inc\Unlock;
 
 /**
  * Class Unlock_Box_Block
@@ -87,25 +88,45 @@ class Unlock_Box_Block {
 	 * @return string HTML elements.
 	 */
 	public function render_block( $attributes, $content ) {
+		if ( ! is_user_logged_in() ) {
+			$login = Login::get_instance();
+
+			$login_button_text       = get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
+			$login_button_bg_color   = get_general_settings( 'login_button_bg_color', '#000' );
+			$login_button_text_color = get_general_settings( 'login_button_text_color', '#fff' );
+
+			return unlock_protocol_get_template(
+				'login/button',
+				array(
+					'login_url'               => $login->get_login_url(),
+					'login_button_text'       => $login_button_text,
+					'login_button_bg_color'   => $login_button_bg_color,
+					'login_button_text_color' => $login_button_text_color,
+				)
+			);
+		}
+
 		$ethereum_network = $attributes['ethereumNetwork'];
 
-		if ( is_user_logged_in() ) {
+		$user_ethereum_address = get_user_meta( get_current_user_id(), 'unlock_ethereum_address', true );
+
+		if ( Unlock::has_access( $ethereum_network, $attributes['lockAddress'], $user_ethereum_address ) ) {
 			return $content;
 		}
 
-		$login = Login::get_instance();
+		$checkout_url = Unlock::get_checkout_url( $attributes['lockAddress'], 4, get_permalink() );
 
-		$login_button_text       = get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
-		$login_button_bg_color   = get_general_settings( 'login_button_bg_color', '#000' );
-		$login_button_text_color = get_general_settings( 'login_button_text_color', '#fff' );
+		$checkout_button_text       = get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
+		$checkout_button_bg_color   = get_general_settings( 'checkout_button_bg_color', '#000' );
+		$checkout_button_text_color = get_general_settings( 'checkout_button_text_color', '#fff' );
 
 		return unlock_protocol_get_template(
-			'login/button',
+			'login/checkout-button',
 			array(
-				'login_url'               => $login->get_login_url(),
-				'login_button_text'       => $login_button_text,
-				'login_button_bg_color'   => $login_button_bg_color,
-				'login_button_text_color' => $login_button_text_color,
+				'checkout_url'               => $checkout_url,
+				'checkout_button_text'       => $checkout_button_text,
+				'checkout_button_bg_color'   => $checkout_button_bg_color,
+				'checkout_button_text_color' => $checkout_button_text_color,
 			)
 		);
 	}

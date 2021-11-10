@@ -15,7 +15,7 @@ use WP_Error;
 use WP_User;
 
 /**
- * Class Assets
+ * Class Login
  *
  * @since 3.0.0
  */
