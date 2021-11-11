@@ -14,12 +14,17 @@ export default function Edit( { attributes, setAttributes } ) {
 		} )
 			.then( ( resp ) => {
 				let networks = resp.networks;
-                let selectOptions = [];
+                let selectOptions = [
+					{
+						label: __( 'None', 'unlock-protocol' ),
+						value: -1
+					}
+				];
 
                 networks.map( ( item, index ) => {
                     selectOptions.push( {
                         label: item.network_name,
-                        value: item.network_rpc_endpoint
+                        value: index
                     } );
                 } );
 
@@ -35,9 +40,6 @@ export default function Edit( { attributes, setAttributes } ) {
      * @param {*} value
      */
 	const onChangeValue = ( key, value ) => {
-
-		console.log( key, value );
-
 		setAttributes( { [ key ] : value } );
 	}
 

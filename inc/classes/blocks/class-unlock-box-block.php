@@ -108,13 +108,20 @@ class Unlock_Box_Block {
 
 		$ethereum_network = $attributes['ethereumNetwork'];
 
-		$user_ethereum_address = get_user_meta( get_current_user_id(), 'unlock_ethereum_address', true );
+		if ( '-1' === $ethereum_network ) {
+			return '';
+		}
 
-		if ( Unlock::has_access( $ethereum_network, $attributes['lockAddress'], $user_ethereum_address ) ) {
+		$settings = get_option( 'unlock_protocol_settings', array() );
+		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
+
+		$selected_network = $networks[ $ethereum_network ];
+
+		if ( isset( $selected_network['network_rpc_endpoint'] ) && Unlock::has_access( $selected_network['network_rpc_endpoint'], $attributes['lockAddress'] ) ) {
 			return $content;
 		}
 
-		$checkout_url = Unlock::get_checkout_url( $attributes['lockAddress'], 4, get_permalink() );
+		$checkout_url = Unlock::get_checkout_url( $attributes['lockAddress'], $selected_network['network_id'], get_permalink() );
 
 		$checkout_button_text       = get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
 		$checkout_button_bg_color   = get_general_settings( 'checkout_button_bg_color', '#000' );

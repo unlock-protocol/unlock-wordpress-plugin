@@ -114,3 +114,18 @@ function get_general_settings( $key = null, $default = '' ) {
 
 	return isset( $general[ $key ] ) ? $general[ $key ] : $default;
 }
+
+/**
+ * Get user ethereum address.
+ *
+ * @param int $user_id User ID.
+ *
+ * @since 3.0.0
+ *
+ * @return mixed
+ */
+function get_user_ethereum_address( $user_id = null ) {
+	$user_id = $user_id ? $user_id : get_current_user_id();
+
+	return get_user_meta( $user_id, 'unlock_ethereum_address', true );
+}

@@ -40,7 +40,7 @@ class Unlock {
 	 *
 	 * @return float|int|\WP_Error
 	 */
-	public static function has_access( $url, $lock_address, $user_ethereum_address ) {
+	public static function has_access( $url, $lock_address, $user_ethereum_address = null ) {
 		$validation = self::validate( $url, $lock_address, $user_ethereum_address );
 
 		if ( is_wp_error( $validation ) ) {
@@ -67,7 +67,8 @@ class Unlock {
 	 *
 	 * @return float|int|\WP_Error
 	 */
-	public static function validate( $url, $lock_address, $user_ethereum_address ) {
+	public static function validate( $url, $lock_address, $user_ethereum_address = null ) {
+		$user_ethereum_address = $user_ethereum_address ? $user_ethereum_address : get_user_ethereum_address();
 		$user_ethereum_address = substr( $user_ethereum_address, 2 );
 
 		$params = array(
@@ -116,7 +117,7 @@ class Unlock {
 		$paywall_config = array(
 			'locks' => array(
 				"$lock_address" => array(
-					'network' => $network_id,
+					'network' => (int) $network_id,
 				),
 			),
 		);
