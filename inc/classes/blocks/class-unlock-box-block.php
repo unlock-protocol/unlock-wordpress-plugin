@@ -89,8 +89,6 @@ class Unlock_Box_Block {
 	 */
 	public function render_block( $attributes, $content ) {
 		if ( ! is_user_logged_in() ) {
-			$login = Login::get_instance();
-
 			$login_button_text       = get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
 			$login_button_bg_color   = get_general_settings( 'login_button_bg_color', '#000' );
 			$login_button_text_color = get_general_settings( 'login_button_text_color', '#fff' );
@@ -98,7 +96,7 @@ class Unlock_Box_Block {
 			return unlock_protocol_get_template(
 				'login/button',
 				array(
-					'login_url'               => $login->get_login_url(),
+					'login_url'               => Unlock::get_login_url(),
 					'login_button_text'       => $login_button_text,
 					'login_button_bg_color'   => $login_button_bg_color,
 					'login_button_text_color' => $login_button_text_color,

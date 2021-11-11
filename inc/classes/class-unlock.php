@@ -30,6 +30,15 @@ class Unlock {
 	const BASE_URL = 'https://app.unlock-protocol.com/checkout';
 
 	/**
+	 * Validation url.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @var string
+	 */
+	const VALIDATE_URL = 'https://locksmith.unlock-protocol.com/api/oauth';
+
+	/**
 	 * Post call to validate if a user has access to a content.
 	 *
 	 * @param string $url Network RPC endpoint.
@@ -131,5 +140,86 @@ class Unlock {
 		);
 
 		return $checkout_url;
+	}
+
+	/**
+	 * Get client id.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+	public static function get_client_id() {
+		return wp_parse_url( home_url(), PHP_URL_HOST );
+	}
+
+	/**
+	 * Get redirect uri.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+	public static function get_redirect_uri() {
+		return wp_login_url();
+	}
+
+	/**
+	 * Validate auth code.
+	 *
+	 * @param string $code Authorization code.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return \WP_Error
+	 */
+	public static function validate_auth_code( $code ) {
+		$params = array(
+			'grant_type'   => 'authorization_code',
+			'client_id'    => self::get_client_id(),
+			'redirect_uri' => self::get_redirect_uri(),
+			'code'         => $code,
+		);
+
+		$args = array(
+			'body'        => $params,
+			'redirection' => '30',
+			'httpversion' => '1.0',
+			'blocking'    => true,
+		);
+
+		$response = wp_remote_post( esc_url( self::VALIDATE_URL ), $args );
+
+		if ( is_wp_error( $response ) ) {
+			return new \WP_Error( 'unlock_validate_auth_code', $response );
+		}
+
+		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( ! array_key_exists( 'me', $body ) ) {
+			return new \WP_Error( 'unlock_validate_auth_code', __( 'Invalid Account', 'unlock-protocol' ) );
+		}
+
+		return $body['me'];
+	}
+
+	/**
+	 * Get login url.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return string
+	 */
+	public static function get_login_url() {
+		$login_url = add_query_arg(
+			array(
+				'client_id'    => self::get_client_id(),
+				'redirect_uri' => self::get_redirect_uri(),
+				'state'        => time(),
+			),
+			self::BASE_URL
+		);
+
+		return $login_url;
 	}
 }
