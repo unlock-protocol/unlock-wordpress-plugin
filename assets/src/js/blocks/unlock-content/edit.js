@@ -2,13 +2,17 @@ import { __ } from '@wordpress/i18n';
 import { PanelBody, TextControl, SelectControl } from '@wordpress/components';
 import { useEffect } from 'react';
 import { InspectorControls, useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { getBlockTypes } from '@wordpress/blocks';
 import apiFetch from '@wordpress/api-fetch';
 
 export default function Edit( { attributes, setAttributes } ) {
 
 	const {	lockAddress, ethereumNetwork, ethereumNetworks } = attributes;
 
-    useEffect( () => {
+	//Preventing the own block.
+	const ALLOWED_BLOCKS = getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'unlock-protocol/unlock-box' );
+
+	useEffect( () => {
 		apiFetch( {
 			path: '/unlock-protocol/v1/settings'
 		} )
@@ -62,7 +66,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					</PanelBody>
 				</InspectorControls>
 
-				<InnerBlocks />
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		</>
 	);
