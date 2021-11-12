@@ -40,9 +40,18 @@ class Login {
 	 * @return void
 	 */
 	protected function setup_hooks() {
+		/**
+		 * Actions
+		 */
 		add_action( 'login_form', array( $this, 'login_button' ) );
 		add_action( 'authenticate', array( $this, 'authenticate' ) );
 		add_action( 'unlock_protocol_register_user', array( $this, 'register' ) );
+		add_action( 'init', array( $this, 'login_user' ) );
+
+		/**
+		 * Filters
+		 */
+		add_filter( 'unlock_authenticate_user', array( $this, 'authenticate' ) );
 	}
 
 	/**
@@ -181,6 +190,28 @@ class Login {
 			return $user;
 		} catch ( \Throwable $e ) {
 			throw $e;
+		}
+	}
+
+	/**
+	 * Login user.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return void
+	 */
+	public function login_user() {
+		$user = apply_filters( 'unlock_authenticate_user', null );
+
+		if ( $user ) {
+			wp_clear_auth_cookie();
+			wp_set_current_user( $user->ID );
+
+			if ( is_ssl() == true ) {
+				wp_set_auth_cookie( $user->ID, true, true );
+			} else {
+				wp_set_auth_cookie( $user->ID, true, false );
+			}
 		}
 	}
 }

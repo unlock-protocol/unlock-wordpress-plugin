@@ -215,15 +215,17 @@ class Unlock {
 	/**
 	 * Get login url.
 	 *
+	 * @param string $redirect_uri Redirect URI.
+	 *
 	 * @since 3.0.0
 	 *
 	 * @return string
 	 */
-	public static function get_login_url() {
+	public static function get_login_url( $redirect_uri = null ) {
 		$login_url = add_query_arg(
 			array(
 				'client_id'    => self::get_client_id(),
-				'redirect_uri' => self::get_redirect_uri(),
+				'redirect_uri' => $redirect_uri ? $redirect_uri : self::get_redirect_uri(),
 				'state'        => time(),
 			),
 			self::BASE_URL

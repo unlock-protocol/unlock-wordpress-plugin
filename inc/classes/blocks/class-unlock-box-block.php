@@ -43,7 +43,6 @@ class Unlock_Box_Block {
 		 * Actions.
 		 */
 		add_action( 'init', array( $this, 'register_block_type' ) );
-
 	}
 
 	/**
@@ -96,7 +95,7 @@ class Unlock_Box_Block {
 			return unlock_protocol_get_template(
 				'login/button',
 				array(
-					'login_url'               => Unlock::get_login_url(),
+					'login_url'               => Unlock::get_login_url( get_permalink() ),
 					'login_button_text'       => $login_button_text,
 					'login_button_bg_color'   => $login_button_bg_color,
 					'login_button_text_color' => $login_button_text_color,
