@@ -145,6 +145,8 @@ class Settings extends Rest_Base {
 			$networks = $settings['networks'];
 		}
 
+		$removed_network = $networks[ $network_index ];
+
 		// Removing network.
 		unset( $networks[ $network_index ] );
 
@@ -152,6 +154,8 @@ class Settings extends Rest_Base {
 		$settings['networks'] = array_values( $networks );
 
 		update_option( 'unlock_protocol_settings', $settings, false );
+
+		do_action( 'unlock_protocol_network_deleted', $removed_network, $settings['networks'] );
 
 		return $this->get_settings_data( $request );
 	}
@@ -221,6 +225,8 @@ class Settings extends Rest_Base {
 		$settings['networks'] = $networks;
 
 		$update = update_option( 'unlock_protocol_settings', $settings, false );
+
+		do_action( 'unlock_protocol_network_updated', $settings['networks'] );
 
 		return $update;
 	}

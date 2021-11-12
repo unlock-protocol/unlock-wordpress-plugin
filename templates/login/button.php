@@ -23,6 +23,10 @@
 </style>
 <?php endif; ?>
 
+<?php do_action( 'unlock_before_login_button' ); ?>
+
 <div class="login-button-container">
 	<a href="<?php echo esc_url( $login_url ); ?>" class="login-button"><?php echo esc_html( $login_button_text ); ?></a>
 </div>
+
+<?php do_action( 'unlock_after_login_button' ); ?>

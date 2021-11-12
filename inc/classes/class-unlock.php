@@ -80,17 +80,20 @@ class Unlock {
 		$user_ethereum_address = $user_ethereum_address ? $user_ethereum_address : get_user_ethereum_address();
 		$user_ethereum_address = substr( $user_ethereum_address, 2 );
 
-		$params = array(
-			'method'  => 'eth_call',
-			'params'  => array(
-				array(
-					'to'   => $lock_address,
-					'data' => sprintf( '0xabdf82ce000000000000000000000000%s', $user_ethereum_address ),
+		$params = apply_filters(
+			'unlock_protocol_user_validate_params',
+			array(
+				'method'  => 'eth_call',
+				'params'  => array(
+					array(
+						'to'   => $lock_address,
+						'data' => sprintf( '0xabdf82ce000000000000000000000000%s', $user_ethereum_address ),
+					),
+					'latest',
 				),
-				'latest',
-			),
-			'id'      => 31337,
-			'jsonrpc' => '2.0',
+				'id'      => 31337,
+				'jsonrpc' => '2.0',
+			)
 		);
 
 		$args = array(
@@ -123,12 +126,15 @@ class Unlock {
 	 * @return string
 	 */
 	public static function get_checkout_url( $lock_address, $network_id, $redirect_uri ) {
-		$paywall_config = array(
-			'locks' => array(
-				"$lock_address" => array(
-					'network' => (int) $network_id,
+		$paywall_config = apply_filters(
+			'unlock_protocol_paywall_config',
+			array(
+				'locks' => array(
+					"$lock_address" => array(
+						'network' => (int) $network_id,
+					),
 				),
-			),
+			)
 		);
 
 		$checkout_url = add_query_arg(
@@ -150,7 +156,7 @@ class Unlock {
 	 * @return string
 	 */
 	public static function get_client_id() {
-		return wp_parse_url( home_url(), PHP_URL_HOST );
+		return apply_filters( 'unlock_protocol_get_client_id', wp_parse_url( home_url(), PHP_URL_HOST ) );
 	}
 
 	/**
@@ -161,7 +167,7 @@ class Unlock {
 	 * @return string
 	 */
 	public static function get_redirect_uri() {
-		return wp_login_url();
+		return apply_filters( 'unlock_protocol_get_redirect_uri', wp_login_url() );
 	}
 
 	/**
@@ -174,11 +180,14 @@ class Unlock {
 	 * @return \WP_Error
 	 */
 	public static function validate_auth_code( $code ) {
-		$params = array(
-			'grant_type'   => 'authorization_code',
-			'client_id'    => self::get_client_id(),
-			'redirect_uri' => self::get_redirect_uri(),
-			'code'         => $code,
+		$params = apply_filters(
+			'unlock_protocol_validate_auth_code_params',
+			array(
+				'grant_type'   => 'authorization_code',
+				'client_id'    => self::get_client_id(),
+				'redirect_uri' => self::get_redirect_uri(),
+				'code'         => $code,
+			)
 		);
 
 		$args = array(
@@ -220,6 +229,6 @@ class Unlock {
 			self::BASE_URL
 		);
 
-		return $login_url;
+		return apply_filters( 'unlock_protocol_get_login_url', $login_url );
 	}
 }

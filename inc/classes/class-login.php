@@ -42,7 +42,7 @@ class Login {
 	protected function setup_hooks() {
 		add_action( 'login_form', array( $this, 'login_button' ) );
 		add_action( 'authenticate', array( $this, 'authenticate' ) );
-		add_action( 'unlock_register_user', array( $this, 'register' ) );
+		add_action( 'unlock_protocol_register_user', array( $this, 'register' ) );
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Login {
 			 *
 			 * @since 3.0.0
 			 */
-			return apply_filters( 'unlock_register_user', $ethereum_address );
+			return apply_filters( 'unlock_protocol_register_user', $ethereum_address );
 
 		} catch ( \Throwable $e ) {
 			return new WP_Error( 'unlock_login_failed', $e->getMessage() );
@@ -176,7 +176,7 @@ class Login {
 			/**
 			 * Fires once the user has been registered successfully.
 			 */
-			do_action( 'unlock_user_created', $uid, $user );
+			do_action( 'unlock_protocol_user_created', $uid, $user );
 
 			return $user;
 		} catch ( \Throwable $e ) {

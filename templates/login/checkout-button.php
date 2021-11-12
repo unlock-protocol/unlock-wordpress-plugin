@@ -23,6 +23,10 @@
 </style>
 <?php endif; ?>
 
+<?php do_action( 'unlock_before_checkout_button' ); ?>
+
 <div class="checkout-button-container">
 	<a href='<?php echo $checkout_url; //phpcs:ignore ?>' class="checkout-button"><?php echo esc_html( $checkout_button_text ); ?></a>
 </div>
+
+<?php do_action( 'unlock_after_checkout_button' ); ?>
