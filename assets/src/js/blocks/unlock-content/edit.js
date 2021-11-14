@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { InspectorControls, useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { getBlockTypes } from '@wordpress/blocks';
 import apiFetch from '@wordpress/api-fetch';
+import '../../../scss/admin/editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 
