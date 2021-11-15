@@ -7,8 +7,8 @@
 
 namespace Unlock_Protocol\Inc;
 
+use Unlock_Protocol\Inc\Blocks\Unlock_Box_Block;
 use Unlock_Protocol\Inc\Traits\Singleton;
-use Unlock_Protocol\Inc\Blocks\Example_Dynamic_Block;
 
 /**
  * Class Blocks
@@ -27,6 +27,7 @@ class Blocks {
 	protected function __construct() {
 
 		$this->setup_hooks();
+		Unlock_Box_Block::get_instance();
 
 	}
 
@@ -49,15 +50,26 @@ class Blocks {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
+		// Automatically load dependencies and version.
+		$asset_file = include UNLOCK_PROTOCOL_BUILD_DIR . '/js/blocks.asset.php';
 
 		wp_register_script(
 			'unlock-protocol-blocks',
 			UNLOCK_PROTOCOL_URL . '/assets/build/js/blocks.js',
-			[ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ],
+			$asset_file['dependencies'],
 			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/js/blocks.js' ),
 			true
 		);
 
 		wp_enqueue_script( 'unlock-protocol-blocks' );
+
+		wp_register_style(
+			'unlock-protocol-blocks',
+			UNLOCK_PROTOCOL_URL . '/assets/build/css/blocks.css',
+			array(),
+			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/css/blocks.css' )
+		);
+
+		wp_enqueue_style( 'unlock-protocol-blocks' );
 	}
 }

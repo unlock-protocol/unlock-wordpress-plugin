@@ -41,8 +41,9 @@ class Assets {
 		/**
 		 * Action
 		 */
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'login_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
 	}
 
@@ -53,7 +54,11 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_scripts() {}
+	public function enqueue_scripts() {
+		$this->register_styles();
+
+		wp_enqueue_style( 'unlock-protocol' );
+	}
 
 	/**
 	 * To enqueue scripts and styles. in admin.
@@ -162,6 +167,10 @@ class Assets {
 			'unlock-protocol-admin' => array(
 				'src'  => 'css/style-admin.css',
 				'deps' => array( 'wp-components' ),
+			),
+			'unlock-protocol'       => array(
+				'src'  => 'css/main.css',
+				'deps' => array(),
 			),
 		);
 

@@ -15,31 +15,13 @@ use WP_Error;
 use WP_User;
 
 /**
- * Class Assets
+ * Class Login
  *
  * @since 3.0.0
  */
 class Login {
 
 	use Singleton;
-
-	/**
-	 * Login base url.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @var string
-	 */
-	const BASE_URL = 'https://app.unlock-protocol.com/checkout';
-
-	/**
-	 * Validation url.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @var string
-	 */
-	const VALIDATE_URL = 'https://locksmith.unlock-protocol.com/api/oauth';
 
 	/**
 	 * Construct method.
@@ -58,9 +40,18 @@ class Login {
 	 * @return void
 	 */
 	protected function setup_hooks() {
+		/**
+		 * Actions
+		 */
 		add_action( 'login_form', array( $this, 'login_button' ) );
 		add_action( 'authenticate', array( $this, 'authenticate' ) );
-		add_action( 'unlock_register_user', array( $this, 'register' ) );
+		add_action( 'unlock_protocol_register_user', array( $this, 'register' ) );
+		add_action( 'wp', array( $this, 'login_user' ) );
+
+		/**
+		 * Filters
+		 */
+		add_filter( 'unlock_authenticate_user', array( $this, 'authenticate' ) );
 	}
 
 	/**
@@ -71,19 +62,18 @@ class Login {
 	 * @return void
 	 */
 	public function login_button() {
-		$login_url = add_query_arg(
-			array(
-				'client_id'    => $this->get_client_id(),
-				'redirect_uri' => $this->get_redirect_uri(),
-				'state'        => time(),
-			),
-			self::BASE_URL
-		);
+		$login_button_text       = up_get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
+		$login_button_bg_color   = up_get_general_settings( 'login_button_bg_color', '#000' );
+		$login_button_text_color = up_get_general_settings( 'login_button_text_color', '#fff' );
 
-		printf(
-			'<a href="%1$s">%2$s</a>',
-			esc_url( $login_url ),
-			esc_html__( 'Login With Unlock', 'unlock-protocol' )
+		echo unlock_protocol_get_template( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			'login/button',
+			array(
+				'login_url'               => Unlock::get_login_url(),
+				'login_button_text'       => $login_button_text,
+				'login_button_bg_color'   => $login_button_bg_color,
+				'login_button_text_color' => $login_button_text_color,
+			)
 		);
 	}
 
@@ -102,42 +92,26 @@ class Login {
 			return $user;
 		}
 
-		$code = Helper::filter_input( INPUT_GET, 'code', FILTER_SANITIZE_STRING );
+		$code  = Helper::filter_input( INPUT_GET, 'code', FILTER_SANITIZE_STRING );
+		$state = Helper::filter_input( INPUT_GET, 'state', FILTER_SANITIZE_STRING );
 
-		if ( ! $code ) {
+		if ( ! $code && ! wp_verify_nonce( $state, 'unlock_login_state' ) ) {
 			return $user;
 		}
 
-		$state = Helper::filter_input( INPUT_GET, 'state', FILTER_SANITIZE_STRING );
-
 		try {
-			$params = array(
-				'grant_type'   => 'authorization_code',
-				'client_id'    => $this->get_client_id(),
-				'redirect_uri' => $this->get_redirect_uri(),
-				'code'         => $code,
-			);
+			$ethereum_address = Unlock::validate_auth_code( $code );
 
-			$args = array(
-				'body'        => $params,
-				'redirection' => '30',
-				'httpversion' => '1.0',
-				'blocking'    => true,
-			);
-
-			$response = wp_remote_post( esc_url( self::VALIDATE_URL ), $args );
-
-			$body = json_decode( wp_remote_retrieve_body( $response ), true );
-
-			if ( ! array_key_exists( 'me', $body ) ) {
+			if ( is_wp_error( $ethereum_address ) ) {
 				throw new \Exception( __( 'Invalid Account', 'unlock-protocol' ) );
 			}
+
+			$ethereum_address = sanitize_text_field( $ethereum_address );
 
 			/*
 			 * Using ethereum address as email and client id as hostname.
 			 */
-			$ethereum_address = sanitize_text_field( $body['me'] );
-			$email_address    = $this->get_email_address( $ethereum_address );
+			$email_address = $this->get_email_address( $ethereum_address );
 
 			if ( email_exists( $email_address ) ) {
 				$user = get_user_by( 'email', $email_address );
@@ -151,35 +125,14 @@ class Login {
 			 * Check if we need to register the user.
 			 *
 			 * @param string $ethereum_address Ethereum address from oauth validation.
+			 *
 			 * @since 3.0.0
 			 */
-			return apply_filters( 'unlock_register_user', $ethereum_address );
+			return apply_filters( 'unlock_protocol_register_user', $ethereum_address );
 
 		} catch ( \Throwable $e ) {
 			return new WP_Error( 'unlock_login_failed', $e->getMessage() );
 		}
-	}
-
-	/**
-	 * Get client id.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-	public function get_client_id() {
-		return wp_parse_url( home_url(), PHP_URL_HOST );
-	}
-
-	/**
-	 * Get redirect uri.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @return string
-	 */
-	public function get_redirect_uri() {
-		return wp_login_url();
 	}
 
 	/**
@@ -192,7 +145,7 @@ class Login {
 	 * @return string
 	 */
 	public function get_email_address( $ethereum_address ) {
-		return sprintf( '%1$s@%2$s', esc_html( $ethereum_address ), esc_html( $this->get_client_id() ) );
+		return sprintf( '%1$s@%2$s', esc_html( $ethereum_address ), esc_html( Unlock::get_client_id() ) );
 	}
 
 	/**
@@ -231,12 +184,33 @@ class Login {
 			/**
 			 * Fires once the user has been registered successfully.
 			 */
-			do_action( 'unlock_user_created', $uid, $user );
+			do_action( 'unlock_protocol_user_created', $uid, $user );
 
 			return $user;
 		} catch ( \Throwable $e ) {
 			throw $e;
 		}
+	}
 
+	/**
+	 * Login user.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return void
+	 */
+	public function login_user() {
+		$user = apply_filters( 'unlock_authenticate_user', null );
+
+		if ( $user ) {
+			wp_clear_auth_cookie();
+			wp_set_current_user( $user->ID );
+
+			if ( true === is_ssl() ) {
+				wp_set_auth_cookie( $user->ID, true, true );
+			} else {
+				wp_set_auth_cookie( $user->ID, true, false );
+			}
+		}
 	}
 }

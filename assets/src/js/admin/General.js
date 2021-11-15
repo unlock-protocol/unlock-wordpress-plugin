@@ -122,6 +122,41 @@ function General() {
 								/>
 							</div>
                         </div>
+
+						<hr />
+
+						<div className="group">
+                            <TextControl
+                                label={ __( 'Checkout Button Text', 'unlock-protocol' ) }
+                                className={ 'checkout-button-text-input' }
+                                value={ generalSettings?.checkout_button_text }
+                                onChange={ ( value ) => onChangeValue( 'checkout_button_text', value ) }
+                            />
+                        </div>
+
+                        <div className="group">
+							<p>{ __( 'Checkout Button Background Color', 'unlock-protocol' ) }</p>
+
+							<div className="color-picker-container">
+								<ColorPalette
+									colors={ [] }
+									value={ generalSettings?.checkout_button_bg_color }
+									onChange={ ( color ) =>  onChangeValue( 'checkout_button_bg_color', color ) }
+								/>
+							</div>
+                        </div>
+
+                        <div className="group">
+							<p>{ __( 'Checkout Button Text Color', 'unlock-protocol' ) }</p>
+
+							<div className="color-picker-container">
+								<ColorPalette
+									colors={ [] }
+									value={ generalSettings?.checkout_button_text_color }
+									onChange={ ( color ) =>  onChangeValue( 'checkout_button_text_color', color ) }
+								/>
+							</div>
+                        </div>
                     </div>
                 </div>
 
