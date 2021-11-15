@@ -46,7 +46,7 @@ class Login {
 		add_action( 'login_form', array( $this, 'login_button' ) );
 		add_action( 'authenticate', array( $this, 'authenticate' ) );
 		add_action( 'unlock_protocol_register_user', array( $this, 'register' ) );
-		add_action( 'init', array( $this, 'login_user' ) );
+		add_action( 'wp', array( $this, 'login_user' ) );
 
 		/**
 		 * Filters
