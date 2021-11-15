@@ -99,7 +99,7 @@ function unlock_protocol_get_template( $template, $variables = [], $echo = false
  *
  * @return string|array
  */
-function get_general_settings( $key = null, $default = '' ) {
+function up_get_general_settings( $key = null, $default = '' ) {
 	$settings = get_option( 'unlock_protocol_settings', array() );
 
 	if ( ! isset( $settings['general'] ) ) {
@@ -124,7 +124,7 @@ function get_general_settings( $key = null, $default = '' ) {
  *
  * @return mixed
  */
-function get_user_ethereum_address( $user_id = null ) {
+function up_get_user_ethereum_address( $user_id = null ) {
 	$user_id = $user_id ? $user_id : get_current_user_id();
 
 	return get_user_meta( $user_id, 'unlock_ethereum_address', true );

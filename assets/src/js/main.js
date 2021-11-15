@@ -8,5 +8,3 @@
  * Internal dependencies
  */
 import '../scss/main.scss';
-
-// window.$ = window.$ || jQuery;

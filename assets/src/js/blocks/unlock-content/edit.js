@@ -67,6 +67,8 @@ export default function Edit( { attributes, setAttributes } ) {
 					</PanelBody>
 				</InspectorControls>
 
+				<div className="unlock-header-icon"></div>
+
 				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		</>

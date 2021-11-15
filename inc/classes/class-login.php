@@ -62,9 +62,9 @@ class Login {
 	 * @return void
 	 */
 	public function login_button() {
-		$login_button_text       = get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
-		$login_button_bg_color   = get_general_settings( 'login_button_bg_color', '#000' );
-		$login_button_text_color = get_general_settings( 'login_button_text_color', '#fff' );
+		$login_button_text       = up_get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
+		$login_button_bg_color   = up_get_general_settings( 'login_button_bg_color', '#000' );
+		$login_button_text_color = up_get_general_settings( 'login_button_text_color', '#fff' );
 
 		echo unlock_protocol_get_template( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			'login/button',
@@ -92,13 +92,12 @@ class Login {
 			return $user;
 		}
 
-		$code = Helper::filter_input( INPUT_GET, 'code', FILTER_SANITIZE_STRING );
+		$code  = Helper::filter_input( INPUT_GET, 'code', FILTER_SANITIZE_STRING );
+		$state = Helper::filter_input( INPUT_GET, 'state', FILTER_SANITIZE_STRING );
 
-		if ( ! $code ) {
+		if ( ! $code && ! wp_verify_nonce( $state, 'unlock_login_state' ) ) {
 			return $user;
 		}
-
-		$state = Helper::filter_input( INPUT_GET, 'state', FILTER_SANITIZE_STRING );
 
 		try {
 			$ethereum_address = Unlock::validate_auth_code( $code );
@@ -207,7 +206,7 @@ class Login {
 			wp_clear_auth_cookie();
 			wp_set_current_user( $user->ID );
 
-			if ( is_ssl() == true ) {
+			if ( true === is_ssl() ) {
 				wp_set_auth_cookie( $user->ID, true, true );
 			} else {
 				wp_set_auth_cookie( $user->ID, true, false );

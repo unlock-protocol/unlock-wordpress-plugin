@@ -12,13 +12,13 @@
 <?php if ( $login_button_bg_color && $login_button_text_color ) : ?>
 <style>
 	.login-button-container .login-button {
-		background-color: <?php echo esc_attr( $login_button_bg_color ); ?>;
-		color: <?php echo esc_attr( $login_button_text_color ); ?>;
+		background-color: <?php echo sanitize_hex_color( $login_button_bg_color ); ?>;
+		color: <?php echo sanitize_hex_color( $login_button_text_color ); ?>;
 	}
 
 	.login-button-container .login-button:hover {
-		background-color: <?php echo esc_attr( $login_button_text_color ); ?>;
-		color: <?php echo esc_attr( $login_button_bg_color ); ?>;
+		background-color: <?php echo sanitize_hex_color( $login_button_text_color ); ?>;
+		color: <?php echo sanitize_hex_color( $login_button_bg_color ); ?>;
 	}
 </style>
 <?php endif; ?>

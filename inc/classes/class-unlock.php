@@ -77,7 +77,7 @@ class Unlock {
 	 * @return float|int|\WP_Error
 	 */
 	public static function validate( $url, $lock_address, $user_ethereum_address = null ) {
-		$user_ethereum_address = $user_ethereum_address ? $user_ethereum_address : get_user_ethereum_address();
+		$user_ethereum_address = $user_ethereum_address ? $user_ethereum_address : up_get_user_ethereum_address();
 		$user_ethereum_address = substr( $user_ethereum_address, 2 );
 
 		$params = apply_filters(
@@ -226,7 +226,7 @@ class Unlock {
 			array(
 				'client_id'    => self::get_client_id(),
 				'redirect_uri' => $redirect_uri ? $redirect_uri : self::get_redirect_uri(),
-				'state'        => time(),
+				'state'        => wp_create_nonce( 'unlock_login_state' ),
 			),
 			self::BASE_URL
 		);

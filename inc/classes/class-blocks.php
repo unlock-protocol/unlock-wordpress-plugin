@@ -62,5 +62,14 @@ class Blocks {
 		);
 
 		wp_enqueue_script( 'unlock-protocol-blocks' );
+
+		wp_register_style(
+			'unlock-protocol-blocks',
+			UNLOCK_PROTOCOL_URL . '/assets/build/css/blocks.css',
+			array(),
+			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/css/blocks.css' )
+		);
+
+		wp_enqueue_style( 'unlock-protocol-blocks' );
 	}
 }

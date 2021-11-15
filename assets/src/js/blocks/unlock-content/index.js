@@ -26,8 +26,8 @@ import Edit from './edit';
       		default: []
 		},
         ethereumNetwork: {
-			type: 'string',
-      		default: ''
+			type: 'integer',
+      		default: -1
 		}
     },
 
