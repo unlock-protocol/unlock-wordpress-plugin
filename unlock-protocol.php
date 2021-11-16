@@ -11,11 +11,13 @@
  * @package unlock-protocol
  */
 
+define( 'UNLOCK_PLUGIN_VERSION', '3.0.0' );
 define( 'UNLOCK_PROTOCOL_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'UNLOCK_PROTOCOL_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'UNLOCK_PROTOCOL_BUILD_DIR', UNLOCK_PROTOCOL_PATH . '/assets/build' );
 define( 'UNLOCK_PROTOCOL_BUILD_URI', UNLOCK_PROTOCOL_URL . '/assets/build' );
 define( 'UNLOCK_PROTOCOL_BASENAME_FILE', plugin_basename( __FILE__ ) );
+define( 'UNLOCK_PROTOCOL_PLUGIN_FILE', untrailingslashit( __FILE__ ) );
 
 // phpcs:disable WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
 require_once UNLOCK_PROTOCOL_PATH . '/inc/helpers/autoloader.php';
