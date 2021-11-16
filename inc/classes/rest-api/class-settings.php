@@ -211,12 +211,22 @@ class Settings extends Rest_Base {
 
 		if ( isset( $settings['networks'] ) ) {
 			$networks = $settings['networks'];
+
+			foreach ( $networks as $item ) {
+				if ( (int) $network_id === $item['network_id'] ) {
+					return new \WP_Error(
+						'unlock_protocol_duplicate_network_id',
+						__( 'This network ID is already exists.', 'unlock-protocol' ),
+						[ 'status' => WP_Http::BAD_REQUEST ]
+					);
+				}
+			}
 		}
 
 		array_push(
 			$networks,
 			array(
-				'network_id'           => $network_id,
+				'network_id'           => (int) $network_id,
 				'network_name'         => $network_name,
 				'network_rpc_endpoint' => $network_rpc_endpoint,
 			)

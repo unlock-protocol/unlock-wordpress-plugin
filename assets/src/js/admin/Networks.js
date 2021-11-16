@@ -134,7 +134,9 @@ function Networks() {
                 { renderNotice() }
 
                 <div className="input-container">
-                    <h4>{ __( 'Add a new network', 'unlock-protocol' ) }</h4>
+                    <h3>{ __( 'Add a new network', 'unlock-protocol' ) }</h3>
+
+					<p className="help-text">{ unlockProtocol.network_help_text }</p>
 
                     <div className="form-inputs">
                         <div className="group">
