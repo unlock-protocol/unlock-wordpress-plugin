@@ -76,12 +76,13 @@ class Assets {
 		wp_enqueue_style( 'unlock-protocol-admin' );
 
 		$localize_data = array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'rest'    => array(
+			'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+			'rest'        => array(
 				'root'    => esc_url_raw( get_rest_url() ),
 				'nonce'   => wp_create_nonce( 'wp_rest' ),
 				'version' => 'unlock-protocol/v1',
 			),
+			'unlock_docs' => 'https://docs.unlock-protocol.com/#configure-the-lock',
 		);
 
 		wp_localize_script( 'unlock-protocol-admin', 'unlockProtocol', $localize_data );

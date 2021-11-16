@@ -39,17 +39,29 @@ class Blocks {
 	 * @return void
 	 */
 	public function setup_hooks() {
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_assets' ] );
 	}
 
 	/**
-	 * Enqueue scripts.
+	 * Enqueue assets.
 	 *
 	 * @since 3.0.0
 	 *
 	 * @return void
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_assets() {
+		$this->enqueue_scripts();
+		$this->enqueue_styles();
+	}
+
+	/**
+	 * Enqueue scripts for blocks.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return void
+	 */
+	private function enqueue_scripts() {
 		// Automatically load dependencies and version.
 		$asset_file = include UNLOCK_PROTOCOL_BUILD_DIR . '/js/blocks.asset.php';
 
@@ -62,7 +74,16 @@ class Blocks {
 		);
 
 		wp_enqueue_script( 'unlock-protocol-blocks' );
+	}
 
+	/**
+	 * Enqueue styles for blocks.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return void
+	 */
+	private function enqueue_styles() {
 		wp_register_style(
 			'unlock-protocol-blocks',
 			UNLOCK_PROTOCOL_URL . '/assets/build/css/blocks.css',
