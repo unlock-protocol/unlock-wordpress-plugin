@@ -112,6 +112,10 @@ class Unlock_Box_Block {
 		$settings = get_option( 'unlock_protocol_settings', array() );
 		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
 
+		if ( ! isset( $networks[ $ethereum_network ] ) ) {
+			return '';
+		}
+
 		$selected_network = $networks[ $ethereum_network ];
 
 		if ( isset( $selected_network['network_rpc_endpoint'] ) && Unlock::has_access( $selected_network['network_rpc_endpoint'], $attributes['lockAddress'] ) ) {

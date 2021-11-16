@@ -139,21 +139,21 @@ function Networks() {
                     <div className="form-inputs">
                         <div className="group">
                             <TextControl
-                                label={ __( 'Network ID', 'unlock-protocol' ) }
-                                className={ 'network-id-input' }
-                                value={ networkId }
-                                onChange={ ( value ) => setNetworkId( value ) }
-                            />
-                        </div>
-
-                        <div className="group">
-                            <TextControl
                                 label={ __( 'Network Name', 'unlock-protocol' ) }
                                 className={ 'network-name-input' }
                                 value={ networkName }
                                 onChange={ ( value ) => setNetworkName( value ) }
                             />
                         </div>
+
+						<div className="group">
+							<TextControl
+								label={ __( 'Network ID', 'unlock-protocol' ) }
+								className={ 'network-id-input' }
+								value={ networkId }
+								onChange={ ( value ) => setNetworkId( value ) }
+								/>
+						</div>
 
                         <div className="group">
                             <TextControl

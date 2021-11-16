@@ -64,6 +64,10 @@ export default function Edit( { attributes, setAttributes } ) {
 							options={ ethereumNetworks }
 							onChange={ ( value ) => onChangeValue( 'ethereumNetwork', value ) }
 						/>
+
+						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs }>
+							{ __( 'Unlock\'s documentation', 'unlock-protocol' ) }
+						</a>
 					</PanelBody>
 				</InspectorControls>
 

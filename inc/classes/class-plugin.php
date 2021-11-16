@@ -27,6 +27,8 @@ class Plugin {
 	 */
 	protected function __construct() {
 
+		register_activation_hook( UNLOCK_PROTOCOL_PLUGIN_FILE, array( $this, 'activate' ) );
+
 		// Load plugin classes.
 		Assets::get_instance();
 		Login::get_instance();
@@ -36,4 +38,14 @@ class Plugin {
 
 	}
 
+	/**
+	 * Activator of the plugin.
+	 *
+	 * @return void
+	 */
+	public function activate() {
+		$installer = Installer::get_instance();
+		$installer->run();
+
+	}
 }
