@@ -7,12 +7,13 @@
 		"build": "wp-scripts build ./src/js/main.js --output-path=./build/js",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
+		"make:pot": "wp i18n make-pot --exclude='dist,build,node_modules,vendors' .. ../languages/unlock-protocol.pot",
 		"start": "wp-scripts start ./src/js/main.js --output-path=./build/js",
 		"start:blocks": "wp-scripts start ./src/js/blocks.js --output-path=./build/js",
 		"build:blocks": "wp-scripts build ./src/js/blocks.js --output-path=./build/js",
 		"start:admin": "wp-scripts start ./src/js/admin/admin.js --output-path=./build/js",
 		"build:admin": "wp-scripts build ./src/js/admin/admin.js --output-path=./build/js",
-		"build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks",
+		"build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks && npm run make:pot",
 		"clean": "rimraf ./build/css && rimraf ./build/js"
 	},
 	"keywords": [

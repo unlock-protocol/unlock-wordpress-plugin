@@ -1,0 +1,197 @@
+# Copyright (C) 2021 Unlock
+# This file is distributed under the same license as the Unlock Protocol Plugin plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Unlock Protocol Plugin 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/unlock-wordpress-plugin\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-11-18T10:19:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: unlock-protocol\n"
+
+#. Plugin Name of the plugin
+msgid "Unlock Protocol Plugin"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/unlock-protocol/unlock-wordpress-plugin"
+msgstr ""
+
+#. Description of the plugin
+msgid "A plugin to add lock(s) to blocks of content inside of WordPress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation."
+msgstr ""
+
+#. Author of the plugin
+msgid "Unlock"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://unlock-protocol.com"
+msgstr ""
+
+#: inc/classes/blocks/class-unlock-box-block.php:91
+#: inc/classes/class-login.php:65
+msgid "Login with Unlock"
+msgstr ""
+
+#: inc/classes/blocks/class-unlock-box-block.php:128
+msgid "Purchase this"
+msgstr ""
+
+#: inc/classes/class-assets.php:81
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+msgstr ""
+
+#: inc/classes/class-login.php:106
+#: inc/classes/class-unlock.php:209
+msgid "Invalid Account"
+msgstr ""
+
+#: inc/classes/class-login.php:166
+msgid "Registration is not allowed."
+msgstr ""
+
+#: inc/classes/class-menu.php:77
+#: assets/src/js/blocks/unlock-content/edit.js:55
+msgid "Settings"
+msgstr ""
+
+#: inc/classes/rest-api/class-rest-base.php:49
+msgid "You have no permission to do that"
+msgstr ""
+
+#: inc/classes/rest-api/class-settings.php:135
+#: inc/classes/rest-api/class-settings.php:203
+msgid "Inputs can not be empty!"
+msgstr ""
+
+#: inc/classes/rest-api/class-settings.php:219
+msgid "This network ID is already exists."
+msgstr ""
+
+#: assets/src/js/admin/App.js:13
+#: assets/src/js/blocks/unlock-content/index.js:11
+msgid "Unlock Protocol"
+msgstr ""
+
+#: assets/src/js/admin/App.js:21
+msgid "General"
+msgstr ""
+
+#: assets/src/js/admin/App.js:26
+msgid "Networks"
+msgstr ""
+
+#: assets/src/js/admin/General.js:52
+msgid "Updated Successfully!"
+msgstr ""
+
+#: assets/src/js/admin/General.js:87
+msgid "General Settings"
+msgstr ""
+
+#: assets/src/js/admin/General.js:95
+msgid "Login Button Text"
+msgstr ""
+
+#: assets/src/js/admin/General.js:103
+msgid "Login Button Background Color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:115
+msgid "Login Button Text Color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:130
+msgid "Checkout Button Text"
+msgstr ""
+
+#: assets/src/js/admin/General.js:138
+msgid "Checkout Button Background Color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:150
+msgid "Checkout Button Text Color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:170
+#: assets/src/js/admin/Networks.js:177
+msgid "Saving"
+msgstr ""
+
+#: assets/src/js/admin/General.js:170
+#: assets/src/js/admin/Networks.js:177
+msgid "Save"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:58
+msgid "Added Successfully!"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:83
+msgid "Are you sure?"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:84
+msgid "You won't be able to revert this!"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:89
+msgid "Yes, delete it!"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:105
+msgid "Deleted!"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:106
+msgid "Network has been deleted successfully!"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:137
+msgid "Add a new network"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:144
+#: assets/src/js/admin/Networks.js:186
+msgid "Network Name"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:153
+#: assets/src/js/admin/Networks.js:185
+msgid "Network ID"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:162
+#: assets/src/js/admin/Networks.js:187
+msgid "Network RPC Endpoint"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:193
+msgid "Delete"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:24
+msgid "None"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:56
+msgid "Lock Address"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:62
+msgid "Ethereum Network"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:69
+msgid "Unlock's documentation"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/index.js:17
+msgid "A block to add lock(s) to the content inside of WordPress."
+msgstr ""
