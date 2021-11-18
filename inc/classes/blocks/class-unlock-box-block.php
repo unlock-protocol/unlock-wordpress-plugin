@@ -92,15 +92,16 @@ class Unlock_Box_Block {
 			$login_button_bg_color   = up_get_general_settings( 'login_button_bg_color', '#000' );
 			$login_button_text_color = up_get_general_settings( 'login_button_text_color', '#fff' );
 
-			return unlock_protocol_get_template(
-				'login/button',
-				array(
-					'login_url'               => Unlock::get_login_url( get_permalink() ),
-					'login_button_text'       => $login_button_text,
-					'login_button_bg_color'   => $login_button_bg_color,
-					'login_button_text_color' => $login_button_text_color,
-				)
+			$template_data = array(
+				'login_url'               => Unlock::get_login_url( get_permalink() ),
+				'login_button_text'       => $login_button_text,
+				'login_button_bg_color'   => $login_button_bg_color,
+				'login_button_text_color' => $login_button_text_color,
 			);
+
+			$html_template = unlock_protocol_get_template( 'login/button', $template_data );
+
+			return apply_filters( 'unlock_protocol_login_content', $html_template, $template_data );
 		}
 
 		$ethereum_network = $attributes['ethereumNetwork'];
@@ -128,14 +129,15 @@ class Unlock_Box_Block {
 		$checkout_button_bg_color   = up_get_general_settings( 'checkout_button_bg_color', '#000' );
 		$checkout_button_text_color = up_get_general_settings( 'checkout_button_text_color', '#fff' );
 
-		return unlock_protocol_get_template(
-			'login/checkout-button',
-			array(
-				'checkout_url'               => $checkout_url,
-				'checkout_button_text'       => $checkout_button_text,
-				'checkout_button_bg_color'   => $checkout_button_bg_color,
-				'checkout_button_text_color' => $checkout_button_text_color,
-			)
+		$template_data = array(
+			'checkout_url'               => $checkout_url,
+			'checkout_button_text'       => $checkout_button_text,
+			'checkout_button_bg_color'   => $checkout_button_bg_color,
+			'checkout_button_text_color' => $checkout_button_text_color,
 		);
+
+		$html_template = unlock_protocol_get_template( 'login/checkout-button', $template_data );
+
+		return apply_filters( 'unlock_protocol_checkout_content', $html_template, $template_data );
 	}
 }
