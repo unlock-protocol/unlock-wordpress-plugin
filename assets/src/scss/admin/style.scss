@@ -53,8 +53,13 @@
         border-radius: 5px;
         box-shadow: 2px 2px 5px #ddd;
 
-        h4 {
+        h3 {
             margin-top: 0;
+        }
+
+        .help-text {
+            font-style: italic;
+            color: #808080;
         }
 
         .form-inputs {
@@ -71,6 +76,10 @@
                 input {
                     border-color: #bebcbc;
                     height: 36px;
+                }
+
+                .components-base-control__label {
+                    font-weight: 700;
                 }
             }
         }

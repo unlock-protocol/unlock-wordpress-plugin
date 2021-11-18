@@ -52,8 +52,8 @@ class Unlock {
 	public static function has_access( $url, $lock_address, $user_ethereum_address = null ) {
 		$validation = self::validate( $url, $lock_address, $user_ethereum_address );
 
-		if ( is_wp_error( $validation ) ) {
-			return $validation;
+		if ( is_wp_error( $validation ) || ! isset( $validation['result'] ) ) {
+			return false;
 		}
 
 		$key_expiration = hexdec( $validation['result'] );

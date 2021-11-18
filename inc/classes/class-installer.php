@@ -65,7 +65,7 @@ class Installer {
 
 		$default_networks = Unlock::networks_list();
 
-		$settings['networks'] = $default_networks;
+		$settings['networks'] = array_values( $default_networks );
 
 		update_option( 'unlock_protocol_settings', $settings, false );
 	}

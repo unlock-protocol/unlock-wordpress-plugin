@@ -62,7 +62,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							label={ __( 'Ethereum Network', 'unlock-protocol' ) }
 							value={ ethereumNetwork }
 							options={ ethereumNetworks }
-							onChange={ ( value ) => onChangeValue( 'ethereumNetwork', value ) }
+							onChange={ ( value ) => onChangeValue( 'ethereumNetwork', parseInt( value ) ) }
 						/>
 
 						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs }>
