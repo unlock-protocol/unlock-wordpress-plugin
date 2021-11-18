@@ -77,13 +77,13 @@ class Assets {
 
 		$localize_data = array(
 			'ajaxurl'           => admin_url( 'admin-ajax.php' ),
+			'unlock_docs'       => 'https://docs.unlock-protocol.com/#configure-the-lock',
+			'network_help_text' => __( 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 'unlock-protocol' ),
 			'rest'              => array(
 				'root'    => esc_url_raw( get_rest_url() ),
 				'nonce'   => wp_create_nonce( 'wp_rest' ),
 				'version' => 'unlock-protocol/v1',
 			),
-			'unlock_docs'       => 'https://docs.unlock-protocol.com/#configure-the-lock',
-			'network_help_text' => __( 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 'unlock-protocol' ),
 		);
 
 		wp_localize_script( 'unlock-protocol-admin', 'unlockProtocol', $localize_data );

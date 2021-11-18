@@ -14,9 +14,6 @@ export default function Edit( { attributes, setAttributes } ) {
 	const ALLOWED_BLOCKS = getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'unlock-protocol/unlock-box' );
 
 	useEffect( () => {
-
-		console.log( 'ethereumNetwork', ethereumNetwork, typeof ethereumNetwork );
-
 		apiFetch( {
 			path: '/unlock-protocol/v1/settings'
 		} )
