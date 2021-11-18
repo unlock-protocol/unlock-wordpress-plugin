@@ -108,6 +108,14 @@ class Login {
 
 			$ethereum_address = sanitize_text_field( $ethereum_address );
 
+			if ( is_user_logged_in() ) {
+				$user = wp_get_current_user();
+
+				update_user_meta( $user->ID, 'unlock_ethereum_address', $ethereum_address );
+
+				return $user;
+			}
+
 			/*
 			 * Using ethereum address as email and client id as hostname.
 			 */

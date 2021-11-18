@@ -87,7 +87,10 @@ class Unlock_Box_Block {
 	 * @return string HTML elements.
 	 */
 	public function render_block( $attributes, $content ) {
-		if ( ! is_user_logged_in() ) {
+		if (
+			! is_user_logged_in() ||
+			( is_user_logged_in() && ! up_get_user_ethereum_address() )
+		) {
 			$login_button_text       = up_get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
 			$login_button_bg_color   = up_get_general_settings( 'login_button_bg_color', '#000' );
 			$login_button_text_color = up_get_general_settings( 'login_button_text_color', '#fff' );
