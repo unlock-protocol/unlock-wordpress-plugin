@@ -200,6 +200,7 @@ class Login {
 	 * @return void
 	 */
 	public function login_user() {
+		global $wp;
 		$user = apply_filters( 'unlock_authenticate_user', null );
 
 		if ( $user ) {
@@ -211,6 +212,12 @@ class Login {
 			} else {
 				wp_set_auth_cookie( $user->ID, true, false );
 			}
+
+			/**
+			 * Redirecting it intentionally because removing the code query string.
+			 */
+			wp_safe_redirect( home_url( $wp->request ) );
+			exit;
 		}
 	}
 }
