@@ -134,9 +134,13 @@ function Networks() {
                 { renderNotice() }
 
                 <div className="input-container">
-                    <h3>{ __( 'Add a new network', 'unlock-protocol' ) }</h3>
+					<h3>
+						{ __( 'Add a new network', 'unlock-protocol' ) }
 
-					<p className="help-text">{ unlockProtocol.network_help_text }</p>
+						<span className="tooltip"> ?
+							<span className="tooltiptext">{ unlockProtocol.network_help_text }</span>
+						</span>
+					</h3>
 
                     <div className="form-inputs">
                         <div className="group">
@@ -153,6 +157,7 @@ function Networks() {
 								label={ __( 'Network ID', 'unlock-protocol' ) }
 								className={ 'network-id-input' }
 								value={ networkId }
+								type="number"
 								onChange={ ( value ) => setNetworkId( value ) }
 								/>
 						</div>
@@ -162,6 +167,7 @@ function Networks() {
                                 label={ __( 'Network RPC Endpoint', 'unlock-protocol' ) }
                                 className={ 'network-rpc-input' }
                                 value={ networkRpcEndpoint }
+								type="url"
                                 onChange={ ( value ) => setNetworkRpcEndpoint( value ) }
                             />
                         </div>

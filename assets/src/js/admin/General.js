@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { Button, TextControl, Notice, ColorPalette } from '@wordpress/components';
+import { Button, TextControl, Notice, ColorPalette, ColorIndicator } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import Swal from 'sweetalert2';
@@ -103,6 +103,8 @@ function General() {
 							<p>{ __( 'Login Button Background Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
+								<ColorIndicator colorValue={ generalSettings?.login_button_bg_color } />
+
 								<ColorPalette
 									colors={ [] }
 									value={ generalSettings?.login_button_bg_color }
@@ -115,6 +117,8 @@ function General() {
 							<p>{ __( 'Login Button Text Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
+								<ColorIndicator colorValue={ generalSettings?.login_button_text_color } />
+
 								<ColorPalette
 									colors={ [] }
 									value={ generalSettings?.login_button_text_color }
@@ -138,6 +142,8 @@ function General() {
 							<p>{ __( 'Checkout Button Background Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
+								<ColorIndicator colorValue={ generalSettings?.checkout_button_bg_color } />
+
 								<ColorPalette
 									colors={ [] }
 									value={ generalSettings?.checkout_button_bg_color }
@@ -150,6 +156,8 @@ function General() {
 							<p>{ __( 'Checkout Button Text Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
+								<ColorIndicator colorValue={ generalSettings?.checkout_button_text_color } />
+
 								<ColorPalette
 									colors={ [] }
 									value={ generalSettings?.checkout_button_text_color }

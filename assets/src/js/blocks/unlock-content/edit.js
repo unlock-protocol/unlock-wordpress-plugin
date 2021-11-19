@@ -19,6 +19,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		} )
 			.then( ( resp ) => {
 				let networks = resp.networks;
+
                 let selectOptions = [
 					{
 						label: __( 'None', 'unlock-protocol' ),
@@ -26,12 +27,12 @@ export default function Edit( { attributes, setAttributes } ) {
 					}
 				];
 
-                networks.map( ( item, index ) => {
-                    selectOptions.push( {
+				Object.entries( networks ).forEach( ( [key, item] ) => {
+					selectOptions.push( {
                         label: item.network_name,
-                        value: index
+                        value: key
                     } );
-                } );
+				} );
 
                 setAttributes( { ethereumNetworks : selectOptions } );
 			} )
