@@ -112,7 +112,7 @@ function up_get_general_settings( $key = null, $default = '' ) {
 		return $general;
 	}
 
-	return isset( $general[ $key ] ) ? $general[ $key ] : $default;
+	return isset( $general[ $key ] ) && '' !== $general[ $key ] ? $general[ $key ] : $default;
 }
 
 /**

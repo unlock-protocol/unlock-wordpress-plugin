@@ -8,6 +8,7 @@ import '../../scss/admin/style.scss';
 
 function General() {
 	const [ isSubmitted, setIsSubmitted ] = useState( false );
+	const [ isChanged, setIsChanged ] = useState( false );
 	const [ generalSettings, setGeneralSettings ] = useState( {} );
 	const [ noticeType, setNoticeType ] = useState( '' );
 	const [ notice, setNotice ] = useState( '' );
@@ -50,11 +51,13 @@ function General() {
 
                 setNoticeType( 'success' );
 				setNotice( __( 'Updated Successfully!', 'unlock-protocol' ) );
+				setIsChanged( false );
 			} )
 			.catch( ( err ) => {
 				setIsSubmitted( false );
 				setNoticeType( 'error' );
 				setNotice( __( err.message, 'unlock-protocol' ) );
+				setIsChanged( false );
 			} );
 	};
 
@@ -79,6 +82,8 @@ function General() {
 			...generalSettings,
 			[key] : value
 		} );
+
+		setIsChanged( true );
 	}
 
 	return (
@@ -103,11 +108,11 @@ function General() {
 							<p>{ __( 'Login Button Background Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
-								<ColorIndicator colorValue={ generalSettings?.login_button_bg_color } />
+								<ColorIndicator colorValue={ generalSettings?.login_button_bg_color??'#000' } />
 
 								<ColorPalette
 									colors={ [] }
-									value={ generalSettings?.login_button_bg_color }
+									value={ generalSettings?.login_button_bg_color??'#000' }
 									onChange={ ( color ) =>  onChangeValue( 'login_button_bg_color', color ) }
 								/>
 							</div>
@@ -117,11 +122,11 @@ function General() {
 							<p>{ __( 'Login Button Text Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
-								<ColorIndicator colorValue={ generalSettings?.login_button_text_color } />
+								<ColorIndicator colorValue={ generalSettings?.login_button_text_color??'#fff' } />
 
 								<ColorPalette
 									colors={ [] }
-									value={ generalSettings?.login_button_text_color }
+									value={ generalSettings?.login_button_text_color??'#fff' }
 									onChange={ ( color ) =>  onChangeValue( 'login_button_text_color', color ) }
 								/>
 							</div>
@@ -142,11 +147,11 @@ function General() {
 							<p>{ __( 'Checkout Button Background Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
-								<ColorIndicator colorValue={ generalSettings?.checkout_button_bg_color } />
+								<ColorIndicator colorValue={ generalSettings?.checkout_button_bg_color??'#000' } />
 
 								<ColorPalette
 									colors={ [] }
-									value={ generalSettings?.checkout_button_bg_color }
+									value={ generalSettings?.checkout_button_bg_color??'#000' }
 									onChange={ ( color ) =>  onChangeValue( 'checkout_button_bg_color', color ) }
 								/>
 							</div>
@@ -156,11 +161,11 @@ function General() {
 							<p>{ __( 'Checkout Button Text Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
-								<ColorIndicator colorValue={ generalSettings?.checkout_button_text_color } />
+								<ColorIndicator colorValue={ generalSettings?.checkout_button_text_color??'#fff' } />
 
 								<ColorPalette
 									colors={ [] }
-									value={ generalSettings?.checkout_button_text_color }
+									value={ generalSettings?.checkout_button_text_color??'#fff' }
 									onChange={ ( color ) =>  onChangeValue( 'checkout_button_text_color', color ) }
 								/>
 							</div>
@@ -173,7 +178,7 @@ function General() {
 					isPrimary={ true }
 					onClick={ () => saveGeneralSettings() }
 					isBusy={ isSubmitted }
-					disabled={ isSubmitted }
+					disabled={ isSubmitted || ! isChanged }
 				>
 					{ isSubmitted ? __( 'Saving', 'unlock-protocol' ) : __( 'Save', 'unlock-protocol' ) }
 				</Button>
