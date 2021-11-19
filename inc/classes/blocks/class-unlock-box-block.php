@@ -109,7 +109,7 @@ class Unlock_Box_Block {
 
 		$ethereum_network = $attributes['ethereumNetwork'];
 
-		if ( -1 === $ethereum_network ) {
+		if ( -1 === $ethereum_network || '' === $attributes['lockAddress'] ) {
 			return '';
 		}
 

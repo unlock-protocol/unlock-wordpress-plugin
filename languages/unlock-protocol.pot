@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-19T07:57:22+00:00\n"
+"POT-Creation-Date: 2021-11-19T11:03:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -180,16 +180,20 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:57
-msgid "Lock Address"
-msgstr ""
-
-#: assets/src/js/blocks/unlock-content/edit.js:63
+#: assets/src/js/blocks/unlock-content/edit.js:58
 msgid "Ethereum Network"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:70
+#: assets/src/js/blocks/unlock-content/edit.js:66
+msgid "Lock Address"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:74
 msgid "Unlock's documentation"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:85
+msgid "Please add lock address"
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/index.js:17

@@ -54,17 +54,21 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...useBlockProps() }>
 				<InspectorControls>
 					<PanelBody title={ __( 'Settings', 'unlock-protocol' ) }>
-						<p><strong>{ __( 'Lock Address', 'unlock-protocol' ) }</strong></p>
-						<TextControl value={ lockAddress }
-							onChange={ ( value ) => onChangeValue( 'lockAddress', value ) }
-						/>
-
 						<SelectControl
 							label={ __( 'Ethereum Network', 'unlock-protocol' ) }
 							value={ ethereumNetwork }
 							options={ ethereumNetworks }
 							onChange={ ( value ) => onChangeValue( 'ethereumNetwork', parseInt( value ) ) }
 						/>
+
+						{ -1 !== ethereumNetwork ? (
+							<>
+								<p><strong>{ __( 'Lock Address', 'unlock-protocol' ) }</strong></p>
+								<TextControl value={ lockAddress }
+									onChange={ ( value ) => onChangeValue( 'lockAddress', value ) }
+								/>
+							</>
+						) : '' }
 
 						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs }>
 							{ __( 'Unlock\'s documentation', 'unlock-protocol' ) }
@@ -74,7 +78,13 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="unlock-header-icon"></div>
 
-				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				{ -1 === ethereumNetwork || ( -1 !== ethereumNetwork && '' !== lockAddress ) ? (
+					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+				) : (
+					<div className="no-lock-address">
+						<p>{ __( 'Please add lock address', 'unlock-protocol' ) }</p>
+					</div>
+				) }
 			</div>
 		</>
 	);
