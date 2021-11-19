@@ -87,6 +87,11 @@ class Unlock_Box_Block {
 	 * @return string HTML elements.
 	 */
 	public function render_block( $attributes, $content ) {
+		// Bail out if current user is admin or the author.
+		if ( current_user_can( 'manage_options' ) || ( get_the_author_meta( 'ID' ) === get_current_user_id() ) ) {
+			return $content;
+		}
+
 		if (
 			! is_user_logged_in() ||
 			( is_user_logged_in() && ! up_get_user_ethereum_address() )
@@ -126,6 +131,18 @@ class Unlock_Box_Block {
 			return $content;
 		}
 
+		return $this->get_checkout_url( $attributes, $selected_network );
+	}
+
+	/**
+	 * Get checkout url for block
+	 *
+	 * @param array $attributes Attributes.
+	 * @param array $selected_network Selected Network.
+	 *
+	 * @return mixed|void
+	 */
+	private function get_checkout_url( $attributes, $selected_network ) {
 		$checkout_url = Unlock::get_checkout_url( $attributes['lockAddress'], $selected_network['network_id'], get_permalink() );
 
 		$checkout_button_text       = up_get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
