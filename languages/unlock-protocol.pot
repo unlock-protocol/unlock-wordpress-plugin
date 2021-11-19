@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-19T05:55:07+00:00\n"
+"POT-Creation-Date: 2021-11-19T06:56:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -57,7 +57,7 @@ msgid "Registration is not allowed."
 msgstr ""
 
 #: inc/classes/class-menu.php:77
-#: assets/src/js/blocks/unlock-content/edit.js:55
+#: assets/src/js/blocks/unlock-content/edit.js:56
 msgid "Settings"
 msgstr ""
 
@@ -103,29 +103,29 @@ msgstr ""
 msgid "Login Button Background Color"
 msgstr ""
 
-#: assets/src/js/admin/General.js:115
+#: assets/src/js/admin/General.js:117
 msgid "Login Button Text Color"
 msgstr ""
 
-#: assets/src/js/admin/General.js:130
+#: assets/src/js/admin/General.js:134
 msgid "Checkout Button Text"
 msgstr ""
 
-#: assets/src/js/admin/General.js:138
+#: assets/src/js/admin/General.js:142
 msgid "Checkout Button Background Color"
 msgstr ""
 
-#: assets/src/js/admin/General.js:150
+#: assets/src/js/admin/General.js:156
 msgid "Checkout Button Text Color"
 msgstr ""
 
-#: assets/src/js/admin/General.js:170
-#: assets/src/js/admin/Networks.js:177
+#: assets/src/js/admin/General.js:178
+#: assets/src/js/admin/Networks.js:183
 msgid "Saving"
 msgstr ""
 
-#: assets/src/js/admin/General.js:170
-#: assets/src/js/admin/Networks.js:177
+#: assets/src/js/admin/General.js:178
+#: assets/src/js/admin/Networks.js:183
 msgid "Save"
 msgstr ""
 
@@ -153,42 +153,42 @@ msgstr ""
 msgid "Network has been deleted successfully!"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:137
+#: assets/src/js/admin/Networks.js:138
 msgid "Add a new network"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:144
-#: assets/src/js/admin/Networks.js:186
+#: assets/src/js/admin/Networks.js:148
+#: assets/src/js/admin/Networks.js:192
 msgid "Network Name"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:153
-#: assets/src/js/admin/Networks.js:185
+#: assets/src/js/admin/Networks.js:157
+#: assets/src/js/admin/Networks.js:191
 msgid "Network ID"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:162
-#: assets/src/js/admin/Networks.js:187
+#: assets/src/js/admin/Networks.js:167
+#: assets/src/js/admin/Networks.js:193
 msgid "Network RPC Endpoint"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:193
+#: assets/src/js/admin/Networks.js:199
 msgid "Delete"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:24
+#: assets/src/js/blocks/unlock-content/edit.js:25
 msgid "None"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:56
+#: assets/src/js/blocks/unlock-content/edit.js:57
 msgid "Lock Address"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:62
+#: assets/src/js/blocks/unlock-content/edit.js:63
 msgid "Ethereum Network"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:69
+#: assets/src/js/blocks/unlock-content/edit.js:70
 msgid "Unlock's documentation"
 msgstr ""
 
