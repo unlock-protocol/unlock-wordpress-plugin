@@ -95,7 +95,7 @@ class Login {
 		$code  = Helper::filter_input( INPUT_GET, 'code', FILTER_SANITIZE_STRING );
 		$state = Helper::filter_input( INPUT_GET, 'state', FILTER_SANITIZE_STRING );
 
-		if ( '' ===  $code || false === wp_verify_nonce( $state, 'unlock_login_state' ) ) {
+		if ( '' === $code || false === wp_verify_nonce( $state, 'unlock_login_state' ) ) {
 			return $user;
 		}
 
