@@ -14,7 +14,9 @@
 		"start:admin": "wp-scripts start ./src/js/admin/admin.js --output-path=./build/js",
 		"build:admin": "wp-scripts build ./src/js/admin/admin.js --output-path=./build/js",
 		"build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks && npm run make:pot",
-		"clean": "rimraf ./build/css && rimraf ./build/js"
+		"clean": "rimraf ./build/css && rimraf ./build/js",
+		"zip": "node zip",
+		"release": "npm run build:all && npm run zip"
 	},
 	"keywords": [
 		"unlock-protocol"
@@ -23,7 +25,8 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@wordpress/scripts": "^19.0.0",
-		"rimraf": "^3.0.2"
+		"rimraf": "^3.0.2",
+		"shelljs": "^0.8.4"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^5.2.4",
