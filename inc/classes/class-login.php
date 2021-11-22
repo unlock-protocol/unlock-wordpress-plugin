@@ -108,6 +108,14 @@ class Login {
 
 			$ethereum_address = sanitize_text_field( $ethereum_address );
 
+			/**
+			 * If there is any user associated with the given ethereum address already, log them in.
+			 */
+			$user = $this->get_user_with_ethereum_address( $ethereum_address );
+			if ( false !== $user ) {
+				return $user;
+			}
+
 			if ( is_user_logged_in() ) {
 				$user = wp_get_current_user();
 
@@ -198,6 +206,31 @@ class Login {
 		} catch ( \Throwable $e ) {
 			throw $e;
 		}
+	}
+
+	/**
+	 * Returns WP_User with specific ethereum address.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $ethereum_address Ethereum Address to be searched.
+	 *
+	 * @return WP_User|false Returns WP_User associated with the ethereum address or returns false if not found.
+	 */
+	public function get_user_with_ethereum_address( $ethereum_address = '' ) {
+		$args = array(
+			'meta_key'     => 'unlock_ethereum_address',
+			'meta_value'   => $ethereum_address, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			'meta_compare' => '=',
+		);
+
+		$user_query = new \WP_User_Query( $args );
+		$users      = $user_query->get_results();
+		if ( ! empty( $users ) ) {
+			return $users[0];
+		}
+
+		return false;
 	}
 
 	/**
