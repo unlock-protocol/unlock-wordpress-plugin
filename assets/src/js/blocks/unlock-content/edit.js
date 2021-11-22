@@ -49,6 +49,24 @@ export default function Edit( { attributes, setAttributes } ) {
 		setAttributes( { [ key ] : value } );
 	}
 
+	const showInnerBlock = () => {
+		wp.data.dispatch( 'core/editor' ).unlockPostSaving( 'my-lock' );
+
+		return (
+			<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+		);
+	}
+
+	const lockWarning = () => {
+		wp.data.dispatch( 'core/editor' ).lockPostSaving( 'my-lock' );
+
+		return (
+			<div className="no-lock-address">
+				<p>{ __( 'Please add lock address', 'unlock-protocol' ) }</p>
+			</div>
+		);
+	}
+
 	return (
 		<>
 			<div { ...useBlockProps() }>
@@ -64,7 +82,8 @@ export default function Edit( { attributes, setAttributes } ) {
 						{ -1 !== ethereumNetwork ? (
 							<>
 								<p><strong>{ __( 'Lock Address', 'unlock-protocol' ) }</strong></p>
-								<TextControl value={ lockAddress }
+								<TextControl
+									value={ lockAddress }
 									onChange={ ( value ) => onChangeValue( 'lockAddress', value ) }
 								/>
 							</>
@@ -78,13 +97,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="unlock-header-icon"></div>
 
-				{ -1 === ethereumNetwork || ( -1 !== ethereumNetwork && '' !== lockAddress ) ? (
-					<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
-				) : (
-					<div className="no-lock-address">
-						<p>{ __( 'Please add lock address', 'unlock-protocol' ) }</p>
-					</div>
-				) }
+				{ -1 === ethereumNetwork || ( -1 !== ethereumNetwork && '' !== lockAddress ) ? showInnerBlock() : lockWarning() }
 			</div>
 		</>
 	);
