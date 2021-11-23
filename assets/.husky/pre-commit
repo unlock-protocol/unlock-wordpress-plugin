@@ -12,7 +12,8 @@ echo "${GREEN}PHPCS Validation Passed Successfully ${NC} \n";
 
 echo "${YELLOW}Building assets before commiting...${NC}";
 
-cd assets
+cd assets # in assets directory
 npm run build:all
 
-git add -u
+cd .. # Now in root directory
+git add assets/build languages
