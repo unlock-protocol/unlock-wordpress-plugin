@@ -1,4 +1,5 @@
 build/*
+dist
 
 # Ignore editor config
 .idea/
