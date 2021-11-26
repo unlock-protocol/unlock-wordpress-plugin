@@ -62,7 +62,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 		return (
 			<div className="no-lock-address">
-				<p>{ __( 'Please add lock address', 'unlock-protocol' ) }</p>
+				<p>{ __( 'Please configure the lock.', 'unlock-protocol' ) }</p>
 			</div>
 		);
 	}
@@ -104,7 +104,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="unlock-header-icon"></div>
 
-				{ -1 === ethereumNetwork || ( -1 !== ethereumNetwork && '' !== lockAddress ) ? showInnerBlock() : lockWarning() }
+				{ -1 !== ethereumNetwork && '' !== lockAddress ? showInnerBlock() : lockWarning() }
 			</div>
 		</>
 	);
