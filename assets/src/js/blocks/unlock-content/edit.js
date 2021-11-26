@@ -89,8 +89,15 @@ export default function Edit( { attributes, setAttributes } ) {
 							</>
 						) : '' }
 
-						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs }>
+						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.docs }>
 							{ __( 'Unlock\'s documentation', 'unlock-protocol' ) }
+						</a>
+
+						<br />
+						<br />
+
+						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.deploy_lock }>
+							{ __( 'Deploy a lock using the Unlock Dashboard', 'unlock-protocol' ) }
 						</a>
 					</PanelBody>
 				</InspectorControls>

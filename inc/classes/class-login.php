@@ -62,7 +62,7 @@ class Login {
 	 * @return void
 	 */
 	public function login_button() {
-		$login_button_text       = up_get_general_settings( 'login_button_text', __( 'Login with Unlock', 'unlock-protocol' ) );
+		$login_button_text       = __( 'Connect Your Crypto Wallet', 'unlock-protocol' );
 		$login_button_bg_color   = up_get_general_settings( 'login_button_bg_color', '#000' );
 		$login_button_text_color = up_get_general_settings( 'login_button_text_color', '#fff' );
 

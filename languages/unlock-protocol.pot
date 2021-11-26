@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-23T05:21:20+00:00\n"
+"POT-Creation-Date: 2021-11-26T04:40:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -35,7 +35,6 @@ msgid "https://unlock-protocol.com"
 msgstr ""
 
 #: inc/classes/blocks/class-unlock-box-block.php:99
-#: inc/classes/class-login.php:65
 msgid "Login with Unlock"
 msgstr ""
 
@@ -43,12 +42,16 @@ msgstr ""
 msgid "Purchase this"
 msgstr ""
 
-#: inc/classes/class-assets.php:81
+#: inc/classes/class-assets.php:84
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
 msgstr ""
 
+#: inc/classes/class-login.php:65
+msgid "Connect Your Crypto Wallet"
+msgstr ""
+
 #: inc/classes/class-login.php:106
-#: inc/classes/class-unlock.php:209
+#: inc/classes/class-unlock.php:210
 msgid "Invalid Account"
 msgstr ""
 
@@ -96,7 +99,7 @@ msgid "General Settings"
 msgstr ""
 
 #: assets/src/js/admin/General.js:100
-msgid "Login Button Text"
+msgid "Post Login Button Text"
 msgstr ""
 
 #: assets/src/js/admin/General.js:108
@@ -194,6 +197,10 @@ msgstr ""
 
 #: assets/src/js/blocks/unlock-content/edit.js:93
 msgid "Unlock's documentation"
+msgstr ""
+
+#: assets/src/js/blocks/unlock-content/edit.js:100
+msgid "Deploy a lock using the Unlock Dashboard"
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/index.js:17
