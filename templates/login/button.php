@@ -11,11 +11,13 @@
 
 <?php if ( $login_button_bg_color && $login_button_text_color ) : ?>
 <style>
+	.login .login-button-container .login-button,
 	.login-button-container .login-button {
 		background-color: <?php echo sanitize_hex_color( $login_button_bg_color ); ?>;
 		color: <?php echo sanitize_hex_color( $login_button_text_color ); ?>;
 	}
 
+	.login .login-button-container .login-button:hover,
 	.login-button-container .login-button:hover {
 		background-color: <?php echo sanitize_hex_color( $login_button_text_color ); ?>;
 		color: <?php echo sanitize_hex_color( $login_button_bg_color ); ?>;
