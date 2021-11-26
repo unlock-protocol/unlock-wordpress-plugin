@@ -129,11 +129,12 @@ class Unlock {
 		$paywall_config = apply_filters(
 			'unlock_protocol_paywall_config',
 			array(
-				'locks' => array(
+				'locks'       => array(
 					"$lock_address" => array(
 						'network' => (int) $network_id,
 					),
 				),
+				'pessimistic' => true,
 			)
 		);
 

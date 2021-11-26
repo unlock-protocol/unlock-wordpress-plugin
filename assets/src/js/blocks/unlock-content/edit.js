@@ -62,7 +62,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 		return (
 			<div className="no-lock-address">
-				<p>{ __( 'Please add lock address', 'unlock-protocol' ) }</p>
+				<p>{ __( 'Please configure the lock.', 'unlock-protocol' ) }</p>
 			</div>
 		);
 	}
@@ -89,15 +89,22 @@ export default function Edit( { attributes, setAttributes } ) {
 							</>
 						) : '' }
 
-						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs }>
+						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.docs }>
 							{ __( 'Unlock\'s documentation', 'unlock-protocol' ) }
+						</a>
+
+						<br />
+						<br />
+
+						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.deploy_lock }>
+							{ __( 'Deploy a lock using the Unlock Dashboard', 'unlock-protocol' ) }
 						</a>
 					</PanelBody>
 				</InspectorControls>
 
 				<div className="unlock-header-icon"></div>
 
-				{ -1 === ethereumNetwork || ( -1 !== ethereumNetwork && '' !== lockAddress ) ? showInnerBlock() : lockWarning() }
+				{ -1 !== ethereumNetwork && '' !== lockAddress ? showInnerBlock() : lockWarning() }
 			</div>
 		</>
 	);

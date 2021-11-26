@@ -97,7 +97,7 @@ function General() {
                     <div className="form-inputs">
                         <div className="group">
                             <TextControl
-                                label={ __( 'Login Button Text', 'unlock-protocol' ) }
+                                label={ __( 'Post Login Button Text', 'unlock-protocol' ) }
                                 className={ 'login-button-text-input' }
                                 value={ generalSettings?.login_button_text }
                                 onChange={ ( value ) => onChangeValue( 'login_button_text', value ) }
