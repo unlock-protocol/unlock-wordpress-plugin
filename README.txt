@@ -27,7 +27,7 @@ While the lock is deploying you should [download this plugin](https://wordpress.
 
 == Writing locked stories ==
 
-The plugin provides you with "Block" which can be used in the Gutemberg Editor, for posts and pages. 
+The plugin provides you with "Block" which can be used in the Gutenberg Editor, for posts and pages. 
 
 Unlock Protocol: This block is used to add a lock(s) to the content inside the page/post. 
 To add the block inside the page/post please follow the below steps: 
@@ -36,7 +36,7 @@ To add the block inside the page/post please follow the below steps:
 2. To add a block you just need to click on “+” in the editor. 
 3. Enter Unlock Protocol in the search. 
 4. Unlock Protocol block will be shown. Click on the block, the block gets added.    
-5. You will be able to see block settings on the right side. From block settings, Enter the Lock Address and select the Ethereum Address.
+5. You will be able to see block settings on the right side. From block settings, Enter the Lock Address and select the Ethereum Network.
 
 Once your story includes the content you need, you can preview its content like any other WordPress post or page. We recommend the use of a web3 wallet which supports multiple accounts so that you can easily toggle between accounts which are already members and accounts which are not members yet!
 
@@ -63,12 +63,15 @@ To be completed with questions!
 
 == Changelog ==
 
-== 3.0 =
+== 3.0.0 =
 * Brand new plugin with updated UI
+* User can login to the WordPress site by using Unlock Protocol account.
+* Pre-filled networks
 * Setting to add/delete networks. 
-* Setting to customize the login and checkout button. 
-* Added new Hooks. 
-
+* Setting to customize the login and checkout button.  
+* User is linked with the Unlock Protocol site.
+* Now the login and purchase is validated from the Unlock Protocol site and content is displaying after the user has the correct access on that specific content.
+* Added new Hooks.
 
 = 2.1 =
 * Uses the latest Unlock paywall script https://unlock-protocol.com/blog/introducing-latest-paywall/
