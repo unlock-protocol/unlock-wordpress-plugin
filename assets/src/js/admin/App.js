@@ -5,7 +5,7 @@ import General from './General';
 import '../../scss/admin/style.scss';
 
 function App() {
-	const [ currentTab, setCurrentTab ] = useState( 'networks' );
+	const [ currentTab, setCurrentTab ] = useState( 'general' );
 
 	return (
 		<>
