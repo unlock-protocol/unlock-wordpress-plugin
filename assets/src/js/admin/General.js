@@ -104,10 +104,10 @@ function General() {
                             />
                         </div>
 
-                        <div className="group">
+						<div className="group">
 							<p className="components-base-control__label">{ __( 'Login Button Type', 'unlock-protocol' ) }</p>
 
-                            <ToggleControl
+						    <ToggleControl
 								label={ __( 'Enable for button with blurred image', 'unlock-protocol' ) }
 								help={
 									generalSettings?.login_blurred_image_button
@@ -117,7 +117,7 @@ function General() {
 								checked={ generalSettings?.login_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'login_blurred_image_button', ! generalSettings?.login_blurred_image_button ) }
 							/>
-                        </div>
+						</div>
 
 						{/* description option for blurred image button */}
 						{ generalSettings?.login_blurred_image_button??false ? (
@@ -175,7 +175,7 @@ function General() {
 						<div className="group">
 							<p className="components-base-control__label">{ __( 'Checkout Button Type', 'unlock-protocol' ) }</p>
 
-                            <ToggleControl
+						    <ToggleControl
 								label={ __( 'Enable for button with blurred image', 'unlock-protocol' ) }
 								help={
 									generalSettings?.checkout_blurred_image_button
@@ -185,7 +185,7 @@ function General() {
 								checked={ generalSettings?.checkout_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'checkout_blurred_image_button', ! generalSettings?.checkout_blurred_image_button ) }
 							/>
-                        </div>
+						</div>
 
 						{/* description option for blurred image button */}
 						{ generalSettings?.checkout_blurred_image_button??false ? (
