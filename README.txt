@@ -64,10 +64,11 @@ To be completed with questions!
 == Changelog ==
 
 == 3.0 =
-* 
+* Brand new plugin with updated UI
 * Setting to add/delete networks. 
 * Setting to customize the login and checkout button. 
-* 
+* Added new Hooks. 
+
 
 = 2.1 =
 * Uses the latest Unlock paywall script https://unlock-protocol.com/blog/introducing-latest-paywall/
