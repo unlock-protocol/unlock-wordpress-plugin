@@ -5,11 +5,11 @@ Tags: paywall, ethereum, monetization, unlock, membership, subscription, member
 Requires at least: 5.1
 Tested up to: 5.8.2
 Requires PHP: 7.2
-Stable tag: 3.0
+Stable tag: 3.0.0
 License: GPLv3
 License URI: https://github.com/unlock-protocol/unlock-wordpress-plugin/blob/master/LICENSE
 
-This plugin lets authors adds locks to theit posts and pages so that only paying visitors can view their content.
+This plugin lets authors adds locks to their posts and pages so that only paying visitors can view their content.
 
 == Description ==
 
@@ -23,19 +23,19 @@ In order to become members, visitors need to be using a web3 enabled wallet such
 
 If you'd like to add a lock to your site, start by [deploying your first lock](https://unlock-protocol.com/blog/create-first-lock/).
 
-While the lock is deploying you should [download this plugin](https://wordpress.org/plugins/unlock-protocol/) from the Wordpress site. Then, from the administration of your Wordpress.org website, in the `Plugins` section, click on the `Add New` button and then on the `Upload Plugin` button to upload the plugin.
+While the lock is deploying you should [download this plugin](https://wordpress.org/plugins/unlock-protocol/) from the WordPress site. Then, from the administration of your WordPress.org website, in the `Plugins` section, click on the `Add New` button and then on the `Upload Plugin` button to upload the plugin.
 
 == Writing locked stories ==
 
-The plugin provides you with "Block" which can be used in the Gutenberg Editor, for posts and pages. 
+The plugin provides you with "Block" which can be used in the Gutenberg Editor, for posts and pages.
 
-Unlock Protocol: This block is used to add a lock(s) to the content inside the page/post. 
-To add the block inside the page/post please follow the below steps: 
+Unlock Protocol: This block is used to add a lock(s) to the content inside the page/post.
+To add the block inside the page/post please follow the below steps:
 
-1. Click on Post -> Add New 
-2. To add a block you just need to click on “+” in the editor. 
-3. Enter Unlock Protocol in the search. 
-4. Unlock Protocol block will be shown. Click on the block, the block gets added.    
+1. Click on Post -> Add New
+2. To add a block you just need to click on “+” in the editor.
+3. Enter Unlock Protocol in the search.
+4. Unlock Protocol block will be shown. Click on the block, the block gets added.
 5. You will be able to see block settings on the right side. From block settings, Enter the Lock Address and select the Ethereum Network.
 
 Once your story includes the content you need, you can preview its content like any other WordPress post or page. We recommend the use of a web3 wallet which supports multiple accounts so that you can easily toggle between accounts which are already members and accounts which are not members yet!
@@ -67,8 +67,8 @@ To be completed with questions!
 * Brand new plugin with updated UI
 * User can login to the WordPress site by using Unlock Protocol account.
 * Pre-filled networks
-* Setting to add/delete networks. 
-* Setting to customize the login and checkout button.  
+* Setting to add/delete networks.
+* Setting to customize the login and checkout button.
 * User is linked with the Unlock Protocol site.
 * Now the login and purchase is validated from the Unlock Protocol site and content is displaying after the user has the correct access on that specific content.
 * Added new Hooks.
