@@ -91,28 +91,28 @@ function General() {
 			<div className="settings_container__general">
 				<h4>{ __( 'General Settings', 'unlock-protocol' ) }</h4>
 
-                { renderNotice() }
+				{ renderNotice() }
 
-                <div className="input-container">
-                    <div className="form-inputs">
-                        <div className="group">
-                            <TextControl
-                                label={ __( 'Post Login Button Text', 'unlock-protocol' ) }
-                                className={ 'login-button-text-input' }
-                                value={ generalSettings?.login_button_text }
-                                onChange={ ( value ) => onChangeValue( 'login_button_text', value ) }
-                            />
-                        </div>
+				<div className="input-container">
+					<div className="form-inputs">
+						<div className="group">
+							<TextControl
+								label={ __( 'Post Login Button Text', 'unlock-protocol' ) }
+								className={ 'login-button-text-input' }
+								value={ generalSettings?.login_button_text }
+								onChange={ ( value ) => onChangeValue( 'login_button_text', value ) }
+							/>
+						</div>
 
 						<div className="group">
 							<p className="components-base-control__label">{ __( 'Login Button Type', 'unlock-protocol' ) }</p>
 
-						    <ToggleControl
+							<ToggleControl
 								label={ __( 'Enable for button with blurred image', 'unlock-protocol' ) }
 								help={
-									generalSettings?.login_blurred_image_button
-										? __( 'Button with blurred image is activated', 'unlock-protocol' )
-										: __( 'Simple button is activated', 'unlock-protocol' )
+								generalSettings?.login_blurred_image_button
+								? __( 'Button with blurred image is activated', 'unlock-protocol' )
+								: __( 'Simple button is activated', 'unlock-protocol' )
 								}
 								checked={ generalSettings?.login_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'login_blurred_image_button', ! generalSettings?.login_blurred_image_button ) }
@@ -123,15 +123,15 @@ function General() {
 						{ generalSettings?.login_blurred_image_button??false ? (
 							<div className="group">
 								<TextControl
-									label={ __( 'Description', 'unlock-protocol' ) }
-									className={ 'login-button-text-input' }
-									value={ generalSettings?.login_button_description }
-									onChange={ ( value ) => onChangeValue( 'login_button_description', value ) }
+								label={ __( 'Description', 'unlock-protocol' ) }
+								className={ 'login-button-text-input' }
+								value={ generalSettings?.login_button_description }
+								onChange={ ( value ) => onChangeValue( 'login_button_description', value ) }
 								/>
 							</div>
 						) : '' }
 
-                        <div className="group">
+						<div className="group">
 							<p className="components-base-control__label">{ __( 'Login Button Background Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
@@ -143,9 +143,9 @@ function General() {
 									onChange={ ( color ) =>  onChangeValue( 'login_button_bg_color', color ) }
 								/>
 							</div>
-                        </div>
+						</div>
 
-                        <div className="group">
+						<div className="group">
 							<p className="components-base-control__label">{ __( 'Login Button Text Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
@@ -157,30 +157,30 @@ function General() {
 									onChange={ ( color ) =>  onChangeValue( 'login_button_text_color', color ) }
 								/>
 							</div>
-                        </div>
+						</div>
 
 						<hr />
 
 						{/* checkout options */}
 
 						<div className="group">
-                            <TextControl
-                                label={ __( 'Checkout Button Text', 'unlock-protocol' ) }
-                                className={ 'checkout-button-text-input' }
-                                value={ generalSettings?.checkout_button_text }
-                                onChange={ ( value ) => onChangeValue( 'checkout_button_text', value ) }
-                            />
-                        </div>
+							<TextControl
+								label={ __( 'Checkout Button Text', 'unlock-protocol' ) }
+								className={ 'checkout-button-text-input' }
+								value={ generalSettings?.checkout_button_text }
+								onChange={ ( value ) => onChangeValue( 'checkout_button_text', value ) }
+							/>
+						</div>
 
 						<div className="group">
 							<p className="components-base-control__label">{ __( 'Checkout Button Type', 'unlock-protocol' ) }</p>
 
-						    <ToggleControl
+							<ToggleControl
 								label={ __( 'Enable for button with blurred image', 'unlock-protocol' ) }
 								help={
-									generalSettings?.checkout_blurred_image_button
-										? __( 'Button with blurred image is activated', 'unlock-protocol' )
-										: __( 'Simple button is activated', 'unlock-protocol' )
+								generalSettings?.checkout_blurred_image_button
+								? __( 'Button with blurred image is activated', 'unlock-protocol' )
+								: __( 'Simple button is activated', 'unlock-protocol' )
 								}
 								checked={ generalSettings?.checkout_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'checkout_blurred_image_button', ! generalSettings?.checkout_blurred_image_button ) }
@@ -199,7 +199,7 @@ function General() {
 							</div>
 						) : '' }
 
-                        <div className="group">
+						<div className="group">
 							<p className="components-base-control__label">{ __( 'Checkout Button Background Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
@@ -211,9 +211,9 @@ function General() {
 									onChange={ ( color ) =>  onChangeValue( 'checkout_button_bg_color', color ) }
 								/>
 							</div>
-                        </div>
+						</div>
 
-                        <div className="group">
+						<div className="group">
 							<p className="components-base-control__label">{ __( 'Checkout Button Text Color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
@@ -225,9 +225,9 @@ function General() {
 									onChange={ ( color ) =>  onChangeValue( 'checkout_button_text_color', color ) }
 								/>
 							</div>
-                        </div>
-                    </div>
-                </div>
+						</div>
+					</div>
+				</div>
 
 				<Button
 					type="submit"
@@ -238,7 +238,7 @@ function General() {
 				>
 					{ isSubmitted ? __( 'Saving', 'unlock-protocol' ) : __( 'Save', 'unlock-protocol' ) }
 				</Button>
-            </div>
+			</div>
 		</>
 	);
 }
