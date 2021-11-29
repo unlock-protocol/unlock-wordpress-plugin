@@ -25,8 +25,12 @@
 
 <?php do_action( 'unlock_before_checkout_button' ); ?>
 
-<div class="checkout-button-container">
+<div class="checkout-button-container <?php echo $blurred_image_activated ? esc_attr( 'blurred' ) : ''; ?>">
 	<?php
+	if ( $blurred_image_activated ) {
+		printf( '<p>%s</p>', esc_html( $checkout_button_description ) );
+	}
+
 	/**
 	 * Not using esc_url() intentionally. esc_url removes the `{}`
 	 * Which is mandatory for unlock protocol checkout.

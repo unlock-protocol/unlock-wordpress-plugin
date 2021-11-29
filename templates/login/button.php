@@ -27,7 +27,13 @@
 
 <?php do_action( 'unlock_before_login_button' ); ?>
 
-<div class="login-button-container">
+<div class="login-button-container <?php echo $blurred_image_activated ? esc_attr( 'blurred' ) : ''; ?>">
+	<?php
+	if ( $blurred_image_activated ) {
+		printf( '<p>%s</p>', esc_html( $login_button_description ) );
+	}
+	?>
+
 	<a href="<?php echo esc_url( $login_url ); ?>" class="login-button"><?php echo esc_html( $login_button_text ); ?></a>
 </div>
 

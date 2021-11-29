@@ -52,6 +52,18 @@
 
 .login-button-container,
 .checkout-button-container {
+  &.blurred {
+    background: url('../img/blurr.jpg') no-repeat center center;
+    padding: 100px 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
   .login-button,
   .checkout-button {
     background-color: #000;
