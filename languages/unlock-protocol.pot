@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-30T03:20:31+00:00\n"
+"POT-Creation-Date: 2021-11-30T03:25:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -65,7 +65,7 @@ msgid "Registration is not allowed."
 msgstr ""
 
 #: inc/classes/class-menu.php:77
-#: assets/src/js/blocks/unlock-content/edit.js:90
+#: assets/src/js/blocks/unlock-content/edit.js:94
 msgid "Settings"
 msgstr ""
 
@@ -158,23 +158,23 @@ msgstr ""
 msgid "Please configure the lock."
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:79
+#: assets/src/js/blocks/unlock-content/edit.js:83
 msgid "Lock address is not valid"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:92
+#: assets/src/js/blocks/unlock-content/edit.js:96
 msgid "Ethereum Network"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:100
+#: assets/src/js/blocks/unlock-content/edit.js:104
 msgid "Lock Address"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:112
+#: assets/src/js/blocks/unlock-content/edit.js:116
 msgid "Unlock's documentation"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:119
+#: assets/src/js/blocks/unlock-content/edit.js:123
 msgid "Deploy a lock using the Unlock Dashboard"
 msgstr ""
 

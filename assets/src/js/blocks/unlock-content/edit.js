@@ -69,6 +69,10 @@ export default function Edit( { attributes, setAttributes } ) {
 	}
 
 	const checkEthereumNetworkValidation = () => {
+		if ( '' === lockAddress ) {
+			return;
+		}
+
 		let regexp = '^0x[a-fA-F0-9]{40}$';
 		let result = new RegExp(regexp, 'g').test( lockAddress );
 
