@@ -9,6 +9,7 @@ import '../../../scss/admin/editor.scss';
 export default function Edit( { attributes, setAttributes } ) {
 
 	const {	lockAddress, ethereumNetwork, ethereumNetworks } = attributes;
+	let lockAddressValidation;
 
 	//Preventing the own block.
 	const ALLOWED_BLOCKS = getBlockTypes().map( block => block.name ).filter( blockName => blockName !== 'unlock-protocol/unlock-box' );
@@ -67,6 +68,21 @@ export default function Edit( { attributes, setAttributes } ) {
 		);
 	}
 
+	const checkEthereumNetworkValidation = () => {
+		let regexp = '^0x[a-fA-F0-9]{40}$';
+		let result = new RegExp(regexp, 'g').test( lockAddress );
+
+		if ( ! result ) {
+			lockAddressValidation = false;
+
+			return (
+				<p className="lock-warning">{ __( 'Lock address is not valid', 'unlock-protocol' ) }</p>
+			);
+		} else {
+			lockAddressValidation = true;
+		}
+	}
+
 	return (
 		<>
 			<div { ...useBlockProps() }>
@@ -84,8 +100,11 @@ export default function Edit( { attributes, setAttributes } ) {
 								<p><strong>{ __( 'Lock Address', 'unlock-protocol' ) }</strong></p>
 								<TextControl
 									value={ lockAddress }
-									onChange={ ( value ) => onChangeValue( 'lockAddress', value ) }
+									onChange={ ( value ) => {
+										onChangeValue( 'lockAddress', value )
+									} }
 								/>
+								{ checkEthereumNetworkValidation() }
 							</>
 						) : '' }
 
@@ -104,7 +123,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 				<div className="unlock-header-icon"></div>
 
-				{ -1 !== ethereumNetwork && '' !== lockAddress ? showInnerBlock() : lockWarning() }
+				{ -1 !== ethereumNetwork && '' !== lockAddress && lockAddressValidation ? showInnerBlock() : lockWarning() }
 			</div>
 		</>
 	);
