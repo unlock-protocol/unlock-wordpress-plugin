@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 function MediaUpload( {
     handle,
     label = __( 'Upload your image', 'unlock-protocol' ),
-    buttonTitle = __( 'Media Upload', 'unlock-protocol' ),
+    buttonTitle = __( 'Open Media Library', 'unlock-protocol' ),
+    help = __( 'Recommended image width is 600px or greater.', 'unlock-protocol' ),
     value = ''
 } ) {
     const [ image, setImage ] = useState( '' );
@@ -34,7 +35,24 @@ function MediaUpload( {
             <div className="group">
                 <p className="components-base-control__label">{ label }</p>
 
+                <p class="help-text">
+                    { help }
+                </p>
+
                 <Button isSmall={ true } isPrimary={ true } onClick={ openMediaUpload }>{ buttonTitle }</Button>
+
+                <Button
+                    className="media-default-btn"
+                    isPrimary={ true }
+                    isSmall={ true }
+                    onClick={ () => {
+                        handle( '' );
+
+                        setImage( '' );
+                    } }
+                >
+                    { __( 'Set Default', 'unlock-protocol' ) }
+                </Button>
 
                 { value ? (
                     <>

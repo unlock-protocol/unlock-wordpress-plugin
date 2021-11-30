@@ -135,7 +135,7 @@ function General() {
 									label={ __( 'Upload Login Background Image', 'unlock-protocol' ) }
 									value={ generalSettings?.login_bg_image??'' }
 									handle={ ( data ) => {
-										onChangeValue( 'login_bg_image', data.url )
+										onChangeValue( 'login_bg_image', data.url??'' );
 									} }
 								/>
 							</>
@@ -213,7 +213,7 @@ function General() {
 									label={ __( 'Upload Checkout Background Image', 'unlock-protocol' ) }
 									value={ generalSettings?.checkout_bg_image??'' }
 									handle={ ( data ) => {
-										onChangeValue( 'checkout_bg_image', data.url )
+										onChangeValue( 'checkout_bg_image', data.url??'' )
 									} }
 								/>
 							</>

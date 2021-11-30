@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-30T08:36:51+00:00\n"
+"POT-Creation-Date: 2021-11-30T10:01:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -155,18 +155,26 @@ msgid "Upload your image"
 msgstr ""
 
 #: assets/src/js/admin/utils/media-upload.js:8
-msgid "Media Upload"
+msgid "Open Media Library"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:15
+#: assets/src/js/admin/utils/media-upload.js:9
+msgid "Recommended image width is 600px or greater."
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:16
 msgid "Insert Image"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:20
+#: assets/src/js/admin/utils/media-upload.js:21
 msgid "Use this image"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:42
+#: assets/src/js/admin/utils/media-upload.js:54
+msgid "Set Default"
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:60
 msgid "Unlock Protocol Image"
 msgstr ""
 
