@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { Button, TextControl, Notice, ColorPalette, ColorIndicator, ToggleControl } from '@wordpress/components';
 import { useState, useEffect } from 'react';
 import apiFetch from '@wordpress/api-fetch';
-import Swal from 'sweetalert2';
+import MediaUpload from './utils/media-upload';
 
 import '../../scss/admin/style.scss';
 
@@ -121,14 +121,24 @@ function General() {
 
 						{/* description option for blurred image button */}
 						{ generalSettings?.login_blurred_image_button??false ? (
-							<div className="group">
-								<TextControl
-								label={ __( 'Description', 'unlock-protocol' ) }
-								className={ 'login-button-text-input' }
-								value={ generalSettings?.login_button_description }
-								onChange={ ( value ) => onChangeValue( 'login_button_description', value ) }
+							<>
+								<div className="group">
+									<TextControl
+										label={ __( 'Description', 'unlock-protocol' ) }
+										className={ 'login-button-text-input' }
+										value={ generalSettings?.login_button_description }
+										onChange={ ( value ) => onChangeValue( 'login_button_description', value ) }
+									/>
+								</div>
+
+								<MediaUpload
+									label={ __( 'Upload Login Background Image', 'unlock-protocol' ) }
+									value={ generalSettings?.login_bg_image??'' }
+									handle={ ( data ) => {
+										onChangeValue( 'login_bg_image', data.url??'' );
+									} }
 								/>
-							</div>
+							</>
 						) : '' }
 
 						<div className="group">
@@ -189,14 +199,24 @@ function General() {
 
 						{/* description option for blurred image button */}
 						{ generalSettings?.checkout_blurred_image_button??false ? (
-							<div className="group">
-								<TextControl
-									label={ __( 'Description', 'unlock-protocol' ) }
-									className={ 'checkout-button-text-input' }
-									value={ generalSettings?.checkout_button_description }
-									onChange={ ( value ) => onChangeValue( 'checkout_button_description', value ) }
+							<>
+								<div className="group">
+									<TextControl
+										label={ __( 'Description', 'unlock-protocol' ) }
+										className={ 'checkout-button-text-input' }
+										value={ generalSettings?.checkout_button_description }
+										onChange={ ( value ) => onChangeValue( 'checkout_button_description', value ) }
+									/>
+								</div>
+
+								<MediaUpload
+									label={ __( 'Upload Checkout Background Image', 'unlock-protocol' ) }
+									value={ generalSettings?.checkout_bg_image??'' }
+									handle={ ( data ) => {
+										onChangeValue( 'checkout_bg_image', data.url??'' )
+									} }
 								/>
-							</div>
+							</>
 						) : '' }
 
 						<div className="group">

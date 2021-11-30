@@ -11,6 +11,13 @@
 
 <?php if ( $checkout_button_bg_color && $checkout_button_text_color ) : ?>
 <style>
+	<?php if ( $checkout_bg_image ) : ?>
+	.checkout-button-container.blurred,
+	.checkout-button-container.blurred {
+		background: url('<?php echo esc_url( $checkout_bg_image ); ?>') no-repeat center center;
+	}
+	<?php endif; ?>
+
 	.checkout-button-container .checkout-button {
 		background-color: <?php echo sanitize_hex_color( $checkout_button_bg_color ); ?>;
 		color: <?php echo sanitize_hex_color( $checkout_button_text_color ); ?>;

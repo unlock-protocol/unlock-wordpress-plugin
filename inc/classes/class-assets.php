@@ -73,6 +73,8 @@ class Assets {
 		$this->register_scripts();
 		$this->register_styles();
 
+		wp_enqueue_media();
+
 		wp_enqueue_style( 'unlock-protocol-admin' );
 
 		$localize_data = array(

@@ -11,6 +11,13 @@
 
 <?php if ( $login_button_bg_color && $login_button_text_color ) : ?>
 <style>
+	<?php if ( $login_bg_image ) : ?>
+	.login .login-button-container.blurred,
+	.login-button-container.blurred {
+		background: url('<?php echo esc_url( $login_bg_image ); ?>') no-repeat center center;
+	}
+	<?php endif; ?>
+
 	.login .login-button-container .login-button,
 	.login-button-container .login-button {
 		background-color: <?php echo sanitize_hex_color( $login_button_bg_color ); ?>;

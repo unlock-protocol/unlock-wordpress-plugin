@@ -62,6 +62,15 @@
             color: #808080;
         }
 
+        .btn-danger {
+            background: red;
+            color: #fff;
+        }
+
+        .media-default-btn {
+            margin-left: 10px;
+        }
+
         .form-inputs {
             display: flex;
             flex-direction: row;
@@ -96,6 +105,11 @@
             .form-inputs {
                 display: block;
             }
+        }
+
+        .media-placeholder-image {
+            width: 200px;
+            margin: 10px 0;
         }
     }
 
