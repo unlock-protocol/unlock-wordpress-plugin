@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-11-30T03:25:40+00:00\n"
+"POT-Creation-Date: 2021-11-30T08:36:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -38,16 +38,16 @@ msgstr ""
 msgid "Login with Unlock"
 msgstr ""
 
-#: inc/classes/blocks/class-unlock-box-block.php:103
-#: inc/classes/blocks/class-unlock-box-block.php:156
+#: inc/classes/blocks/class-unlock-box-block.php:114
+#: inc/classes/blocks/class-unlock-box-block.php:174
 msgid "To view this content please"
 msgstr ""
 
-#: inc/classes/blocks/class-unlock-box-block.php:152
+#: inc/classes/blocks/class-unlock-box-block.php:159
 msgid "Purchase this"
 msgstr ""
 
-#: inc/classes/class-assets.php:84
+#: inc/classes/class-assets.php:86
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
 msgstr ""
 
@@ -148,6 +148,26 @@ msgstr ""
 
 #: assets/src/js/admin/Networks.js:199
 msgid "Delete"
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:7
+msgid "Upload your image"
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:8
+msgid "Media Upload"
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:15
+msgid "Insert Image"
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:20
+msgid "Use this image"
+msgstr ""
+
+#: assets/src/js/admin/utils/media-upload.js:42
+msgid "Unlock Protocol Image"
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/edit.js:26
