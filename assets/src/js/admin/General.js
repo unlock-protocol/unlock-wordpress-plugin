@@ -108,12 +108,7 @@ function General() {
 							<p className="components-base-control__label">{ __( 'Login Button Type', 'unlock-protocol' ) }</p>
 
 							<ToggleControl
-								label={ __( 'Enable for button with blurred image', 'unlock-protocol' ) }
-								help={
-								generalSettings?.login_blurred_image_button
-								? __( 'Button with blurred image is activated', 'unlock-protocol' )
-								: __( 'Simple button is activated', 'unlock-protocol' )
-								}
+								label={ __( 'Enable Image Background For Login Button', 'unlock-protocol' ) }
 								checked={ generalSettings?.login_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'login_blurred_image_button', ! generalSettings?.login_blurred_image_button ) }
 							/>
@@ -124,7 +119,7 @@ function General() {
 							<>
 								<div className="group">
 									<TextControl
-										label={ __( 'Description', 'unlock-protocol' ) }
+										label={ __( 'Call To Action Text', 'unlock-protocol' ) }
 										className={ 'login-button-text-input' }
 										value={ generalSettings?.login_button_description }
 										onChange={ ( value ) => onChangeValue( 'login_button_description', value ) }
@@ -186,12 +181,7 @@ function General() {
 							<p className="components-base-control__label">{ __( 'Checkout Button Type', 'unlock-protocol' ) }</p>
 
 							<ToggleControl
-								label={ __( 'Enable for button with blurred image', 'unlock-protocol' ) }
-								help={
-								generalSettings?.checkout_blurred_image_button
-								? __( 'Button with blurred image is activated', 'unlock-protocol' )
-								: __( 'Simple button is activated', 'unlock-protocol' )
-								}
+								label={ __( 'Enable Image Background For Checkout Button', 'unlock-protocol' ) }
 								checked={ generalSettings?.checkout_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'checkout_blurred_image_button', ! generalSettings?.checkout_blurred_image_button ) }
 							/>
@@ -202,7 +192,7 @@ function General() {
 							<>
 								<div className="group">
 									<TextControl
-										label={ __( 'Description', 'unlock-protocol' ) }
+										label={ __( 'Call To Action Text', 'unlock-protocol' ) }
 										className={ 'checkout-button-text-input' }
 										value={ generalSettings?.checkout_button_description }
 										onChange={ ( value ) => onChangeValue( 'checkout_button_description', value ) }
