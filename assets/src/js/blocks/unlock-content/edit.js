@@ -101,7 +101,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 						{ -1 !== ethereumNetwork ? (
 							<>
-								<p><strong>{ __( 'Lock Address', 'unlock-protocol' ) }</strong></p>
+								<p className="block-label">{ __( 'Lock Address', 'unlock-protocol' ) }</p>
 								<TextControl
 									value={ lockAddress }
 									onChange={ ( value ) => {
@@ -112,16 +112,17 @@ export default function Edit( { attributes, setAttributes } ) {
 							</>
 						) : '' }
 
-						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.docs }>
-							{ __( 'Unlock\'s documentation', 'unlock-protocol' ) }
-						</a>
+						<div className="docs">
+							<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.docs }>
+								{ __( 'Unlock\'s documentation', 'unlock-protocol' ) }
+							</a>
 
-						<br />
-						<br />
+							<br />
 
-						<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.deploy_lock }>
-							{ __( 'Deploy a lock using the Unlock Dashboard', 'unlock-protocol' ) }
-						</a>
+							<a rel="noopener noreferrer" target="_blank" href={ unlockProtocol.unlock_docs.deploy_lock }>
+								{ __( 'Deploy a lock using the Unlock Dashboard', 'unlock-protocol' ) }
+							</a>
+						</div>
 					</PanelBody>
 				</InspectorControls>
 
