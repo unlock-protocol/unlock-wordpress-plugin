@@ -97,7 +97,7 @@ function General() {
 					<div className="form-inputs">
 						<div className="group">
 							<TextControl
-								label={ __( 'Post Login Button Text', 'unlock-protocol' ) }
+								label={ __( 'Login button text', 'unlock-protocol' ) }
 								className={ 'login-button-text-input' }
 								value={ generalSettings?.login_button_text }
 								onChange={ ( value ) => onChangeValue( 'login_button_text', value ) }
@@ -105,10 +105,10 @@ function General() {
 						</div>
 
 						<div className="group">
-							<p className="components-base-control__label">{ __( 'Login Button Type', 'unlock-protocol' ) }</p>
+							<p className="components-base-control__label">{ __( 'Login button type', 'unlock-protocol' ) }</p>
 
 							<ToggleControl
-								label={ __( 'Enable Image Background For Login Button', 'unlock-protocol' ) }
+								label={ __( 'Enable image background for Login button', 'unlock-protocol' ) }
 								checked={ generalSettings?.login_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'login_blurred_image_button', ! generalSettings?.login_blurred_image_button ) }
 							/>
@@ -119,7 +119,7 @@ function General() {
 							<>
 								<div className="group">
 									<TextControl
-										label={ __( 'Call To Action Text', 'unlock-protocol' ) }
+										label={ __( 'Call to action text', 'unlock-protocol' ) }
 										className={ 'login-button-text-input' }
 										value={ generalSettings?.login_button_description }
 										onChange={ ( value ) => onChangeValue( 'login_button_description', value ) }
@@ -137,7 +137,7 @@ function General() {
 						) : '' }
 
 						<div className="group">
-							<p className="components-base-control__label">{ __( 'Login Button Background Color', 'unlock-protocol' ) }</p>
+							<p className="components-base-control__label">{ __( 'Login button background color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
 								<ColorIndicator colorValue={ generalSettings?.login_button_bg_color??'#000' } />
@@ -151,7 +151,7 @@ function General() {
 						</div>
 
 						<div className="group">
-							<p className="components-base-control__label">{ __( 'Login Button Text Color', 'unlock-protocol' ) }</p>
+							<p className="components-base-control__label">{ __( 'Login button text color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
 								<ColorIndicator colorValue={ generalSettings?.login_button_text_color??'#fff' } />
@@ -170,7 +170,7 @@ function General() {
 
 						<div className="group">
 							<TextControl
-								label={ __( 'Checkout Button Text', 'unlock-protocol' ) }
+								label={ __( 'Checkout button text', 'unlock-protocol' ) }
 								className={ 'checkout-button-text-input' }
 								value={ generalSettings?.checkout_button_text }
 								onChange={ ( value ) => onChangeValue( 'checkout_button_text', value ) }
@@ -178,10 +178,10 @@ function General() {
 						</div>
 
 						<div className="group">
-							<p className="components-base-control__label">{ __( 'Checkout Button Type', 'unlock-protocol' ) }</p>
+							<p className="components-base-control__label">{ __( 'Checkout button type', 'unlock-protocol' ) }</p>
 
 							<ToggleControl
-								label={ __( 'Enable Image Background For Checkout Button', 'unlock-protocol' ) }
+								label={ __( 'Enable image background for Checkout button', 'unlock-protocol' ) }
 								checked={ generalSettings?.checkout_blurred_image_button??false }
 								onChange={ () => onChangeValue( 'checkout_blurred_image_button', ! generalSettings?.checkout_blurred_image_button ) }
 							/>
@@ -192,7 +192,7 @@ function General() {
 							<>
 								<div className="group">
 									<TextControl
-										label={ __( 'Call To Action Text', 'unlock-protocol' ) }
+										label={ __( 'Call to action text', 'unlock-protocol' ) }
 										className={ 'checkout-button-text-input' }
 										value={ generalSettings?.checkout_button_description }
 										onChange={ ( value ) => onChangeValue( 'checkout_button_description', value ) }
@@ -210,7 +210,7 @@ function General() {
 						) : '' }
 
 						<div className="group">
-							<p className="components-base-control__label">{ __( 'Checkout Button Background Color', 'unlock-protocol' ) }</p>
+							<p className="components-base-control__label">{ __( 'Checkout button background color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
 								<ColorIndicator colorValue={ generalSettings?.checkout_button_bg_color??'#000' } />
@@ -224,7 +224,7 @@ function General() {
 						</div>
 
 						<div className="group">
-							<p className="components-base-control__label">{ __( 'Checkout Button Text Color', 'unlock-protocol' ) }</p>
+							<p className="components-base-control__label">{ __( 'Checkout button text color', 'unlock-protocol' ) }</p>
 
 							<div className="color-picker-container">
 								<ColorIndicator colorValue={ generalSettings?.checkout_button_text_color??'#fff' } />
