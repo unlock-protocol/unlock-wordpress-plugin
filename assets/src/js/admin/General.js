@@ -127,7 +127,7 @@ function General() {
 								</div>
 
 								<MediaUpload
-									label={ __( 'Upload Login Background Image', 'unlock-protocol' ) }
+									label={ __( 'Upload login background image', 'unlock-protocol' ) }
 									value={ generalSettings?.login_bg_image??'' }
 									handle={ ( data ) => {
 										onChangeValue( 'login_bg_image', data.url??'' );
@@ -200,7 +200,7 @@ function General() {
 								</div>
 
 								<MediaUpload
-									label={ __( 'Upload Checkout Background Image', 'unlock-protocol' ) }
+									label={ __( 'Upload checkout background image', 'unlock-protocol' ) }
 									value={ generalSettings?.checkout_bg_image??'' }
 									handle={ ( data ) => {
 										onChangeValue( 'checkout_bg_image', data.url??'' )
