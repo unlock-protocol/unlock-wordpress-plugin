@@ -27,23 +27,22 @@ class Menu {
 	 */
 	protected function __construct() {
 
-		$register = true === (bool) get_option( 'users_can_register', false );
-		if ( ! function_exists( 'wp_get_current_user' ) ) {
+		add_action(
+			'init',
+			function () {
+				$register = true === (bool) get_option( 'users_can_register', false );
 
-			include ABSPATH . 'wp-includes/pluggable.php';
-
-		}
-		if ( ! $register && current_user_can( 'manage_options' ) ) {
-
-			add_action( 'admin_notices', array( $this, 'membership_admin_notice_error' ) );
-
-		}
+				if ( ! $register && current_user_can( 'manage_options' ) ) {
+					add_action( 'admin_notices', array( $this, 'membership_admin_notice_error' ) );
+				}
+			}
+		);
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_filter( 'plugin_action_links_' . UNLOCK_PROTOCOL_BASENAME_FILE, array( $this, 'plugin_action_links' ) );
 
 	}
-	
+
 	/**
 	 * Show admin error notice if membership option is disabled
 	 *
