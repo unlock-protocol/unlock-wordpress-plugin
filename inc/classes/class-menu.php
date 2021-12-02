@@ -26,11 +26,19 @@ class Menu {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
-		$register = true === (bool) get_option( 'users_can_register', false );
 
-		if ( ! $register ) {
-			add_action( 'admin_notices', array( $this, 'membership_admin_notice__error' ) );
+		$register = true === (bool) get_option( 'users_can_register', false );
+		if ( ! function_exists( 'wp_get_current_user' ) ) {
+
+			include ABSPATH . 'wp-includes/pluggable.php';
+
 		}
+		if ( ! $register && current_user_can( 'manage_options' ) ) {
+
+			add_action( 'admin_notices', array( $this, 'membership_admin_notice_error' ) );
+
+		}
+
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_filter( 'plugin_action_links_' . UNLOCK_PROTOCOL_BASENAME_FILE, array( $this, 'plugin_action_links' ) );
 
@@ -42,16 +50,21 @@ class Menu {
 	 *
 	 * @return void
 	 */
-	public function membership_admin_notice__error() {
-		$class           = 'notice notice-error';
-		$message         = __( 'Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that ', 'unlock-protocol' );
-		$anchor          = __( 'Settings > General > Anyone can register', 'unlock-protocol' );
-		$checked_message = __( 'is checked.', 'unlock-protocol' );
-		$url             = sprintf( '<a href="%1$s">%2$s<a/>', esc_url( admin_url( 'options-general.php' ) ), $anchor );
+	public function membership_admin_notice_error() {
 
-		printf( '<div  class="%1$s"><p> %2$s %3$s %4$s </p></div>', esc_attr( $class ), esc_html( $message ), wp_kses_post( $url ), esc_html( $checked_message ) );
+		$class  = 'notice notice-error';
+		$anchor = __( 'Settings > General > Anyone can register', 'unlock-protocol' );
+		$url    = sprintf( '<a href="%1$s">%2$s</a>', esc_url( admin_url( 'options-general.php' ) ), $anchor );
+		/* translators: %s: url */
+		$message = sprintf( __( 'Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that %s is checked.', 'unlock-protocol' ), wp_kses_post( $url ) );
+
+		printf(
+			'<div class="%1$s"><p>%2$s</p></div>',
+			esc_attr( $class ),
+			wp_kses_post( $message )
+		);
+
 	}
-
 	/**
 	 * Register menu.
 	 *
