@@ -25,6 +25,8 @@ If you'd like to add a lock to your site, start by [deploying your first lock](h
 
 While the lock is deploying you should [download this plugin](https://wordpress.org/plugins/unlock-protocol/) from the WordPress site. Then, from the administration of your WordPress.org website, in the `Plugins` section, click on the `Add New` button and then on the `Upload Plugin` button to upload the plugin.
 
+Note: To allow new users to log in using their Ethereum wallet with a single click, make sure that Settings > General > Anyone can register (for single sites) or Network Settings > Allow new registrations > User accounts may be registered (for multisites) is enabled. Your existing users can link their wallets to their WordPress user account regardless of this setting.
+
 == Writing locked stories ==
 
 The plugin provides you with "Block" which can be used in the Gutenberg Editor, for posts and pages.
