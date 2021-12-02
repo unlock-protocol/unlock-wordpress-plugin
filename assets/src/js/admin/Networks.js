@@ -137,15 +137,15 @@ function Networks() {
 					<h3>
 						{ __( 'Add a new network', 'unlock-protocol' ) }
 
-						<span className="tooltip"> ?
+						<a href={ unlockProtocol.network_help_url } className="tooltip" target="_blank"> ?
 							<span className="tooltiptext">{ unlockProtocol.network_help_text }</span>
-						</span>
+						</a>
 					</h3>
 
                     <div className="form-inputs">
                         <div className="group">
                             <TextControl
-                                label={ __( 'Network Name', 'unlock-protocol' ) }
+                                label={ __( 'Network name', 'unlock-protocol' ) }
                                 className={ 'network-name-input' }
                                 value={ networkName }
                                 onChange={ ( value ) => setNetworkName( value ) }
@@ -164,7 +164,7 @@ function Networks() {
 
                         <div className="group">
                             <TextControl
-                                label={ __( 'Network RPC Endpoint', 'unlock-protocol' ) }
+                                label={ __( 'Network RPC endpoint', 'unlock-protocol' ) }
                                 className={ 'network-rpc-input' }
                                 value={ networkRpcEndpoint }
 								type="url"
@@ -180,7 +180,7 @@ function Networks() {
                         isBusy={ isSubmitted }
                         disabled={ isSubmitted }
                     >
-                        { isSubmitted ? __( 'Saving', 'unlock-protocol' ) : __( 'Save', 'unlock-protocol' ) }
+                        { isSubmitted ? __( 'Adding...', 'unlock-protocol' ) : __( 'Add network', 'unlock-protocol' ) }
                     </Button>
                 </div>
 

@@ -6,7 +6,7 @@ function MediaUpload( {
     handle,
     label = __( 'Upload your image', 'unlock-protocol' ),
     buttonTitle = __( 'Open Media Library', 'unlock-protocol' ),
-    help = __( 'Recommended image width is 600px or greater.', 'unlock-protocol' ),
+    help = __( 'Recommended image height is 300px.', 'unlock-protocol' ),
     value = ''
 } ) {
     const [ image, setImage ] = useState( '' );

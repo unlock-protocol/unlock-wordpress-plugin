@@ -54,7 +54,8 @@
 .checkout-button-container {
   &.blurred {
     background: url('../img/blurr.jpg') no-repeat center center;
-    padding: 100px 20px;
+    background-size: cover;
+    padding: 117px 20px;
     border-radius: 5px;
     text-align: center;
   }

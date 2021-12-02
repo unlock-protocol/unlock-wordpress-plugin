@@ -58,7 +58,6 @@
         }
 
         .help-text {
-            font-style: italic;
             color: #808080;
         }
 
@@ -165,7 +164,13 @@
         text-align: center;
         top: -1px;
         color: #333;
-        cursor: default;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:focus {
+            box-shadow: 0 0 0 0;
+            outline: 0;
+        }
 
         .tooltiptext {
             visibility: hidden;

@@ -15,6 +15,11 @@
 	.login .login-button-container.blurred,
 	.login-button-container.blurred {
 		background: url('<?php echo esc_url( $login_bg_image ); ?>') no-repeat center center;
+		background-size: cover;
+	}
+
+	.login-button-container.blurred p {
+		color: <?php echo sanitize_hex_color( $login_button_text_color ); ?>;
 	}
 	<?php endif; ?>
 

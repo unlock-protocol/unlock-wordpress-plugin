@@ -47,7 +47,7 @@ msgstr ""
 msgid "Purchase this"
 msgstr ""
 
-#: inc/classes/class-assets.php:86
+#: inc/classes/class-assets.php:87
 msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
 msgstr ""
 
@@ -133,8 +133,7 @@ msgid "Add a new network"
 msgstr ""
 
 #: assets/src/js/admin/Networks.js:148
-#: assets/src/js/admin/Networks.js:192
-msgid "Network Name"
+msgid "Network name"
 msgstr ""
 
 #: assets/src/js/admin/Networks.js:157
@@ -143,16 +142,23 @@ msgid "Network ID"
 msgstr ""
 
 #: assets/src/js/admin/Networks.js:167
+msgid "Network RPC endpoint"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:183
+msgid "Adding..."
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:183
+msgid "Add network"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:192
+msgid "Network Name"
+msgstr ""
+
 #: assets/src/js/admin/Networks.js:193
 msgid "Network RPC Endpoint"
-msgstr ""
-
-#: assets/src/js/admin/Networks.js:183
-msgid "Saving"
-msgstr ""
-
-#: assets/src/js/admin/Networks.js:183
-msgid "Save"
 msgstr ""
 
 #: assets/src/js/admin/Networks.js:199
@@ -168,7 +174,7 @@ msgid "Open Media Library"
 msgstr ""
 
 #: assets/src/js/admin/utils/media-upload.js:9
-msgid "Recommended image width is 600px or greater."
+msgid "Recommended image height is 300px."
 msgstr ""
 
 #: assets/src/js/admin/utils/media-upload.js:16

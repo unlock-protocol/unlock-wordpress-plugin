@@ -15,6 +15,11 @@
 	.checkout-button-container.blurred,
 	.checkout-button-container.blurred {
 		background: url('<?php echo esc_url( $checkout_bg_image ); ?>') no-repeat center center;
+		background-size: cover;
+	}
+
+	.checkout-button-container.blurred p {
+		color: <?php echo sanitize_hex_color( $checkout_button_text_color ); ?>;
 	}
 	<?php endif; ?>
 
