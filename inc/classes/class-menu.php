@@ -49,7 +49,7 @@ class Menu {
 		$checked_message = __( 'is checked.', 'unlock-protocol' );
 		$url             = sprintf( '<a href="%1$s">%2$s<a/>', esc_url( admin_url( 'options-general.php' ) ), $anchor );
 
-		printf( '<div  class="%1$s"><p> %2$s %3$s %4$s </p></div>', esc_attr( $class ), esc_html( $message ), esc_html( $url ), esc_html( $checked_message ) );
+		printf( '<div  class="%1$s"><p> %2$s %3$s %4$s </p></div>', esc_attr( $class ), esc_html( $message ), wp_kses_post( $url ), esc_html( $checked_message ) );
 	}
 
 	/**
