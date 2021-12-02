@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-12-02T15:54:22+00:00\n"
+"POT-Creation-Date: 2021-12-02T16:17:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -64,16 +64,20 @@ msgstr ""
 msgid "Registration is not allowed."
 msgstr ""
 
-#: inc/classes/class-menu.php:56
+#: inc/classes/class-menu.php:64
+msgid "Network Settings > Allow new registrations > User accounts may be registered"
+msgstr ""
+
+#: inc/classes/class-menu.php:67
 msgid "Settings > General > Anyone can register"
 msgstr ""
 
 #. translators: %s: url
-#: inc/classes/class-menu.php:59
+#: inc/classes/class-menu.php:72
 msgid "Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that %s is checked."
 msgstr ""
 
-#: inc/classes/class-menu.php:111
+#: inc/classes/class-menu.php:120
 #: assets/src/js/blocks/unlock-content/edit.js:94
 msgid "Settings"
 msgstr ""
