@@ -137,9 +137,9 @@ function Networks() {
 					<h3>
 						{ __( 'Add a new network', 'unlock-protocol' ) }
 
-						<span className="tooltip"> ?
+						<a href={ unlockProtocol.network_help_url } className="tooltip" target="_blank"> ?
 							<span className="tooltiptext">{ unlockProtocol.network_help_text }</span>
-						</span>
+						</a>
 					</h3>
 
                     <div className="form-inputs">
