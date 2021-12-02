@@ -43,6 +43,7 @@ class Menu {
 		add_filter( 'plugin_action_links_' . UNLOCK_PROTOCOL_BASENAME_FILE, array( $this, 'plugin_action_links' ) );
 
 	}
+	
 	/**
 	 * Show admin error notice if membership option is disabled
 	 *
