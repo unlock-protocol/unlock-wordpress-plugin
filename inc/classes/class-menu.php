@@ -69,7 +69,7 @@ class Menu {
 
 		$setting_anchor = sprintf( '<a href="%1$s">%2$s</a>', esc_url( $settings_url ), $anchor_text );
 		/* translators: %s: url */
-		$message = sprintf( __( 'Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that %s is checked.', 'unlock-protocol' ), wp_kses_post( $setting_anchor ) );
+		$message = sprintf( __( 'Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that %s is enabled.', 'unlock-protocol' ), wp_kses_post( $setting_anchor ) );
 
 		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), wp_kses_post( $message ) );
 
