@@ -84,7 +84,7 @@ class Assets {
 				'deploy_lock' => 'https://app.unlock-protocol.com/dashboard',
 			],
 			'network_help_url'  => esc_url_raw( '#' ),
-			'network_help_text' => __( 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 'unlock-protocol' ),
+			'network_help_text' => __( 'You can add any Ethereum network where you have deployed your lock.', 'unlock-protocol' ),
 			'rest'              => array(
 				'root'    => esc_url_raw( get_rest_url() ),
 				'nonce'   => wp_create_nonce( 'wp_rest' ),
