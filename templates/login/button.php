@@ -17,7 +17,9 @@
 		background: url('<?php echo esc_url( $login_bg_image ); ?>') no-repeat center center;
 		background-size: cover;
 	}
+	<?php endif; ?>
 
+	<?php if ( $blurred_image_activated ) : ?>
 	.login-button-container.blurred p {
 		color: <?php echo sanitize_hex_color( $login_button_text_color ); ?>;
 	}
