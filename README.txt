@@ -46,11 +46,23 @@ Once your story includes the content you need, you can preview its content like 
 
 This plugin is, like all of the Unlock code, [open source](https://github.com/unlock-protocol/unlock-wordpress-plugin). You're encouraged to fork it and make any changes you'd like! If you believe these changes would be beneficial to others, we encourage you to also open a Pull Request so that we could add these to the main branch released on the wordpress.org website!
 
+= Local Development =
+
+To setup local development environment for the plugin using [Lando](https://docs.lando.dev/basics/installation.html) local dev environment, simply clone the repo from [GitHub](https://github.com/unlock-protocol/unlock-wordpress-plugin) and write
+
+    lando start
+
+= Publishing the plugin =
+
 In order to update the plugin, check out the current subversion state with
 
     svn co  https://plugins.svn.wordpress.org/unlock-protocol
 
-Then checkout the git repo inside of `trunk` and commit the changes into svn with:
+Then, from the GitHub repo clone, write
+
+    lando npm run release
+
+This will generate a zip file in dist directory, unzip that file and copy the content to trunk directory in svn repo and commit the changes into svn with
 
     svn ci -m "commit message"
 
@@ -65,7 +77,7 @@ To be completed with questions!
 
 == Changelog ==
 
-== 3.0.0 =
+= 3.0.0 =
 * Brand new plugin with updated UI
 * User can login to the WordPress site by using Unlock Protocol account.
 * Pre-filled networks
@@ -83,17 +95,17 @@ To be completed with questions!
 * block setting is now visible inside of the Editor
 
 = 1.6 =
-Button is not only visible when content is locked
+* Button is not only visible when content is locked
 
 = 1.5 =
-Cleanup
+* Cleanup
 
 = 1.1 =
-Supporting nested blocks.
+* Supporting nested blocks.
 
 = 1.0 =
-Initial version
+* Initial version
 
 == Upgrade Notice ==
 
-N/A
+This new version is not compatible with the old version of the plugin, please backup your content before upgrade.
