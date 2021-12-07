@@ -8,7 +8,7 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"prepare": "cd .. && husky install assets/.husky",
-		"make:pot": "wp i18n make-pot --exclude='dist,build,node_modules,vendors' .. ../languages/unlock-protocol.pot",
+		"make:pot": "wp i18n make-pot --exclude='dist,build,node_modules,vendors,wordpress' --slug='unlock-protocol' --domain='unlock-protocol' .. ../languages/unlock-protocol.pot",
 		"start": "wp-scripts start ./src/js/main.js --output-path=./build/js",
 		"start:blocks": "wp-scripts start ./src/js/blocks.js --output-path=./build/js",
 		"build:blocks": "wp-scripts build ./src/js/blocks.js --output-path=./build/js",
