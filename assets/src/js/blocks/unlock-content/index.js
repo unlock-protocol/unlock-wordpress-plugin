@@ -16,20 +16,16 @@ import Edit from './edit';
 
 	description: __( 'A block to add lock(s) to the content inside of WordPress.', 'unlock-protocol' ),
 
-	attributes: {
-        lockAddress: {
-			type: 'string',
-			default: ''
-		},
-        ethereumNetworks: {
+	 attributes: {
+		locks: {
 			type: 'array',
-      		default: []
+			default: []
 		},
-        ethereumNetwork: {
-			type: 'integer',
-      		default: -1
-		}
-    },
+		ethereumNetworks: {
+			type: 'array',
+			default: []
+		},
+	 },
 
 	supports: {
 		align: true

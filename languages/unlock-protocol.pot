@@ -202,7 +202,7 @@ msgid "None"
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/edit.js:66
-msgid "Please configure the lock."
+msgid "Please configure the lock(s) on this block."
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/edit.js:83
@@ -222,7 +222,7 @@ msgid "Unlock's documentation"
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/edit.js:123
-msgid "Deploy a lock using the Unlock Dashboard"
+msgid "Deploy a lock"
 msgstr ""
 
 #: assets/src/js/blocks/unlock-content/index.js:17
