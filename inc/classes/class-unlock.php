@@ -55,7 +55,13 @@ class Unlock {
 
 		foreach($locks as $lock) {
 			if (!$has_unlocked) {
-				$url = $networks[$lock['network']]['network_rpc_endpoint'];
+				// Find the URL!
+				foreach($networks as $network) {
+					if ($network["network_id"] == $lock['network']) {
+						$url = $network["network_rpc_endpoint"];
+					}
+				}
+
 				$validation = self::validate( $url, $lock['address'], $user_ethereum_address );
 
 				if ( is_wp_error( $validation ) || ! isset( $validation['result'] ) ) {
@@ -133,10 +139,11 @@ class Unlock {
 	 *
 	 * @return string
 	 */
-	public static function get_checkout_url( $locks, $networks, $redirect_uri ) {
+	public static function get_checkout_url( $locks, $redirect_uri ) {
 		$paywall_locks = array();
+
 		foreach ($locks as $lock) {
-			$paywall_locks[$lock["address"]] = array('network' => (int) $networks[$lock["network"]]["network_id"],);
+			$paywall_locks[$lock["address"]] = array('network' => (int) $lock["network"],);
 		}
 
 		$paywall_config = apply_filters(

@@ -67,7 +67,7 @@ export default function Edit({ attributes, setAttributes }) {
 				Object.entries(networks).forEach(([key, item]) => {
 					selectOptions.push({
 						label: item.network_name,
-						value: key
+						value: item.network_id
 					});
 				});
 
@@ -139,7 +139,7 @@ export default function Edit({ attributes, setAttributes }) {
 											<p className="block-label">{ __( 'Lock Address', 'unlock-protocol' ) }</p>
 											<TextControl
 												value={ lock.address }
-												onChange={ ( value ) => onChangeLockValue(id, 'address',  value ) }
+												onChange={ ( value ) => onChangeLockValue(id, 'address', value ) }
 											/>
 										</>
 									) : ''}

@@ -128,7 +128,7 @@ class Unlock_Box_Block {
 			return $content;
 		}
 
-		return $this->get_checkout_url( $attributes, $networks );
+		return $this->get_checkout_url( $attributes );
 	}
 
 	/**
@@ -139,8 +139,8 @@ class Unlock_Box_Block {
 	 *
 	 * @return mixed|void
 	 */
-	private function get_checkout_url( $attributes, $networks ) {
-		$checkout_url = Unlock::get_checkout_url( $attributes["locks"], $networks, get_permalink() );
+	private function get_checkout_url( $attributes) {
+		$checkout_url = Unlock::get_checkout_url( $attributes["locks"], get_permalink() );
 
 		$checkout_button_text       = up_get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
 		$checkout_button_bg_color   = up_get_general_settings( 'checkout_button_bg_color', '#000' );
