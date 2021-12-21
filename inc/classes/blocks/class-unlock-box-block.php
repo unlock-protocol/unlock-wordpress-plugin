@@ -56,17 +56,13 @@ class Unlock_Box_Block {
 			array(
 				'render_callback' => array( $this, 'render_block' ),
 				'attributes'      => array(
-					'lockAddress'      => array(
-						'type'    => 'string',
-						'default' => '',
+					'locks'      => array(
+						'type'    => 'array',
+						'default' => array(),
 					),
 					'ethereumNetworks' => array(
 						'type'    => 'array',
 						'default' => array(),
-					),
-					'ethereumNetwork'  => array(
-						'type'    => 'integer',
-						'default' => -1,
 					),
 				),
 				'supports'        => array(
@@ -123,38 +119,28 @@ class Unlock_Box_Block {
 			return apply_filters( 'unlock_protocol_login_content', $html_template, $template_data );
 		}
 
-		$ethereum_network = $attributes['ethereumNetwork'];
-
-		if ( -1 === $ethereum_network || '' === $attributes['lockAddress'] ) {
-			return '';
-		}
+		$locks = $attributes['locks'];
 
 		$settings = get_option( 'unlock_protocol_settings', array() );
 		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
 
-		if ( ! isset( $networks[ $ethereum_network ] ) ) {
-			return '';
-		}
-
-		$selected_network = $networks[ $ethereum_network ];
-
-		if ( isset( $selected_network['network_rpc_endpoint'] ) && Unlock::has_access( $selected_network['network_rpc_endpoint'], $attributes['lockAddress'] ) ) {
+		if ( Unlock::has_access( $networks, $locks ) ) {
 			return $content;
 		}
 
-		return $this->get_checkout_url( $attributes, $selected_network );
+		return $this->get_checkout_url( $attributes, $networks );
 	}
 
 	/**
 	 * Get checkout url for block
 	 *
-	 * @param array $attributes Attributes.
-	 * @param array $selected_network Selected Network.
+	 * @param array $attributes attributes.
+	 * @param array $networks networks from configuration.
 	 *
 	 * @return mixed|void
 	 */
-	private function get_checkout_url( $attributes, $selected_network ) {
-		$checkout_url = Unlock::get_checkout_url( $attributes['lockAddress'], $selected_network['network_id'], get_permalink() );
+	private function get_checkout_url( $attributes, $networks ) {
+		$checkout_url = Unlock::get_checkout_url( $attributes["locks"], $networks, get_permalink() );
 
 		$checkout_button_text       = up_get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
 		$checkout_button_bg_color   = up_get_general_settings( 'checkout_button_bg_color', '#000' );

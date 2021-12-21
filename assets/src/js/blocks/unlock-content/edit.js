@@ -47,7 +47,6 @@ const lockValid = (lock) => {
 
 export default function Edit({ attributes, setAttributes }) {
 	const { locks, ethereumNetworks } = attributes;
-	let lockAddressValidation;
 
 	// Preventing the own block.
 	const ALLOWED_BLOCKS = getBlockTypes().map(block => block.name).filter(blockName => blockName !== 'unlock-protocol/unlock-box');
