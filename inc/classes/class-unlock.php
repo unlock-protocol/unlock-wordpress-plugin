@@ -49,20 +49,34 @@ class Unlock {
 	 *
 	 * @return float|int|\WP_Error
 	 */
-	public static function has_access( $url, $lock_address, $user_ethereum_address = null ) {
-		$validation = self::validate( $url, $lock_address, $user_ethereum_address );
+	public static function has_access( $networks, $locks, $user_ethereum_address = null ) {
 
-		if ( is_wp_error( $validation ) || ! isset( $validation['result'] ) ) {
-			return false;
+		$has_unlocked = false;
+
+		foreach($locks as $lock) {
+			if (!$has_unlocked) {
+				// Find the URL!
+				foreach($networks as $network) {
+					if ($network["network_id"] == $lock['network']) {
+						$url = $network["network_rpc_endpoint"];
+					}
+				}
+
+				$validation = self::validate( $url, $lock['address'], $user_ethereum_address );
+
+				if ( is_wp_error( $validation ) || ! isset( $validation['result'] ) ) {
+					break;
+				}
+
+				$key_expiration = hexdec( $validation['result'] );
+
+				if ( $key_expiration > time() ) {
+					$has_unlocked = true;
+				}
+			}
 		}
 
-		$key_expiration = hexdec( $validation['result'] );
-
-		if ( $key_expiration < time() ) {
-			return false;
-		}
-
-		return true;
+		return $has_unlocked;
 	}
 
 	/**
@@ -125,15 +139,17 @@ class Unlock {
 	 *
 	 * @return string
 	 */
-	public static function get_checkout_url( $lock_address, $network_id, $redirect_uri ) {
+	public static function get_checkout_url( $locks, $redirect_uri ) {
+		$paywall_locks = array();
+
+		foreach ($locks as $lock) {
+			$paywall_locks[$lock["address"]] = array('network' => (int) $lock["network"],);
+		}
+
 		$paywall_config = apply_filters(
 			'unlock_protocol_paywall_config',
 			array(
-				'locks'       => array(
-					"$lock_address" => array(
-						'network' => (int) $network_id,
-					),
-				),
+				'locks'       => $paywall_locks,
 				'pessimistic' => true,
 			)
 		);
