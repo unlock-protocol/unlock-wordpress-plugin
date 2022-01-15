@@ -51,6 +51,20 @@ To setup local development environment for the plugin using [Lando](https://docs
 
     lando start
 
+About live editing, from the assets directory, when editing the main.scss, you can run:
+
+    lando npm run start
+
+when editing any block related JS or CSS, use:
+
+    lando npm run start:blocks
+
+when editing any admin related JS or CSS:
+
+    lando npm run start:admin
+
+It should do the auto reload and provide you with live changes.
+
 = Publishing the plugin =
 
 In order to update the plugin, check out the current subversion state with
