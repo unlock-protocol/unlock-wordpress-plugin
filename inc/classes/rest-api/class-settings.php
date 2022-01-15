@@ -216,7 +216,7 @@ class Settings extends Rest_Base {
 				if ( (int) $network_id === $item['network_id'] ) {
 					return new \WP_Error(
 						'unlock_protocol_duplicate_network_id',
-						__( 'This network ID is already exists.', 'unlock-protocol' ),
+						__( 'This network ID already exists.', 'unlock-protocol' ),
 						[ 'status' => WP_Http::BAD_REQUEST ]
 					);
 				}

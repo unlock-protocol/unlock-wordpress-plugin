@@ -91,7 +91,7 @@ msgid "Inputs can not be empty!"
 msgstr ""
 
 #: inc/classes/rest-api/class-settings.php:219
-msgid "This network ID is already exists."
+msgid "This network ID already exists."
 msgstr ""
 
 #: assets/src/js/admin/App.js:13
