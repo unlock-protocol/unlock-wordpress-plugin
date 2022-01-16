@@ -71,7 +71,7 @@ In order to update the plugin, check out the current subversion state with
 
     svn co  https://plugins.svn.wordpress.org/unlock-protocol
 
-Then, from the GitHub repo clone, write
+Then, from the GitHub repo clone, inside the `assets` folder, write
 
     lando npm run release
 
