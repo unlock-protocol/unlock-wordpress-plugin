@@ -67,12 +67,7 @@ class Unlock {
 				if ( is_wp_error( $validation ) || ! isset( $validation['result'] ) ) {
 					break;
 				}
-
-				$key_expiration = hexdec( $validation['result'] );
-
-				if ( $key_expiration > time() ) {
-					$has_unlocked = true;
-				}
+				$has_unlocked = hexdec( $validation['result'] ) == 1;
 			}
 		}
 
@@ -101,7 +96,7 @@ class Unlock {
 				'params'  => array(
 					array(
 						'to'   => $lock_address,
-						'data' => sprintf( '0xabdf82ce000000000000000000000000%s', $user_ethereum_address ),
+						'data' => sprintf( '0x6d8ea5b4000000000000000000000000%s', $user_ethereum_address ),
 					),
 					'latest',
 				),

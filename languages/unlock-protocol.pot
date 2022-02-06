@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Unlock Protocol Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Unlock Protocol Plugin 3.1.0\n"
+"Project-Id-Version: Unlock Protocol Plugin 3.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/unlock-protocol\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-18T22:59:17+00:00\n"
+"POT-Creation-Date: 2022-02-06T04:09:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: unlock-protocol\n"
@@ -34,133 +34,62 @@ msgstr ""
 msgid "https://unlock-protocol.com"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/blocks/class-unlock-box-block.php:99
-#: assets/unlock-protocol/tags/3.1/inc/classes/blocks/class-unlock-box-block.php:95
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/blocks/class-unlock-box-block.php:95
-#: assets/unlock-protocol/trunk/inc/classes/blocks/class-unlock-box-block.php:95
 #: inc/classes/blocks/class-unlock-box-block.php:95
 msgid "Login with Unlock"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/blocks/class-unlock-box-block.php:114
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/blocks/class-unlock-box-block.php:174
-#: assets/unlock-protocol/tags/3.1/inc/classes/blocks/class-unlock-box-block.php:110
-#: assets/unlock-protocol/tags/3.1/inc/classes/blocks/class-unlock-box-block.php:160
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/blocks/class-unlock-box-block.php:110
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/blocks/class-unlock-box-block.php:160
-#: assets/unlock-protocol/trunk/inc/classes/blocks/class-unlock-box-block.php:110
-#: assets/unlock-protocol/trunk/inc/classes/blocks/class-unlock-box-block.php:160
 #: inc/classes/blocks/class-unlock-box-block.php:110
 #: inc/classes/blocks/class-unlock-box-block.php:160
 msgid "To view this content please"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/blocks/class-unlock-box-block.php:159
-#: assets/unlock-protocol/tags/3.1/inc/classes/blocks/class-unlock-box-block.php:145
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/blocks/class-unlock-box-block.php:145
-#: assets/unlock-protocol/trunk/inc/classes/blocks/class-unlock-box-block.php:145
 #: inc/classes/blocks/class-unlock-box-block.php:145
 msgid "Purchase this"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-assets.php:87
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-assets.php:87
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-assets.php:87
-#: assets/unlock-protocol/trunk/inc/classes/class-assets.php:87
 #: inc/classes/class-assets.php:87
 msgid "You can add any Ethereum network where you have deployed your lock."
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-login.php:65
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-login.php:65
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-login.php:65
-#: assets/unlock-protocol/trunk/inc/classes/class-login.php:65
 #: inc/classes/class-login.php:65
 msgid "Connect Your Crypto Wallet"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-login.php:106
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-unlock.php:210
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-login.php:106
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-unlock.php:226
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-login.php:106
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-unlock.php:226
-#: assets/unlock-protocol/trunk/inc/classes/class-login.php:106
-#: assets/unlock-protocol/trunk/inc/classes/class-unlock.php:226
 #: inc/classes/class-login.php:106
-#: inc/classes/class-unlock.php:226
+#: inc/classes/class-unlock.php:221
 msgid "Invalid Account"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-login.php:182
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-login.php:182
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-login.php:182
-#: assets/unlock-protocol/trunk/inc/classes/class-login.php:182
 #: inc/classes/class-login.php:182
 msgid "Registration is not allowed."
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-menu.php:64
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-menu.php:64
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-menu.php:64
-#: assets/unlock-protocol/trunk/inc/classes/class-menu.php:64
 #: inc/classes/class-menu.php:64
 msgid "Network Settings > Allow new registrations > User accounts may be registered"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-menu.php:67
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-menu.php:67
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-menu.php:67
-#: assets/unlock-protocol/trunk/inc/classes/class-menu.php:67
 #: inc/classes/class-menu.php:67
 msgid "Settings > General > Anyone can register"
 msgstr ""
 
 #. translators: %s: url
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-menu.php:72
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-menu.php:72
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-menu.php:72
-#: assets/unlock-protocol/trunk/inc/classes/class-menu.php:72
 #: inc/classes/class-menu.php:72
 msgid "Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that %s is enabled."
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/class-menu.php:120
-#: assets/unlock-protocol/tags/3.1/inc/classes/class-menu.php:120
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/class-menu.php:120
-#: assets/unlock-protocol/trunk/inc/classes/class-menu.php:120
 #: inc/classes/class-menu.php:120
 msgid "Settings"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/rest-api/class-rest-base.php:49
-#: assets/unlock-protocol/tags/3.1/inc/classes/rest-api/class-rest-base.php:49
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/rest-api/class-rest-base.php:49
-#: assets/unlock-protocol/trunk/inc/classes/rest-api/class-rest-base.php:49
 #: inc/classes/rest-api/class-rest-base.php:49
 msgid "You have no permission to do that"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/rest-api/class-settings.php:135
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/rest-api/class-settings.php:203
-#: assets/unlock-protocol/tags/3.1/inc/classes/rest-api/class-settings.php:135
-#: assets/unlock-protocol/tags/3.1/inc/classes/rest-api/class-settings.php:203
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/rest-api/class-settings.php:135
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/rest-api/class-settings.php:203
-#: assets/unlock-protocol/trunk/inc/classes/rest-api/class-settings.php:135
-#: assets/unlock-protocol/trunk/inc/classes/rest-api/class-settings.php:203
 #: inc/classes/rest-api/class-settings.php:135
 #: inc/classes/rest-api/class-settings.php:203
 msgid "Inputs can not be empty!"
 msgstr ""
 
-#: assets/unlock-protocol/tags/3.0.0/inc/classes/rest-api/class-settings.php:219
-msgid "This network ID is already exists."
-msgstr ""
-
-#: assets/unlock-protocol/tags/3.1/inc/classes/rest-api/class-settings.php:219
-#: assets/unlock-protocol/tags/3.1/trunk/inc/classes/rest-api/class-settings.php:219
-#: assets/unlock-protocol/trunk/inc/classes/rest-api/class-settings.php:219
 #: inc/classes/rest-api/class-settings.php:219
 msgid "This network ID already exists."
 msgstr ""
