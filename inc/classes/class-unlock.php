@@ -136,6 +136,13 @@ class Unlock {
 	 */
 	public static function get_checkout_url( $locks, $redirect_uri ) {
 		$paywall_locks = array();
+		$settings = get_option( 'unlock_protocol_settings', array() );
+		// Let's add the default setup in the config too!
+
+		$default_paywall_config = array();
+		if (isset($settings['general']['custom_unlock_checkout_config'])) {
+			$default_paywall_config = json_decode($settings['general']['custom_unlock_checkout_config'], true);
+		}
 
 		foreach ($locks as $lock) {
 			$paywall_locks[$lock["address"]] = array('network' => (int) $lock["network"],);
@@ -143,9 +150,12 @@ class Unlock {
 
 		$paywall_config = apply_filters(
 			'unlock_protocol_paywall_config',
-			array(
-				'locks'       => $paywall_locks,
-				'pessimistic' => true,
+			array_merge(
+				$default_paywall_config ?? array(), 
+				array(
+					'locks'       => $paywall_locks,
+					'pessimistic' => true,
+				)
 			)
 		);
 

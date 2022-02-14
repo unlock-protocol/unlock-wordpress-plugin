@@ -139,7 +139,7 @@ class Unlock_Box_Block {
 	 *
 	 * @return mixed|void
 	 */
-	private function get_checkout_url( $attributes) {
+	private function get_checkout_url( $attributes ) {
 		$checkout_url = Unlock::get_checkout_url( $attributes["locks"], get_permalink() );
 
 		$checkout_button_text       = up_get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
