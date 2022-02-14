@@ -1,16 +1,18 @@
 /**
  * External dependencies
  */
-import $ from 'jquery';
+import $ from "jquery";
 
 /**
  * WordPress dependencies
  */
 const { render } = wp.element;
-import App from './App';
+import App from "./App";
 
-let rtDevSiteAlertContainer = document.getElementById( 'unlock-protocol-container' );
+let rtDevSiteAlertContainer = document.getElementById(
+  "unlock-protocol-container"
+);
 
-if ( rtDevSiteAlertContainer ) {
-	render( <App />, rtDevSiteAlertContainer );
+if (rtDevSiteAlertContainer) {
+  render(<App />, rtDevSiteAlertContainer);
 }
