@@ -5,4 +5,4 @@
  */
 
 // Blocks
-import './blocks/unlock-content/index';
+import "./blocks/unlock-content/index";

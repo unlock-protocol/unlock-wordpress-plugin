@@ -1,42 +1,44 @@
-import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
-import { InnerBlocks } from '@wordpress/block-editor';
-import Edit from './edit';
+import { __ } from "@wordpress/i18n";
+import { registerBlockType } from "@wordpress/blocks";
+import { InnerBlocks } from "@wordpress/block-editor";
+import Edit from "./edit";
 
 /**
  * Register the block.
  */
- registerBlockType( "unlock-protocol/unlock-box", {
+registerBlockType("unlock-protocol/unlock-box", {
+  title: __("Unlock Protocol", "unlock-protocol"),
 
-	title: __( 'Unlock Protocol', 'unlock-protocol' ),
+  category: "common",
 
-	category: "common",
+  icon: "lock",
 
-	icon: "lock",
+  description: __(
+    "A block to add lock(s) to the content inside of WordPress.",
+    "unlock-protocol"
+  ),
 
-	description: __( 'A block to add lock(s) to the content inside of WordPress.', 'unlock-protocol' ),
+  attributes: {
+    locks: {
+      type: "array",
+      default: [],
+    },
+    ethereumNetworks: {
+      type: "array",
+      default: [],
+    },
+  },
 
-	 attributes: {
-		locks: {
-			type: 'array',
-			default: []
-		},
-		ethereumNetworks: {
-			type: 'array',
-			default: []
-		},
-	 },
+  supports: {
+    align: true,
+  },
 
-	supports: {
-		align: true
-	},
+  /**
+   * @see ./edit.js
+   */
+  edit: Edit,
 
-	/**
-	 * @see ./edit.js
-	 */
-	edit: Edit,
-
-	save: () => {
-		return <InnerBlocks.Content/>;
-	}
-} );
+  save: () => {
+    return <InnerBlocks.Content />;
+  },
+});
