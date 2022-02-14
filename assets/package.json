@@ -7,7 +7,6 @@
     "build": "wp-scripts build ./src/js/main.js --output-path=./build/js",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
-    "prepare": "cd .. && husky install assets/.husky",
     "make:pot": "wp i18n make-pot --exclude='dist,build,node_modules,vendors,wordpress' --slug='unlock-protocol' --domain='unlock-protocol' .. ../languages/unlock-protocol.pot",
     "start": "wp-scripts start ./src/js/main.js --output-path=./build/js",
     "start:blocks": "wp-scripts start ./src/js/blocks.js --output-path=./build/js",
@@ -26,7 +25,6 @@
   "license": "ISC",
   "devDependencies": {
     "@wordpress/scripts": "^19.0.0",
-    "husky": "^7.0.4",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.4"
   },
