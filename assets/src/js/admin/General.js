@@ -29,7 +29,7 @@ function General() {
           setGeneralSettings(resp.general);
         }
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
 
   /**
@@ -97,108 +97,106 @@ function General() {
   };
 
   return (
-    <>
-      <div className="settings_container__general">
-        {renderNotice()}
+    <div className="settings_container__general">
+      {renderNotice()}
 
-        <div className="form-inputs">
-          <div className="input-container">
-            <h3>{__("Login Button Settings", "unlock-protocol")}</h3>
-            <div className="group">
-              <TextControl
-                label={__("Login button text", "unlock-protocol")}
-                className={"login-button-text-input"}
-                value={generalSettings?.login_button_text}
-                onChange={(value) => onChangeValue("login_button_text", value)}
+      <div className="form-inputs">
+        <div className="input-container">
+          <h3>{__("Login Button Settings", "unlock-protocol")}</h3>
+          <div className="group">
+            <TextControl
+              label={__("Login button text", "unlock-protocol")}
+              className={"login-button-text-input"}
+              value={generalSettings?.login_button_text}
+              onChange={(value) => onChangeValue("login_button_text", value)}
+            />
+          </div>
+
+          <div className="group">
+            <p className="components-base-control__label">
+              {__("Login button type", "unlock-protocol")}
+            </p>
+
+            <ToggleControl
+              label={__(
+                "Enable image background for Login button",
+                "unlock-protocol"
+              )}
+              checked={generalSettings?.login_blurred_image_button ?? false}
+              onChange={() =>
+                onChangeValue(
+                  "login_blurred_image_button",
+                  !generalSettings?.login_blurred_image_button
+                )
+              }
+            />
+          </div>
+
+          {/* description option for blurred image button */}
+          {generalSettings?.login_blurred_image_button ?? false ? (
+            <>
+              <div className="group">
+                <TextControl
+                  label={__("Call to action text", "unlock-protocol")}
+                  className={"login-button-text-input"}
+                  value={generalSettings?.login_button_description}
+                  onChange={(value) =>
+                    onChangeValue("login_button_description", value)
+                  }
+                />
+              </div>
+
+              <MediaUpload
+                label={__("Upload login background image", "unlock-protocol")}
+                value={generalSettings?.login_bg_image ?? ""}
+                handle={(data) => {
+                  onChangeValue("login_bg_image", data.url ?? "");
+                }}
               />
-            </div>
+            </>
+          ) : (
+            ""
+          )}
 
-            <div className="group">
-              <p className="components-base-control__label">
-                {__("Login button type", "unlock-protocol")}
-              </p>
+          <div className="group">
+            <p className="components-base-control__label">
+              {__("Login button background color", "unlock-protocol")}
+            </p>
 
-              <ToggleControl
-                label={__(
-                  "Enable image background for Login button",
-                  "unlock-protocol"
-                )}
-                checked={generalSettings?.login_blurred_image_button ?? false}
-                onChange={() =>
-                  onChangeValue(
-                    "login_blurred_image_button",
-                    !generalSettings?.login_blurred_image_button
-                  )
+            <div className="color-picker-container">
+              <ColorIndicator
+                colorValue={generalSettings?.login_button_bg_color ?? "#000"}
+              />
+
+              <ColorPalette
+                colors={[]}
+                value={generalSettings?.login_button_bg_color ?? "#000"}
+                onChange={(color) =>
+                  onChangeValue("login_button_bg_color", color)
                 }
               />
             </div>
+          </div>
 
-            {/* description option for blurred image button */}
-            {generalSettings?.login_blurred_image_button ?? false ? (
-              <>
-                <div className="group">
-                  <TextControl
-                    label={__("Call to action text", "unlock-protocol")}
-                    className={"login-button-text-input"}
-                    value={generalSettings?.login_button_description}
-                    onChange={(value) =>
-                      onChangeValue("login_button_description", value)
-                    }
-                  />
-                </div>
+          <div className="group">
+            <p className="components-base-control__label">
+              {__("Login button text color", "unlock-protocol")}
+            </p>
 
-                <MediaUpload
-                  label={__("Upload login background image", "unlock-protocol")}
-                  value={generalSettings?.login_bg_image ?? ""}
-                  handle={(data) => {
-                    onChangeValue("login_bg_image", data.url ?? "");
-                  }}
-                />
-              </>
-            ) : (
-              ""
-            )}
+            <div className="color-picker-container">
+              <ColorIndicator
+                colorValue={
+                  generalSettings?.login_button_text_color ?? "#fff"
+                }
+              />
 
-            <div className="group">
-              <p className="components-base-control__label">
-                {__("Login button background color", "unlock-protocol")}
-              </p>
-
-              <div className="color-picker-container">
-                <ColorIndicator
-                  colorValue={generalSettings?.login_button_bg_color ?? "#000"}
-                />
-
-                <ColorPalette
-                  colors={[]}
-                  value={generalSettings?.login_button_bg_color ?? "#000"}
-                  onChange={(color) =>
-                    onChangeValue("login_button_bg_color", color)
-                  }
-                />
-              </div>
-            </div>
-
-            <div className="group">
-              <p className="components-base-control__label">
-                {__("Login button text color", "unlock-protocol")}
-              </p>
-
-              <div className="color-picker-container">
-                <ColorIndicator
-                  colorValue={
-                    generalSettings?.login_button_text_color ?? "#fff"
-                  }
-                />
-
-                <ColorPalette
-                  colors={[]}
-                  value={generalSettings?.login_button_text_color ?? "#fff"}
-                  onChange={(color) =>
-                    onChangeValue("login_button_text_color", color)
-                  }
-                />
-              </div>
+              <ColorPalette
+                colors={[]}
+                value={generalSettings?.login_button_text_color ?? "#fff"}
+                onChange={(color) =>
+                  onChangeValue("login_button_text_color", color)
+                }
+              />
             </div>
           </div>
 
@@ -329,22 +327,21 @@ function General() {
                 </p>
               </div>
             </div>
-          </div>
+            <Button
+              type="submit"
+              isPrimary={true}
+              onClick={() => saveGeneralSettings()}
+              isBusy={isSubmitted}
+              disabled={isSubmitted || !isChanged}
+            >
+              {isSubmitted
+                ? __("Saving", "unlock-protocol")
+                : __("Save", "unlock-protocol")}
+            </Button>
+          </div >
         </div>
-
-        <Button
-          type="submit"
-          isPrimary={true}
-          onClick={() => saveGeneralSettings()}
-          isBusy={isSubmitted}
-          disabled={isSubmitted || !isChanged}
-        >
-          {isSubmitted
-            ? __("Saving", "unlock-protocol")
-            : __("Save", "unlock-protocol")}
-        </Button>
       </div>
-    </>
+    </div>
   );
 }
 

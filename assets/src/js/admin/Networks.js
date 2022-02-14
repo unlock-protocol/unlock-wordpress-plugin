@@ -25,7 +25,7 @@ function Networks() {
           setNetworks(resp.networks);
         }
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
 
   /**
