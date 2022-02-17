@@ -140,8 +140,8 @@ class Unlock {
 		// Let's add the default setup in the config too!
 
 		$default_paywall_config = array();
-		if (isset($settings['general']['custom_unlock_checkout_config'])) {
-			$default_paywall_config = json_decode($settings['general']['custom_unlock_checkout_config'], true);
+		if (isset($settings['general']['custom_paywall_config'])) {
+			$default_paywall_config = json_decode($settings['general']['custom_paywall_config'], true);
 		}
 
 		foreach ($locks as $lock) {

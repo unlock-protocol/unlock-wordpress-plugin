@@ -10,9 +10,9 @@ services:
   appserver:
     overrides:
       volumes:
-        - '.lando.wp-cli.yml:/wp-cli.yml'
-        - '.:/app/wordpress/wp-content/plugins/unlock-protocol'
-        - '/app/wordpress/wp-content/plugins/unlock-protocol/wordpress'
+        - ".lando.wp-cli.yml:/wp-cli.yml"
+        - ".:/app/wordpress/wp-content/plugins/unlock-protocol"
+        - "/app/wordpress/wp-content/plugins/unlock-protocol/wordpress"
     build_as_root:
       - apt update -y && apt install -y apt-transport-https
       - curl -sL https://deb.nodesource.com/setup_14.x | bash -
