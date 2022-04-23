@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-06T04:22:49+00:00\n"
+"POT-Creation-Date: 2022-02-17T18:53:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: unlock-protocol\n"
 
 #. Plugin Name of the plugin
@@ -56,7 +56,7 @@ msgid "Connect Your Crypto Wallet"
 msgstr ""
 
 #: inc/classes/class-login.php:106
-#: inc/classes/class-unlock.php:221
+#: inc/classes/class-unlock.php:231
 msgid "Invalid Account"
 msgstr ""
 
@@ -94,40 +94,121 @@ msgstr ""
 msgid "This network ID already exists."
 msgstr ""
 
-#: assets/src/js/admin/App.js:13
-#: assets/src/js/blocks/unlock-content/index.js:11
+#: assets/src/js/admin/App.js:14
+#: assets/src/js/blocks/unlock-content/index.js:10
 msgid "Unlock Protocol"
 msgstr ""
 
-#: assets/src/js/admin/App.js:21
+#: assets/src/js/admin/App.js:24
 msgid "General"
 msgstr ""
 
-#: assets/src/js/admin/App.js:26
+#: assets/src/js/admin/App.js:31
 msgid "Networks"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:58
+#: assets/src/js/admin/General.js:59
+msgid "Updated Successfully!"
+msgstr ""
+
+#: assets/src/js/admin/General.js:107
+msgid "Login Button"
+msgstr ""
+
+#: assets/src/js/admin/General.js:112
+msgid "Login button text"
+msgstr ""
+
+#: assets/src/js/admin/General.js:120
+msgid "Login button type"
+msgstr ""
+
+#: assets/src/js/admin/General.js:124
+msgid "Enable image background for Login button"
+msgstr ""
+
+#: assets/src/js/admin/General.js:143
+#: assets/src/js/admin/General.js:252
+msgid "Call to action text"
+msgstr ""
+
+#: assets/src/js/admin/General.js:152
+msgid "Upload login background image"
+msgstr ""
+
+#: assets/src/js/admin/General.js:165
+msgid "Login button background color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:185
+msgid "Login button text color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:209
+msgid "Checkout Button"
+msgstr ""
+
+#: assets/src/js/admin/General.js:216
+msgid "Checkout button text"
+msgstr ""
+
+#: assets/src/js/admin/General.js:227
+msgid "Checkout button type"
+msgstr ""
+
+#: assets/src/js/admin/General.js:231
+msgid "Enable image background for Checkout button"
+msgstr ""
+
+#: assets/src/js/admin/General.js:262
+msgid "Upload checkout background image"
+msgstr ""
+
+#: assets/src/js/admin/General.js:278
+msgid "Checkout button background color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:300
+msgid "Checkout button text color"
+msgstr ""
+
+#: assets/src/js/admin/General.js:323
+msgid "Checkout URL"
+msgstr ""
+
+#: assets/src/js/admin/General.js:328
+msgid "Custom Paywall Config"
+msgstr ""
+
+#: assets/src/js/admin/General.js:346
+msgid "Saving"
+msgstr ""
+
+#: assets/src/js/admin/General.js:347
+msgid "Save"
+msgstr ""
+
+#: assets/src/js/admin/Networks.js:57
 msgid "Added Successfully!"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:83
+#: assets/src/js/admin/Networks.js:81
 msgid "Are you sure?"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:84
+#: assets/src/js/admin/Networks.js:82
 msgid "You won't be able to revert this!"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:89
+#: assets/src/js/admin/Networks.js:87
 msgid "Yes, delete it!"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:105
+#: assets/src/js/admin/Networks.js:103
 msgid "Deleted!"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:106
+#: assets/src/js/admin/Networks.js:104
 msgid "Network has been deleted successfully!"
 msgstr ""
 
@@ -135,99 +216,99 @@ msgstr ""
 msgid "Add a new network"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:148
+#: assets/src/js/admin/Networks.js:156
 msgid "Network name"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:157
-#: assets/src/js/admin/Networks.js:191
+#: assets/src/js/admin/Networks.js:165
+#: assets/src/js/admin/Networks.js:202
 msgid "Network ID"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:167
+#: assets/src/js/admin/Networks.js:175
 msgid "Network RPC endpoint"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:183
+#: assets/src/js/admin/Networks.js:192
 msgid "Adding..."
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:183
+#: assets/src/js/admin/Networks.js:193
 msgid "Add network"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:192
+#: assets/src/js/admin/Networks.js:206
 msgid "Network Name"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:193
+#: assets/src/js/admin/Networks.js:210
 msgid "Network RPC Endpoint"
 msgstr ""
 
-#: assets/src/js/admin/Networks.js:199
+#: assets/src/js/admin/Networks.js:218
 msgid "Delete"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:7
+#: assets/src/js/admin/utils/media-upload.js:14
 msgid "Upload your image"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:8
+#: assets/src/js/admin/utils/media-upload.js:15
 msgid "Open Media Library"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:9
+#: assets/src/js/admin/utils/media-upload.js:16
 msgid "Recommended image height is 300px."
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:16
+#: assets/src/js/admin/utils/media-upload.js:24
 msgid "Insert Image"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:21
+#: assets/src/js/admin/utils/media-upload.js:29
 msgid "Use this image"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:54
+#: assets/src/js/admin/utils/media-upload.js:65
 msgid "Set Default"
 msgstr ""
 
-#: assets/src/js/admin/utils/media-upload.js:60
+#: assets/src/js/admin/utils/media-upload.js:74
 msgid "Unlock Protocol Image"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:62
+#: assets/src/js/blocks/unlock-content/edit.js:73
 msgid "None"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:103
+#: assets/src/js/blocks/unlock-content/edit.js:112
 msgid "Please configure the lock(s) on this block."
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:126
+#: assets/src/js/blocks/unlock-content/edit.js:136
 msgid "Locks"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:131
+#: assets/src/js/blocks/unlock-content/edit.js:141
 msgid "Network"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:139
+#: assets/src/js/blocks/unlock-content/edit.js:152
 msgid "Lock Address"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:147
+#: assets/src/js/blocks/unlock-content/edit.js:167
 msgid "Lock address is not valid"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:159
+#: assets/src/js/blocks/unlock-content/edit.js:194
 msgid "Unlock's documentation"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/edit.js:165
+#: assets/src/js/blocks/unlock-content/edit.js:204
 msgid "Deploy a lock"
 msgstr ""
 
-#: assets/src/js/blocks/unlock-content/index.js:17
+#: assets/src/js/blocks/unlock-content/index.js:16
 msgid "A block to add lock(s) to the content inside of WordPress."
 msgstr ""

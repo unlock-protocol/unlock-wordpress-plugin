@@ -99,16 +99,17 @@ function General() {
   return (
     <>
       <div className="settings_container__general">
-        <h4>{__("General Settings", "unlock-protocol")}</h4>
 
         {renderNotice()}
 
+
         <div className="input-container">
+          <h2>{__("Login Button", "unlock-protocol")}</h2>
+
           <div className="form-inputs">
             <div className="group">
               <TextControl
                 label={__("Login button text", "unlock-protocol")}
-                className={"login-button-text-input"}
                 value={generalSettings?.login_button_text}
                 onChange={(value) => onChangeValue("login_button_text", value)}
               />
@@ -140,7 +141,6 @@ function General() {
                 <div className="group">
                   <TextControl
                     label={__("Call to action text", "unlock-protocol")}
-                    className={"login-button-text-input"}
                     value={generalSettings?.login_button_description}
                     onChange={(value) =>
                       onChangeValue("login_button_description", value)
@@ -201,8 +201,13 @@ function General() {
                 />
               </div>
             </div>
+          </div>
+        </div>
 
-            <hr />
+
+        <div className="input-container">
+          <h2>{__("Checkout Button", "unlock-protocol")}</h2>
+          <div className="form-inputs">
 
             {/* checkout options */}
 
@@ -313,6 +318,22 @@ function General() {
             </div>
           </div>
         </div>
+
+        <div className="input-container">
+          <h2>{__("Checkout URL", "unlock-protocol")}</h2>
+
+          <div className="form-inputs">
+
+            <TextControl
+              label={__("Custom Paywall Config", "unlock-protocol")}
+              value={generalSettings?.custom_paywall_config}
+              onChange={(value) => onChangeValue("custom_paywall_config", value)}
+            />
+
+
+          </div>
+        </div>
+
 
         <Button
           type="submit"
