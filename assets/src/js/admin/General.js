@@ -323,17 +323,37 @@ function General() {
           <h2>{__("Checkout URL", "unlock-protocol")}</h2>
 
           <div className="form-inputs">
-
             <TextControl
               label={__("Custom Paywall Config", "unlock-protocol")}
               value={generalSettings?.custom_paywall_config}
               onChange={(value) => onChangeValue("custom_paywall_config", value)}
+              help="See `Configuring Checkout` in the Unlock Protocol docs."
             />
-
-
           </div>
         </div>
 
+
+        <div className="input-container">
+          <h2>{__("Advanced", "unlock-protocol")}</h2>
+
+          <div className="form-inputs">
+            <TextControl
+              label={__("Checkout URL base", "unlock-protocol")}
+              value={generalSettings?.checkout_url_base}
+              onChange={(value) => onChangeValue("checkout_url_base", value)}
+              help="Default: https://app.unlock-protocol.com/checkout"
+            />
+          </div>
+
+          <div className="form-inputs">
+            <TextControl
+              label={__("Locksmith URL base", "unlock-protocol")}
+              value={generalSettings?.locksmith_url_base}
+              onChange={(value) => onChangeValue("locksmith_url_base", value)}
+              help="Default: https://locksmith.unlock-protocol.com/api/oauth"
+            />
+          </div>
+        </div>
 
         <Button
           type="submit"
