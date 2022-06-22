@@ -31,9 +31,7 @@ class Unlock {
 			filter_var($settings['general']['locksmith_url_base'], FILTER_VALIDATE_URL)) {
 			$locksmith_url_base = $settings['general']['locksmith_url_base'];
 		}
-		// return $locksmith_url_base;
-		return "http://localhost:8080/api/oauth";
-
+		return $locksmith_url_base;
 	}
 
 	/**
