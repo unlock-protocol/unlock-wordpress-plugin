@@ -98,8 +98,10 @@ To be completed with questions!
 
 == Changelog ==
 
+
 = 3.2.1 =
 
+* Changed default RPC endpoint for gnosis chain
 * support for PHP7.0
 * checkout URL customization
 * endpoint customization

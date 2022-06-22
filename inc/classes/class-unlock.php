@@ -296,9 +296,9 @@ class Unlock {
 				'network_rpc_endpoint' => 'https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
 			),
 			'xdai'     => array(
-				'network_name'         => 'xdai',
+				'network_name'         => 'gnosis chain',
 				'network_id'           => 100,
-				'network_rpc_endpoint' => 'https://rpc.xdaichain.com/',
+				'network_rpc_endpoint' => 'https://rpc.gnosischain.com/',
 			),
 			'polygon'  => array(
 				'network_name'         => 'polygon',
