@@ -21,22 +21,33 @@ class Unlock {
 	use Singleton;
 
 	/**
-	 * Login base url.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @var string
+	 * Returns the locksmith base URL used to validate the auth tokens.
 	 */
-	const BASE_URL = 'https://app.unlock-protocol.com/checkout';
+	public static function get_locksmith_validate_url_base() {
+		$settings = get_option( 'unlock_protocol_settings', array() );
+
+		$locksmith_url_base = 'https://locksmith.unlock-protocol.com/api/oauth';
+		if (isset($settings['general']['locksmith_url_base']) && 
+			filter_var($settings['general']['locksmith_url_base'], FILTER_VALIDATE_URL)) {
+			$locksmith_url_base = $settings['general']['locksmith_url_base'];
+		}
+		// return $locksmith_url_base;
+		return "http://localhost:8080/api/oauth";
+
+	}
 
 	/**
-	 * Validation url.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @var string
+	 * Returns the checkout base URL used to for both auth and checkout.
 	 */
-	const VALIDATE_URL = 'https://locksmith.unlock-protocol.com/api/oauth';
+	public static function get_checkout_url_base() {
+		$settings = get_option( 'unlock_protocol_settings', array() );
+		$checkout_url_base = 'https://app.unlock-protocol.com/checkout';
+		if (isset($settings['general']['checkout_url_base']) && 
+			filter_var($settings['general']['checkout_url_base'], FILTER_VALIDATE_URL)) {
+			$checkout_url_base = $settings['general']['checkout_url_base'];
+		}
+		return $checkout_url_base;
+	}
 
 	/**
 	 * Post call to validate if a user has access to a content.
@@ -158,13 +169,12 @@ class Unlock {
 				)
 			)
 		);
-
 		$checkout_url = add_query_arg(
 			array(
 				'redirectUri'   => $redirect_uri,
 				'paywallConfig' => wp_json_encode( $paywall_config ),
 			),
-			self::BASE_URL
+			self::get_checkout_url_base()
 		);
 
 		return $checkout_url;
@@ -219,7 +229,7 @@ class Unlock {
 			'blocking'    => true,
 		);
 
-		$response = wp_remote_post( esc_url( self::VALIDATE_URL ), $args );
+		$response = wp_remote_post( esc_url( self::get_locksmith_validate_url_base() ), $args );
 
 		if ( is_wp_error( $response ) ) {
 			return new \WP_Error( 'unlock_validate_auth_code', $response );
@@ -250,7 +260,7 @@ class Unlock {
 				'redirect_uri' => $redirect_uri ? $redirect_uri : self::get_redirect_uri(),
 				'state'        => wp_create_nonce( 'unlock_login_state' ),
 			),
-			self::BASE_URL
+			self::get_checkout_url_base()
 		);
 
 		return apply_filters( 'unlock_protocol_get_login_url', $login_url );
