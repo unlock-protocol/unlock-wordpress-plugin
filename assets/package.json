@@ -1,6 +1,6 @@
 {
   "name": "unlock-protocol-plugin",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "A plugin to add lock(s) to blocks of content inside of Wordpress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.",
   "main": "src/js/index.js",
   "scripts": {

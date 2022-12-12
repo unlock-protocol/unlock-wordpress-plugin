@@ -274,44 +274,39 @@ class Unlock {
 	public static function networks_list() {
 		$networks = array(
 			'mainnet'  => array(
+				'network_name'         => 'goerli',
+				'network_id'           => 5,
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/5',
+			),
+			'mainnet'  => array(
 				'network_name'         => 'mainnet',
 				'network_id'           => 1,
-				'network_rpc_endpoint' => 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-			),
-			'ropsten'  => array(
-				'network_name'         => 'ropsten',
-				'network_id'           => 3,
-				'network_rpc_endpoint' => 'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-			),
-			'rinkeby'  => array(
-				'network_name'         => 'rinkeby',
-				'network_id'           => 4,
-				'network_rpc_endpoint' => 'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-			),
-			'kovan'    => array(
-				'network_name'         => 'kovan',
-				'network_id'           => 42,
-				'network_rpc_endpoint' => 'https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/1',
 			),
 			'xdai'     => array(
 				'network_name'         => 'gnosis chain',
 				'network_id'           => 100,
-				'network_rpc_endpoint' => 'https://rpc.gnosischain.com/',
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/100',
 			),
 			'polygon'  => array(
 				'network_name'         => 'polygon',
 				'network_id'           => 137,
-				'network_rpc_endpoint' => 'https://rpc-mainnet.maticvigil.com/',
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/137',
+			),
+			'optimism'     => array(
+				'network_name'         => 'Optimism',
+				'network_id'           => 10,
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/10',
 			),
 			'arbitrum' => array(
 				'network_name'         => 'arbitrum',
 				'network_id'           => 42161,
-				'network_rpc_endpoint' => 'https://arb1.arbitrum.io/rpc',
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/42161',
 			),
 			'binance'  => array(
-				'network_name'         => 'binance',
+				'network_name'         => 'BNB Chain',
 				'network_id'           => 56,
-				'network_rpc_endpoint' => 'https://bsc-dataseed.binance.org/',
+				'network_rpc_endpoint' => 'https://rpc.unlock-protocol.com/56',
 			),
 		);
 
