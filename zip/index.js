@@ -40,6 +40,7 @@ shell.rm("-rf", DEST);
 shell.rm("-f", resolve("unlock-wordpress-plugin-*.zip"));
 shell.mkdir("-p", DEST + "/assets/build");
 
+
 const include = [
   "assets/build/css",
   "assets/build/images",
@@ -57,6 +58,9 @@ include.forEach((item) => {
 });
 
 shell.cp("-r", './README.txt', resolve(DEST, 'README.txt'));
+
+// UPDATE DEV EDITION
+shell.sed('-i', 'DEV EDITION', '', resolve(DEST, 'unlock-protocol.php'));
 
 console.log("Making zip...");
 shell.exec(
