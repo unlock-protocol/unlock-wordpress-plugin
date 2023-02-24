@@ -87,6 +87,9 @@ Hurray - Thanks for contributing to Unlock Protocol as a community!
 
 And finally, create the release on Github'si UI
 
+#### Contributing Developers Video Guide
+Watch step by step guide video on how to contribute to this Unlock wp plugin repo.
+
 
 ## == Frequently Asked Questions ==
 
