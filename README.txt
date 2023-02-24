@@ -1,27 +1,26 @@
 === Unlock Protocol ===
 Contributors: julien51
-Donate link: https://donate.unlock-protocol.com/?r=unlock-protocol/unlock
 Tags: paywall, ethereum, monetization, unlock, membership, subscription, member
 Requires at least: 5.1
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 3.2.3
+Stable tag: 4.0.0
 License: GPLv3
 License URI: https://github.com/unlock-protocol/unlock-wordpress-plugin/blob/master/LICENSE
 
-This plugin lets authors adds locks to their posts and pages so that only paying visitors can view their content.
+This plugin lets authors add locks to their posts and pages so that only paying visitors can view their content.
 
 == Description ==
 
-[Unlock](https://unlock-protocol.com/) is a protocol for memberships which lets any creator monetize their content in a permissionless way.
+[Unlock](https://unlock-protocol.com/) is a protocol for memberships that lets any creator monetize their content in a permissionless way.
 
-You can [try a demo on this site](https://wordpress-demo.unlock-protocol.com/) where the content of the post changes on whether the visitor is a member or not.
+You can [try a demo on this site](https://wordpress-demo.unlock-protocol.com/), where the content of the post changes on whether the visitor is a member or not.
 
-In order to become members, visitors need to be using a web3 enabled wallet such as [MetaMask](https://metamask.io/) or a web browser with an embeded wallet, such as [Opera](https://www.opera.com/crypto). They also need a balance of crypto-currency in order to purchase the memberships.
+In order to become members, visitors may need to be using a web3 enabled wallet such as [MetaMask](https://metamask.io/) or a web browser with an embedded wallet, such as [Opera](https://www.opera.com/crypto). They also need a balance of crypto-currency in order to purchase the memberships.
 
 == Getting Started ==
 
-If you'd like to add a lock to your site, start by [deploying your first lock](https://docs.unlock-protocol.com/creators/deploying-lock).
+If you'd like to add a lock to your site, start by [deploying your first lock]https://app.unlock-protocol.com/locks/create).
 
 While the lock is deploying you should [download this plugin](https://wordpress.org/plugins/unlock-protocol/) from the WordPress site. Then, from the administration of your WordPress.org website, in the `Plugins` section, click on the `Add New` button and then on the `Upload Plugin` button to upload the plugin.
 
@@ -47,23 +46,12 @@ This plugin is, like all of the Unlock code, [open source](https://github.com/un
 
 = Local Development =
 
-To setup local development environment for the plugin using [Lando](https://docs.lando.dev/basics/installation.html) local dev environment, simply clone the repo from [GitHub](https://github.com/unlock-protocol/unlock-wordpress-plugin) and write
+To setup local development environment for the plugin using we recommend using [Localwp](https://localwp.com/). To get started, simply clone the repo from [GitHub](https://github.com/unlock-protocol/unlock-wordpress-plugin).
 
-    lando start
 
-About live editing, from the assets directory, when editing the main.scss, you can run:
+The repo includes a `unlock-wordpress-plugin` which has the required `.php` files and in which asset files (javascript, CSS and images) are added at build time.
 
-    lando npm run start
-
-when editing any block related JS or CSS, use:
-
-    lando npm run start:blocks
-
-when editing any admin related JS or CSS:
-
-    lando npm run start:admin
-
-It should do the auto reload and provide you with live changes.
+You can package the whole plugin by using `yarn run release` and install it in your local WordPress instance. Alternatively, you can add a symbolic link in the local WordPress's `wp-content/plugins` folder that points to the `unlock-wordpress-plugin`.
 
 = Publishing the plugin =
 
@@ -73,7 +61,7 @@ In order to update the plugin, check out the current subversion state with
 
 Then, from the GitHub repo clone, inside the `assets` folder, write
 
-    lando npm run release
+    yarn run release
 
 This will generate a zip file in dist directory, unzip that file and copy the content to trunk directory in svn repo and commit the changes into svn with
 
@@ -84,12 +72,12 @@ Then, tag the new version (replace X and Y!) to release it:
     svn cp trunk tags/X.Y
     svn ci -m "tagging version X.Y"
 
-Additionnaly, please make sure you tag the version on Github:
+Additionaly, please make sure you tag the version on Github:
 
     git tag -a X.Y -m "tagging version X.Y"
     git push origin X.Y
 
-And finally create the release on Github'si UI
+And finally, create the release on Github'si UI
 
 
 == Frequently Asked Questions ==
@@ -98,6 +86,9 @@ To be completed with questions!
 
 == Changelog ==
 
+= 4.0.0 =
+
+* Re-architected plugin
 
 = 3.2.3 =
 

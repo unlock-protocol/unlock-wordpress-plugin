@@ -7,7 +7,7 @@ function resolve(...paths) {
   return path.resolve(__dirname, ...paths);
 }
 
-const DEST = resolve("../../dist/unlock-wordpress-plugin");
+const DEST = resolve("../dist/unlock-wordpress-plugin");
 const packageInfo = JSON.parse(fs.readFileSync("package.json"));
 const args = minimist(process.argv.slice(2));
 
@@ -48,18 +48,19 @@ const include = [
   "languages",
   "templates",
   "unlock-protocol.php",
-  "README.txt",
 ];
 
 console.log("Copying files...");
 
 include.forEach((item) => {
-  shell.cp("-r", resolve("../../", item), resolve(DEST, item));
+  shell.cp("-r", resolve("../unlock-wordpress-plugin/", item), resolve(DEST, item));
 });
+
+shell.cp("-r", './README.txt', resolve(DEST, 'README.txt'));
 
 console.log("Making zip...");
 shell.exec(
-  `cd ${resolve("../../dist")} && zip ${zip} unlock-wordpress-plugin -rq`
+  `cd ${resolve("../dist")} && zip ${zip} unlock-wordpress-plugin -rq`
 );
 
 shell.rm("-rf", resolve(DEST));

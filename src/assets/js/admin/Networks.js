@@ -190,7 +190,7 @@ function Networks() {
           >
             {isSubmitted
               ? __("Adding...", "unlock-protocol")
-              : __("Add network", "unlock-protocol")}
+              : __("Save", "unlock-protocol")}
           </Button>
         </div>
 
