@@ -3,7 +3,7 @@ Contributors: julien51
 Donate link: https://donate.unlock-protocol.com/?r=unlock-protocol/unlock
 Tags: paywall, ethereum, monetization, unlock, membership, subscription, member
 Requires at least: 5.1
-Tested up to: 5.9
+Tested up to: 6.1.1
 Requires PHP: 7.0
 Stable tag: 3.2.3
 License: GPLv3
@@ -47,7 +47,7 @@ This plugin is, like all of the Unlock code, [open source](https://github.com/un
 
 = Local Development =
 
-To setup the local development environment for the plugin using [LocalWP](https://localwp.com/) local dev environment:
+To set up the local development environment for the plugin using [LocalWP](https://localwp.com/) local dev environment:
 
 1. Simply download and install the LocalWP.
 
@@ -55,7 +55,7 @@ To setup the local development environment for the plugin using [LocalWP](https:
 
 3. Download this Unlock WP Plugin repo as a zip file.
 
-4. Login to WP admin of your local dev wp website created in step (2) above.
+4. Login to the WP admin of your local dev wp website created in step (2) above.
 
 5. Go to `Plugins`, click `Add New` , then click `Upload Plugin`.
 
