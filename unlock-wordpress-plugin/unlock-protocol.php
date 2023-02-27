@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Unlock Protocol Plugin
+ * Plugin Name: Unlock Protocol Plugin DEV EDITION
  * Description:  A plugin to add lock(s) to blocks of content inside of WordPress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.
  * Plugin URI:  https://github.com/unlock-protocol/unlock-wordpress-plugin
  * Author:      Unlock
@@ -11,7 +11,7 @@
  * @package unlock-protocol
  */
 
-define( 'UNLOCK_PLUGIN_VERSION', '3.2.3' );
+define( 'UNLOCK_PLUGIN_VERSION', '4.0.0' );
 define( 'UNLOCK_PROTOCOL_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'UNLOCK_PROTOCOL_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'UNLOCK_PROTOCOL_BUILD_DIR', UNLOCK_PROTOCOL_PATH . '/assets/build' );

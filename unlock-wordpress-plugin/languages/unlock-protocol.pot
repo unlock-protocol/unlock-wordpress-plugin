@@ -1,0 +1,358 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-02-24T19:45:21+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: unlock-protocol\n"
+
+#: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:95
+msgid "Login with Unlock"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:110
+#: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:160
+msgid "To view this content please"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:145
+msgid "Purchase this"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-assets.php:87
+msgid "You can add any Ethereum network where you have deployed your lock."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-login.php:65
+msgid "Connect Your Crypto Wallet"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-login.php:106
+#: unlock-wordpress-plugin/inc/classes/class-unlock.php:239
+msgid "Invalid Account"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-login.php:182
+msgid "Registration is not allowed."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-menu.php:64
+msgid "Network Settings > Allow new registrations > User accounts may be registered"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-menu.php:67
+msgid "Settings > General > Anyone can register"
+msgstr ""
+
+#. translators: %s: url
+#: unlock-wordpress-plugin/inc/classes/class-menu.php:72
+msgid "Unlock Protocol has detected that user registrations are disabled on this website. Please make sure that %s is enabled."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/class-menu.php:120
+msgid "Settings"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-rest-base.php:49
+msgid "You have no permission to do that"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:135
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:203
+msgid "Inputs can not be empty!"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:219
+msgid "This network ID already exists."
+msgstr ""
+
+#: src/assets/js/admin/App.js:14
+#: src/assets/js/blocks/unlock-content/index.js:10
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Unlock Protocol"
+msgstr ""
+
+#: src/assets/js/admin/App.js:24
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "General"
+msgstr ""
+
+#: src/assets/js/admin/App.js:31
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Networks"
+msgstr ""
+
+#: src/assets/js/admin/General.js:59
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Updated Successfully!"
+msgstr ""
+
+#: src/assets/js/admin/General.js:107
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Login Button"
+msgstr ""
+
+#: src/assets/js/admin/General.js:112
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Login button text"
+msgstr ""
+
+#: src/assets/js/admin/General.js:120
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Login button type"
+msgstr ""
+
+#: src/assets/js/admin/General.js:124
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Enable image background for Login button"
+msgstr ""
+
+#: src/assets/js/admin/General.js:143
+#: src/assets/js/admin/General.js:252
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Call to action text"
+msgstr ""
+
+#: src/assets/js/admin/General.js:152
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Upload login background image"
+msgstr ""
+
+#: src/assets/js/admin/General.js:165
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Login button background color"
+msgstr ""
+
+#: src/assets/js/admin/General.js:185
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Login button text color"
+msgstr ""
+
+#: src/assets/js/admin/General.js:209
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout Button"
+msgstr ""
+
+#: src/assets/js/admin/General.js:216
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout button text"
+msgstr ""
+
+#: src/assets/js/admin/General.js:227
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout button type"
+msgstr ""
+
+#: src/assets/js/admin/General.js:231
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Enable image background for Checkout button"
+msgstr ""
+
+#: src/assets/js/admin/General.js:262
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Upload checkout background image"
+msgstr ""
+
+#: src/assets/js/admin/General.js:278
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout button background color"
+msgstr ""
+
+#: src/assets/js/admin/General.js:300
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout button text color"
+msgstr ""
+
+#: src/assets/js/admin/General.js:323
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout URL"
+msgstr ""
+
+#: src/assets/js/admin/General.js:327
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Custom Paywall Config"
+msgstr ""
+
+#: src/assets/js/admin/General.js:337
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Advanced"
+msgstr ""
+
+#: src/assets/js/admin/General.js:341
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Checkout URL base"
+msgstr ""
+
+#: src/assets/js/admin/General.js:350
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Locksmith URL base"
+msgstr ""
+
+#: src/assets/js/admin/General.js:366
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Saving"
+msgstr ""
+
+#: src/assets/js/admin/General.js:367
+#: src/assets/js/admin/Networks.js:193
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Save"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:57
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Added Successfully!"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:81
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Are you sure?"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:82
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "You won't be able to revert this!"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:87
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Yes, delete it!"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:103
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Deleted!"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:104
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Network has been deleted successfully!"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:138
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Add a new network"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:156
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Network name"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:165
+#: src/assets/js/admin/Networks.js:202
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Network ID"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:175
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Network RPC endpoint"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:192
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Adding..."
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:206
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Network Name"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:210
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Network RPC Endpoint"
+msgstr ""
+
+#: src/assets/js/admin/Networks.js:218
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Delete"
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:14
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Upload your image"
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:15
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Open Media Library"
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:16
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Recommended image height is 300px."
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:24
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Insert Image"
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:29
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Use this image"
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:65
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Set Default"
+msgstr ""
+
+#: src/assets/js/admin/utils/media-upload.js:74
+#: unlock-wordpress-plugin/assets/build/js/admin.js:1
+msgid "Unlock Protocol Image"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:73
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "None"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:112
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Please configure the lock(s) on this block."
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:136
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Locks"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:141
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Network"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:152
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Lock Address"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:167
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Lock address is not valid"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:194
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Unlock's documentation"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/edit.js:204
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "Deploy a lock"
+msgstr ""
+
+#: src/assets/js/blocks/unlock-content/index.js:16
+#: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+msgid "A block to add lock(s) to the content inside of WordPress."
+msgstr ""
