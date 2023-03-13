@@ -111,16 +111,26 @@ class Unlock_Full_Post {
   
   // Save custom meta data
   function save_custom_meta($post_id) {
+	
 	if (isset($_POST['unlock_network_meta'])) {
+
 	  update_post_meta($post_id, 'unlock_network_meta', sanitize_text_field($_POST['unlock_network_meta']));
+
 	  if (isset($_POST['unlock_id_meta'])) {
+
 		update_post_meta($post_id, 'unlock_id_meta', sanitize_text_field($_POST['unlock_id_meta']));
+
 	  } else {
+
 		delete_post_meta($post_id, 'unlock_id_meta');
+
 	  }
 	} else {
+
 	  delete_post_meta($post_id, 'unlock_network_meta');
+
 	  delete_post_meta($post_id, 'unlock_id_meta');
+
 	}
   }
 

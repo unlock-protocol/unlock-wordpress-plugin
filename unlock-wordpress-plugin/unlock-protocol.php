@@ -37,6 +37,4 @@ function unlock_protocol_plugin_loader() {
 
 unlock_protocol_plugin_loader();
 
-// Include full page/post lock features
-// require_once plugin_dir_path( __FILE__ ) . 'inc/locks/fullpostpage/lock-full-post-page.php';
 

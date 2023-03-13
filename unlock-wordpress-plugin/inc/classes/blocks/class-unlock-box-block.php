@@ -43,19 +43,13 @@ class Unlock_Box_Block {
 		 * Actions.
 		 */
 		add_action( 'init', array( $this, 'register_block_type' ) );
-
-		//option1
-		// add_action('add_meta_boxes', array( $this, 'add_meta_box' ) );
-		// add_action('save_post', array( $this, 'save_custom_meta' ) );
-
-		//Option2
+	
 		add_action('add_meta_boxes', array( $this, 'unlock_pv2_add_custom_meta_box' ) );
-		add_action('save_post', array( $this, 'unlock_pv2_save_custom_meta' ) );
 		add_action('the_content', array( $this, 'unlock_pv2_render_content' ) );
-
-
-
+		add_action( 'save_post', array( $this, 'unlock_pv2_save_custom_meta' ) );
 	}
+
+	
 
 	/**
 	 * Register block type.
@@ -190,55 +184,78 @@ class Unlock_Box_Block {
 
 
 // ===================================================================START OF FULL POST/PAGE CONTENT LOCK/UNLOCK FEATURE
+
 // Create and Add custom meta box with "Add Lock" button
-function unlock_pv2_add_custom_meta_box() 
-{
+public function unlock_pv2_add_custom_meta_box() {
     $post_types = get_post_types(); //detect any custom post types like courses and add lock features automatically
     foreach ($post_types as $post_type) {
         add_meta_box(
             'unlock_pv2_meta_box', // ID
             'Unlock Protocol', // title
-			array( $this, 'unlock_pv2_show_custom_meta_box' ), // callback function
+            array( $this, 'unlock_pv2_show_custom_meta_box' ), // callback function
             $post_type, // post type
             'side', // position
-            'high' // priority
+            'high', // priority
+			array(
+				'locks'      => array(
+					'type'    => 'array',
+					'default' => array(),
+				),
+				'ethereumNetworks' => array(
+					'type'    => 'array',
+					'default' => array(),
+				),
+			)
         );
     }
 }
 
 
+
+
+
+
 // Show custom meta box with "Lock Networks" dropdown and "Lock Contract ID" input box
-function unlock_pv2_show_custom_meta_box() 
+ public function unlock_pv2_show_custom_meta_box() 
 {
+
+	// Add nonce for security and authentication.
+	// wp_nonce_field( 'unlock_pv2_meta_box', 'unlock_pv2_meta_box_nonce' );
+
     global $post;
     $meta_network = get_post_meta($post->ID, 'unlock_pv2_network_meta', true);
     $meta_id = get_post_meta($post->ID, 'unlock_pv2_id_meta', true);
+	$networkList = get_option('unlock_protocol_settings');
+	// var_dump($networkList);
     
     ?>
   
-        <button id="add-lock-button" onclick="toggleLockInputs()">Add Lock</button>
+        <button id="add-lock-button" onclick="toggleLockInputs()" class="button button-primary">Add Lock</button>
 
-        <div id="lock-inputs" style="display: none;">
-            <label for="unlock_pv2_network_meta">Lock Networks:</label>
-            <select name="unlock_pv2_network_meta" id="unlock-network-select" onchange="toggleLockIdInput()">
-            <option value="" <?php selected($meta_network, ""); ?>></option>
-            <option value="mainnet" <?php selected($meta_network, "mainnet"); ?>>Mainnet</option>
-            <option value="polygon" <?php selected($meta_network, "polygon"); ?>>Polygon</option>
-            <option value="gnosis" <?php selected($meta_network, "gnosis"); ?>>Gnosis</option>
-            <option value="bnbchain" <?php selected($meta_network, "bnbchain"); ?>>BNBChain</option>
-            <option value="optimism" <?php selected($meta_network, "optimism"); ?>>Optimism</option>
-            <option value="arbitrum" <?php selected($meta_network, "arbitrum"); ?>>Arbitrum</option>
+        <div id="lock-network-inputs" style="display: none;">
+            <label for="unlock-pv2-network-label">Lock Networks:</label>
+            <select name="unlock-pv2-network-select" id="unlock-pv2-network-select" onchange="toggleLockIdInput()">
+                <option value="" <?php selected($meta_network, ""); ?>></option>
+                <?php foreach ($networkList['networks'] as $network) { ?>
+                    <option value="<?php echo esc_attr($network['network_name']); ?>" <?php selected($meta_network, $network['network_name']); ?>><?php echo esc_html($network['network_name']); ?></option>
+                <?php } ?>
             </select>
 
             <div id="lock-id-input" style="display: <?php echo ($meta_network ? "block" : "none"); ?>;">
-            <label for="unlock_pv2_id_meta">Lock Contract ID:</label>
-            <input type="text" name="unlock_pv2_id_meta" id="unlock-id-input" value="<?php echo esc_attr($meta_id); ?>" />
-            </div>
+				<label for="unlock-pv2-lock-id-label">Lock Contract ID:</label>
+				<input type="text" name="unlock-pv2-lock-id-input" id="unlock-pv2-lock-id-input" value="<?php echo esc_attr($meta_id); ?>" />
+			</div>
+
+			<br>
+        	<div id="unlock-pv2-lock-setup-notification"></div>
+
+
         </div>
 
-        <script>
-            function toggleLockInputs() {
-                var lockInputs = document.getElementById("lock-inputs");
+        <script>				
+
+			function toggleLockInputs() {
+                var lockInputs = document.getElementById("lock-network-inputs");
                 if (lockInputs.style.display === "none") {
                     lockInputs.style.display = "block";
                     document.getElementById("add-lock-button").innerHTML = "Remove Lock";
@@ -250,46 +267,19 @@ function unlock_pv2_show_custom_meta_box()
 
             function toggleLockIdInput() {
                 var lockIdInput = document.getElementById("lock-id-input");
-                if (document.getElementById("unlock-network-select").value === "") {
+                if (document.getElementById("unlock-pv2-network-select").value === "") {
                     lockIdInput.style.display = "none";
                 } else {
                     lockIdInput.style.display = "block";
                 }
             }
+
         </script>
     <?php
 }
   
 
 
-
-// Network Input: Validate and sanitize network input
-function unlock_pv2_validate_network_input($input) 
-{
-    $valid_networks = array('mainnet', 'polygon', 'gnosis', 'bnb', 'optimism', 'arbitrum');
-    if (in_array($input, $valid_networks)) {
-        return sanitize_text_field($input);
-    } else {
-        return '';
-    }
-}
-
-
-
-
-// Lock Contract ID: Validate and sanitize Contract ID input
-function unlock_pv2_validate_contract_id_input($input) 
-{
-    // Sanitize input
-    $input = sanitize_text_field($input);
-
-    // Check if input is a valid Ethereum address
-    if (preg_match('/^(0x)?[0-9a-f]{40}$/i', $input)) {
-        return $input;
-    } else {
-        return 'error: invalid lock contract address ID added';
-    }
-}
 
 
 
@@ -298,7 +288,7 @@ function unlock_pv2_save_custom_meta($post_id)
 {
     if (isset($_POST['unlock_pv2_network_meta'])) {
         
-        $network_input = unlock_pv2_validate_network_input($_POST['unlock_pv2_network_meta']);
+        $network_input = sanitize_text_field( $_POST['unlock-pv2-network-select'] );
         
         if ($network_input) {
 
@@ -307,7 +297,7 @@ function unlock_pv2_save_custom_meta($post_id)
 
             if (isset($_POST['unlock_pv2_id_meta'])) {
 
-                $id_input = unlock_pv2_validate_contract_id_input($_POST['unlock_pv2_id_meta']);
+                $id_input = sanitize_text_field( $_POST['unlock-pv2-lock-id-input'] );
 
                 if (!is_wp_error($id_input)) {
 
@@ -319,6 +309,10 @@ function unlock_pv2_save_custom_meta($post_id)
         }
     }
 }
+
+
+
+
 
 
 
