@@ -36,3 +36,6 @@ function unlock_protocol_plugin_loader() {
 }
 
 unlock_protocol_plugin_loader();
+
+// Include the prompts functions file
+require_once plugin_dir_path( __FILE__ ) . 'unlock_pv2/includes/fullpostpage/lock-fpp.php';
