@@ -56,4 +56,6 @@ register_activation_hook( __FILE__, 'unlock_protocol_activate' );
 
 // Include the Unlock Protocol Plugin Version 2 Files For Proecssing
 require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/admin/admin.php';
-require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/lock-fpp.php';
+// require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/lock-fpp.php';
+require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/index-fullpp.php';
+require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/unlock-box-fullpp.php';
