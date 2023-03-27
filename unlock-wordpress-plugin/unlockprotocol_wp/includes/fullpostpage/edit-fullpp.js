@@ -50,6 +50,11 @@ function createNetworkSelect(network = '') {
         networkSelect.add(option);
     });
 
+    // Set the selected network as the default value for the dropdown
+    if (network) {
+        networkSelect.value = network;
+    }
+
     return networkSelect;
 }
 
@@ -87,6 +92,10 @@ function createNetworkSelect(network = '') {
         const removeButton = document.createElement('button');
         removeButton.innerText = 'Remove Lock';
         removeButton.type = 'button';
+
+        // Add inline style for the remove lock button
+        removeButton.style.backgroundColor = 'red';
+        removeButton.style.color = 'white';
     
         removeButton.addEventListener('click', function () {
             lockDiv.remove();
@@ -107,52 +116,90 @@ function createNetworkSelect(network = '') {
 
     // Function to create and add a lock item with the provided lock and network
     function addLock(lock = {}, network = '') {
+
+        // Create a new div element for the lock item and add the 'lock-item' class
         const lockDiv = document.createElement('div');
         lockDiv.classList.add('lock-item');
     
+        // Create the network label element and append it to the lock div
         const networkLabel = createNetworkLabel();
         lockDiv.appendChild(networkLabel);
+
+        // Add a line break element after the network label
+        const lineBreak = document.createElement('br');
+        lockDiv.appendChild(lineBreak);
     
+        // Create the network dropdown (select) element and append it to the lock div
         const networkSelect = createNetworkSelect(network);
         lockDiv.appendChild(networkSelect);
     
+        // Create the lock address label element and append it to the lock div
         const lockAddressLabel = createLockAddressLabel();
         lockDiv.appendChild(lockAddressLabel);
     
+        // Create the lock address input element and append it to the lock div
         const lockAddressInput = createLockAddressInput(lock);
         lockDiv.appendChild(lockAddressInput);
+
+        // Show lock address input and label elements if both network and lock address are provided
+        if (network && lock.lockAddress) {
+            lockAddressLabel.style.display = 'block';
+            lockAddressInput.style.display = 'block';
+        }        
     
+        // Create the error message container element
         const errorMessage = createErrorMessage();
     
+        // Create the remove lock button element and append it to the lock div
         const removeButton = createRemoveButton(lockDiv);
         lockDiv.appendChild(removeButton);
     
+        // Append the lock div to the lock list container
         lockList.appendChild(lockDiv);
     
+        // Add a click event listener to the remove lock button to remove the lock div
         removeButton.addEventListener('click', function () {
             lockDiv.remove();
         });
     
+        // Add an input event listener to the lock address input element
         lockAddressInput.addEventListener('input', function () {
+
+            // If the input value is not a valid Ethereum address
             if (!isValidEthereumAddress(lockAddressInput.value)) {
+
+                // Set the error message text and append it to the lock div
                 errorMessage.innerText = 'Lock address is not valid';
                 lockDiv.appendChild(errorMessage);
+
+                // Disable the publish button
                 document.getElementById('publish').setAttribute('disabled', 'disabled');
             } else {
+
+                // If the input value is valid, clear the error message
                 errorMessage.innerText = '';
+
+                // Remove the error message element if it has a parent
                 if (errorMessage.parentNode) {
                     errorMessage.parentNode.removeChild(errorMessage);
                 }
+
+                // Enable the publish button
                 document.getElementById('publish').removeAttribute('disabled');
             }
         });
 
-    
+        // Add a change event listener to the network select (dropdown) element
         networkSelect.addEventListener('change', function () {
             if (networkSelect.value) {
+
+                // If a network is selected (value is not empty)
                 lockAddressLabel.style.display = 'block';
                 lockAddressInput.style.display = 'block';
             } else {
+
+                // If no network is selected, hide the lock address label and input elements
+                // and clear the input value
                 lockAddressLabel.style.display = 'none';
                 lockAddressInput.style.display = 'none';
                 lockAddressInput.value = '';

@@ -45,27 +45,10 @@ function unlock_protocol_meta_box_callback($post)
 
     // Create the meta box HTML structure
     echo '<div id="unlock-protocol-meta-box">';
-    echo '<p><button id="add-lock" type="button">Add Lock</button></p>';
+    echo '<p><button id="add-lock" type="button" class="button" style="background-color: blue; color: white;">Add Lock</button></p>';
     echo '<p><div id="lock-list"></div></p>';
     echo '<p><div id="feedback"></div></p>';
-    echo '<p><button id="save-lock" type="button">Save Lock</button></p>';
-
-    // Display the saved selected network and lock address list
-    if ($attributes && isset($attributes['locks']) && isset($attributes['ethereumNetworks'])) {
-        echo '<div id="saved-locks">';
-        echo '<h3>Saved Locks:</h3>';
-        echo '<ul>';
-        foreach ($attributes['locks'] as $index => $lock) {
-            echo '<li>';
-            echo '<strong>Network:</strong> ' . $formattedNetworks[array_search($attributes['ethereumNetworks'][$index], array_column($formattedNetworks, 'value'))]['name'];
-            echo '<br>';
-            echo '<strong>Lock Address:</strong> ' . $lock['lockAddress'];
-            echo '</li>';
-        }
-        echo '</ul>';
-        echo '</div>';
-    }
-
+    echo '<p><button id="save-lock" type="button" class="button" style="background-color: green; color: white;">Save Lock</button></p>';
     echo '</div>';
 
     echo '<script>';
@@ -100,7 +83,7 @@ function unlock_protocol_enqueue_scripts() {
     wp_enqueue_script(
         'unlock-protocol-edit-fullpp',
         plugins_url('edit-fullpp.js', __FILE__),
-        array('jquery'), // Add any dependencies required by your JavaScript here (e.g., jQuery)
+        array('jquery'), 
         filemtime(plugin_dir_path(__FILE__) . 'edit-fullpp.js'),
         true
     );

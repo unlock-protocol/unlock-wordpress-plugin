@@ -42,20 +42,10 @@ unlock_protocol_plugin_loader();
 
 
 
-// Unlock Protocol Version 2
-
-/**
- * Call the function to create default networks immediately after the plugin is activated
- */
-function unlock_protocol_activate() {
-    require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/admin/networks-default.php';
-    unlockprotocol_wpv2_create_default_networks();
-}
-register_activation_hook( __FILE__, 'unlock_protocol_activate' );
-
-
+/*
+Unlock Protocol New Refactored 
+(Class + Singleton design pattern removed)
+*/
 // Include the Unlock Protocol Plugin Version 2 Files For Proecssing
-require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/admin/admin.php';
-// require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/lock-fpp.php';
-require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/index-fullpp.php';
-require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wpv2/includes/fullpostpage/unlock-box-fullpp.php';
+require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wp/includes/fullpostpage/index-fullpp.php';
+require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wp/includes/fullpostpage/unlock-box-fullpp.php';
