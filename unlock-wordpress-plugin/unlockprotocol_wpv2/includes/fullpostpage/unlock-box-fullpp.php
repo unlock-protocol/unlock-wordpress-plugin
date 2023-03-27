@@ -116,23 +116,10 @@ function render_fullpp_content( $attributes, $content )
 		return apply_filters( 'unlock_protocol_login_content', $html_template, $template_data );
 	}
 
-// Print $attributes
-echo '<pre>NEW $attributes variable output: ';
-var_dump($attributes);
-echo '</pre>';
-
 		$locks = $attributes['locks'];
-// Print $locks
-echo '<pre>NEW $locks variable output: ';
-var_dump($locks);
-echo '</pre>';
 
 		$settings = get_option( 'unlock_protocol_settings', array() );
 		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
-// Print $networks
-echo '<pre>NEW $networks variable output: ';
-var_dump($networks);
-echo '</pre>';
 
 	if ( has_access( $networks, $locks ) ) {
 		return $content;

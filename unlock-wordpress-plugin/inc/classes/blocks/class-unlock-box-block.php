@@ -119,24 +119,10 @@ class Unlock_Box_Block {
 			return apply_filters( 'unlock_protocol_login_content', $html_template, $template_data );
 		}
 
-// Print $attributes
-echo '<pre>OLD $attributes variable output: ';
-var_dump($attributes);
-echo '</pre>';
-
 		$locks = $attributes['locks'];
-// Print $locks
-echo '<pre>OLD $locks variable output: ';
-var_dump($locks);
-echo '</pre>';
 
 		$settings = get_option( 'unlock_protocol_settings', array() );
 		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
-// Print $networks
-echo '<pre>OLD $networks variable output: ';
-var_dump($networks);
-echo '</pre>';
-
 
 		if ( Unlock::has_access( $networks, $locks ) ) {
 			return $content;
