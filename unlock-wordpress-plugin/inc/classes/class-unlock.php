@@ -47,6 +47,8 @@ class Unlock {
 		return $checkout_url_base;
 	}
 
+
+
 	/**
 	 * Post call to validate if a user has access to a content.
 	 *

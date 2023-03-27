@@ -47,6 +47,7 @@ function unlock_protocol_meta_box_callback($post)
     echo '<div id="unlock-protocol-meta-box">';
     echo '<p><button id="add-lock" type="button">Add Lock</button></p>';
     echo '<p><div id="lock-list"></div></p>';
+    echo '<p><div id="feedback"></div></p>';
     echo '<p><button id="save-lock" type="button">Save Lock</button></p>';
 
     // Display the saved selected network and lock address list

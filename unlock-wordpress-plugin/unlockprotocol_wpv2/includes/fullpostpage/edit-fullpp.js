@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-
+   
     // Get the Add Lock button and the lock list container
     const addButton = document.getElementById('add-lock');
     const lockList = document.getElementById('lock-list');
@@ -36,7 +36,7 @@ function createNetworkSelect(network = '') {
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
     defaultOption.text = 'Select a network';
-    defaultOption.selected = !network && !unlockAttributes.ethereumNetworks.length;
+    defaultOption.selected = !network;
     networkSelect.add(defaultOption);
 
     // Add the available networks as options in the select element
@@ -160,30 +160,44 @@ function createNetworkSelect(network = '') {
         });
     }
        
+
     // Function to validate "lock Address" as a valid Ethereum address using regex
     function isValidEthereumAddress(address) {
       const regex = /^0x[a-fA-F0-9]{40}$/;
       return regex.test(address);
     }
   
+
+    /** If unlockAttributes object exists and has both locks and ethereumNetworks properties,
+        iterate through the locks array and call addLock() function for each lock
+        with its corresponding network from the ethereumNetworks array.
+        This populates the lock list with existing lock attributes when the page loads.
+    **/
     if (unlockAttributes && unlockAttributes.locks && unlockAttributes.ethereumNetworks) {
       for (let i = 0; i < unlockAttributes.locks.length; i++) {
         addLock(unlockAttributes.locks[i], unlockAttributes.ethereumNetworks[i]);
       }
     }
 
+
+    //function to save lock attributes to database
     function saveLockAttributes() {
         const lockItems = document.querySelectorAll('.lock-item');
         const lockAttributes = { locks: [], ethereumNetworks: [] };
-    
+
         lockItems.forEach(lockItem => {
             const networkSelect = lockItem.querySelector('.lock-network');
             const lockAddressInput = lockItem.querySelector('.lock-address');
-    
+
             lockAttributes.locks.push({ lockAddress: lockAddressInput.value });
             lockAttributes.ethereumNetworks.push(networkSelect.value);
         });
-    
+
+        // Create a feedback element for success or error messages
+        const feedback = document.getElementById('feedback');
+        feedback.innerText = '';
+        feedback.classList.remove('success', 'error');
+
         // Save the selected network along with the lock address
         fetch(ajaxurl, {
             method: 'POST',
@@ -200,16 +214,21 @@ function createNetworkSelect(network = '') {
         .then(response => response.json())
         .then(result => {
             if (result.success) {
-                console.log('Lock attributes and selected network saved successfully');
+                feedback.innerText = 'Lock attributes saved successfully';
+                feedback.classList.add('success');
             } else {
-                console.error('Error saving lock attributes and selected network');
+                feedback.innerText = 'Error saving lock attributes';
+                feedback.classList.add('error');
             }
         })
         .catch(error => {
-            console.error('Error saving lock attributes and selected network', error);
+            feedback.innerText = 'Error saving lock attributes';
+            feedback.classList.add('error');
+            console.error('Catch: Error saving lock attributes', error);
         });
-    }
-    
+}
+
+
     
 
 

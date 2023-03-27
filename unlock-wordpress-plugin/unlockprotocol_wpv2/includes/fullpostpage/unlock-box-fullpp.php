@@ -21,19 +21,49 @@ require_once plugin_dir_path( __FILE__ ) . '../unlockprotocol-flow/unlock.php';
  *
  * @return string HTML elements.
  */
-function filter_fullpp_content_lock( $content ) {
-    // Get the post attributes
-    $attributes = get_post_meta( get_the_ID(), 'unlock_box_attributes', true );
+function unlock_box_fullpp_filter($content) {
+    global $post;
 
-    // If there are no locks or networks, return the original content
-    if ( empty( $attributes ) || ! isset( $attributes['locks'] ) || ! isset( $attributes['ethereumNetworks'] ) ) {
+    // Step 1: Retrieve the attributes from the database
+    $attributes = get_post_meta($post->ID, 'unlock_box_attributes', true);
+
+    // Step 2: Retrieve the current up-to-date network list from the database
+    $networkList = get_option('unlock_protocol_settings');
+    $networks = $networkList['networks'];
+
+    // Step 3: Iterate through the network list to locate the corresponding network ID
+    $formattedNetworks = array_map(function ($net) {
+        return array(
+            'name' => $net['network_name'],
+            'value' => $net['network_id'],
+        );
+    }, array_values($networks));
+
+    // Check if the attributes are valid
+    if (!$attributes || !isset($attributes['locks']) || !isset($attributes['ethereumNetworks'])) {
         return $content;
     }
 
-    // Render the locked content
-    return render_fullpp_content( $attributes, $content );
+
+	// Step 4: Reconstruct a new attributes format to match the old structure
+	$locks = array();
+	foreach ($attributes['locks'] as $index => $lock) {
+		$network_id = $formattedNetworks[array_search($attributes['ethereumNetworks'][$index], array_column($formattedNetworks, 'value'))]['value'];
+		$locks[] = array(
+			'address' => $lock['lockAddress'],
+			'network' => $network_id,
+		);
+	}
+
+	// Pass the reconstructed attributes to the render_fullpp_content function
+	$new_attributes = array(
+		'locks' => $locks,
+		'ethereumNetworks' => $formattedNetworks,
+	);
+    return render_fullpp_content($new_attributes, $content);
+	
 }
-add_filter( 'the_content', 'filter_fullpp_content_lock' );
+add_filter('the_content', 'unlock_box_fullpp_filter');
 
 
 
@@ -86,10 +116,23 @@ function render_fullpp_content( $attributes, $content )
 		return apply_filters( 'unlock_protocol_login_content', $html_template, $template_data );
 	}
 
-	$locks = $attributes['locks'];
+// Print $attributes
+echo '<pre>NEW $attributes variable output: ';
+var_dump($attributes);
+echo '</pre>';
 
-	$settings = get_option( 'unlock_protocol_settings', array() );
-	$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
+		$locks = $attributes['locks'];
+// Print $locks
+echo '<pre>NEW $locks variable output: ';
+var_dump($locks);
+echo '</pre>';
+
+		$settings = get_option( 'unlock_protocol_settings', array() );
+		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
+// Print $networks
+echo '<pre>NEW $networks variable output: ';
+var_dump($networks);
+echo '</pre>';
 
 	if ( has_access( $networks, $locks ) ) {
 		return $content;

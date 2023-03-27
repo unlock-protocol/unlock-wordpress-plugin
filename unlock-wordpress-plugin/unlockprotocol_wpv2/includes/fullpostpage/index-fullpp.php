@@ -28,8 +28,6 @@ function unlock_protocol_register_post_meta()
         'show_in_rest' => true,
     ));
 }
-
-
 add_action('init', 'unlock_protocol_register_post_meta');
 
 
