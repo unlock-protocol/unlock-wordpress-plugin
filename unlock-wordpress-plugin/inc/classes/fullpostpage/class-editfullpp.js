@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add click event listener to the Add Lock button
     addButton.addEventListener('click', function () {
       addLock();
+      toggleSaveButtonVisibility(); // toggle save lock button visibility
     });
   
 
     // Add click event listener to the Save Lock button
     const saveButton = document.getElementById('save-lock');
+    saveButton.style.display = 'none'; //save lock button display
     saveButton.addEventListener('click', function () {
       saveLockAttributes();
     });
@@ -176,6 +178,9 @@ function createNetworkSelect(network = '') {
                 document.getElementById('publish').setAttribute('disabled', 'disabled');
             } else {
 
+                // Toggle Save Lock button visibility on
+                toggleSaveButtonVisibility();
+
                 // If the input value is valid, clear the error message
                 errorMessage.innerText = '';
 
@@ -187,6 +192,7 @@ function createNetworkSelect(network = '') {
                 // Enable the publish button
                 document.getElementById('publish').removeAttribute('disabled');
             }
+
         });
 
         // Add a change event listener to the network select (dropdown) element
@@ -224,6 +230,7 @@ function createNetworkSelect(network = '') {
       for (let i = 0; i < unlockAttributes.locks.length; i++) {
         addLock(unlockAttributes.locks[i], unlockAttributes.ethereumNetworks[i]);
       }
+      toggleSaveButtonVisibility(); // toggle visibility of save lock button
     }
 
 
@@ -231,14 +238,31 @@ function createNetworkSelect(network = '') {
     function saveLockAttributes() {
         const lockItems = document.querySelectorAll('.lock-item');
         const lockAttributes = { locks: [], ethereumNetworks: [] };
+        let hasInvalidAddress = false;
 
         lockItems.forEach(lockItem => {
             const networkSelect = lockItem.querySelector('.lock-network');
             const lockAddressInput = lockItem.querySelector('.lock-address');
 
+            // don't save If the lock address input value is not valid
+            if (!lockAddressInput.value || !isValidEthereumAddress(lockAddressInput.value)) {
+                hasInvalidAddress = true;
+                return;
+            }
+
             lockAttributes.locks.push({ lockAddress: lockAddressInput.value });
             lockAttributes.ethereumNetworks.push(networkSelect.value);
         });
+
+        // If there are invalid addresses/empty network selection,
+        //don't save and show the error message
+        if (hasInvalidAddress) {
+            const feedback = document.getElementById('feedback');
+            feedback.innerText = 'Lock failed to save, fill lock address correctly and try again';
+            feedback.classList.remove('success');
+            feedback.classList.add('error');
+            return;
+        }
 
         // Create a feedback element for success or error messages
         const feedback = document.getElementById('feedback');
@@ -273,10 +297,26 @@ function createNetworkSelect(network = '') {
             feedback.classList.add('error');
             console.error('Catch: Error saving lock attributes', error);
         });
-}
+    }
 
-
-    
+    //hide save lock button till atleast a lock added
+    function toggleSaveButtonVisibility() {
+        const lockItems = document.querySelectorAll('.lock-item');
+        let showSaveButton = false;
+      
+        lockItems.forEach(lockItem => {
+          const lockAddressInput = lockItem.querySelector('.lock-address');
+          if (lockAddressInput.style.display !== 'none' && isValidEthereumAddress(lockAddressInput.value)) {
+            showSaveButton = true;
+          }
+        });
+      
+        if (showSaveButton) {
+          saveButton.style.display = 'inline-block';
+        } else {
+          saveButton.style.display = 'none';
+        }
+      }
 
 
 });
