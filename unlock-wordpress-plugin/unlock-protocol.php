@@ -37,15 +37,3 @@ function unlock_protocol_plugin_loader() {
 
 unlock_protocol_plugin_loader();
 
-
-
-
-
-
-/*
-Unlock Protocol New Refactored 
-(Class + Singleton design pattern removed)
-*/
-// Include the Unlock Protocol Plugin Version 2 Files For Proecssing
-require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wp/includes/fullpostpage/index-fullpp.php';
-require_once plugin_dir_path( __FILE__ ) . 'unlockprotocol_wp/includes/fullpostpage/unlock-box-fullpp.php';

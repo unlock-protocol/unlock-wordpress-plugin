@@ -59,6 +59,7 @@ function autoloader( $resource = '' ) {
 			case 'post-types':
 			case 'taxonomies':
 			case 'blocks':
+			case 'fullpostpage':
 			case 'utils':
 			case 'meta-boxes':
 			case 'widgets':
