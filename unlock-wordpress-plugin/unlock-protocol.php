@@ -36,4 +36,3 @@ function unlock_protocol_plugin_loader() {
 }
 
 unlock_protocol_plugin_loader();
-
