@@ -69,6 +69,63 @@ class Settings extends Rest_Base {
 				'schema' => array( $this, 'get_item_schema' ),
 			)
 		);
+
+		register_rest_route(
+			$this->get_namespace(),
+			'/save_unlockpfullpp_attributes',
+			array(
+				'methods'             => WP_REST_Server::EDITABLE,
+				'callback'            => array( $this, 'save_unlockpfullpp_attributes' ),
+				'args'                => array(
+					'post_id' => array(
+						'required' => true,
+						'type'     => 'integer',
+					),
+					'unlockpfullpp_attributes' => array(
+						'required' => true,
+						'type'     => 'string',
+					),
+				),
+				'permission_callback' => array( $this, 'admin_permissions_check' ),
+			)
+		);
+
+		register_rest_route(
+			$this->get_namespace(),
+			'/get_unlockpfullpp_attributes',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_unlockpfullpp_attributes' ),
+				'args'                => array(
+					'post_id' => array(
+						'required' => true,
+						'type'     => 'integer',
+					),
+				),
+				'permission_callback' => array( $this, 'admin_permissions_check' ),
+			)
+		);
+		
+		register_rest_route(
+			$this->get_namespace(),
+			'/delete_unlockpfullpp_attributes',
+			array(
+				'methods'             => WP_REST_Server::EDITABLE,
+				'callback'            => array( $this, 'delete_unlockpfullpp_attributes' ),
+				'args'                => array(
+					'post_id' => array(
+						'required' => true,
+						'type'     => 'integer',
+					),
+					'lock_index' => array(
+						'required' => true,
+						'type'     => 'integer',
+					),
+				),
+				'permission_callback' => array( $this, 'admin_permissions_check' ),
+			)
+		);
+				
 	}
 
 	/**
@@ -240,4 +297,180 @@ class Settings extends Rest_Base {
 
 		return $update;
 	}
+
+	// post request api for full post page attributes saving to database
+	public function save_unlockpfullpp_attributes( $request ) {
+		$post_id = $request->get_param( 'post_id' );
+		$unlockpfullpp_attributes = $request->get_param( 'unlockpfullpp_attributes' );
+	
+		if ( empty( $post_id ) || empty( $unlockpfullpp_attributes ) ) {
+			return wp_send_json_error(
+				[
+					'message'   => __( 'Inputs cannot be empty!', 'unlock-protocol' ),
+				]
+			);
+		}
+	
+		// Check if post_id is valid and exists
+		if ( ! is_int( $post_id ) || get_post( $post_id ) === null ) {
+			return wp_send_json_error(
+				[
+					'message' => __( 'Invalid post ID provided.', 'unlock-protocol' ),
+				]
+			);
+		}
+	
+		// Check if the unlockpfullpp_attributes attribute has the correct format
+		$decoded_unlockpfullpp_attributes = json_decode( $unlockpfullpp_attributes, true );
+		if ( json_last_error() !== JSON_ERROR_NONE ) {
+			return wp_send_json_error(
+				[
+					'message' => __( 'Invalid format for unlockpfullpp attribute.', 'unlock-protocol' ),
+				]
+			);
+		}
+	
+		$saved_unlockpfullpp_attributes = update_post_meta( $post_id, 'unlockp_fullpp_attributes', $decoded_unlockpfullpp_attributes );
+	
+		if ( $saved_unlockpfullpp_attributes ) {
+			return wp_send_json_success(
+				[
+					'message' => __( 'Unlockpfullpp attributes saved successfully', 'unlock-protocol' ),
+				]
+			);
+		} else {
+			return wp_send_json_error(
+				[
+					'message' => __( 'Failed to update Unlockpfullpp attributes.', 'unlock-protocol' ),
+				]
+			);
+		}
+	}
+	
+	/**
+	 * Get unlockpfullpp_attributes for a post.
+	 *
+	 * @param object $request Request Object.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return \WP_Error|\WP_REST_Response
+	 */
+	public function get_unlockpfullpp_attributes( $request ) {
+		$post_id = $request->get_param( 'post_id' );
+
+		if ( empty( $post_id ) ) {
+			return new \WP_Error(
+				'unlock_protocol_empty_data',
+				__( 'Post ID cannot be empty!', 'unlock-protocol' ),
+				[ 'status' => WP_Http::BAD_REQUEST ]
+			);
+		}
+
+		// Check if post_id is valid and exists
+		if ( ! is_int( $post_id ) || get_post( $post_id ) === null ) {
+			return new \WP_Error(
+				'unlock_protocol_invalid_post_id',
+				__( 'Invalid post ID provided.', 'unlock-protocol' ),
+				[ 'status' => WP_Http::BAD_REQUEST ]
+			);
+		}
+
+		$unlockpfullpp_attributes = get_post_meta( $post_id, 'unlockp_fullpp_attributes', true );
+
+		return rest_ensure_response( $unlockpfullpp_attributes );
+	}
+
+/**
+ * Delete lock attributes from database.
+ *
+ * @param object $request Request object.
+ *
+ * @since 3.0.0
+ *
+ */
+public function delete_unlockpfullpp_attributes( $request ) {
+	// Get the post ID and lock index from the request.
+	$post_id = $request->get_param( 'post_id' );
+	$lock_index = $request->get_param( 'lock_index' );
+
+	// Check if the required parameters are empty or not.
+	if ( !isset( $post_id ) || $post_id === '' || !isset( $lock_index ) || $lock_index === '' ) {
+		return wp_send_json_error(
+			[
+				'message'   => __( 'Either Post id and Lock index (or both) inputs cannot be empty!', 'unlock-protocol' ),
+			]
+		);
+	}
+
+
+	// Check if the post ID is valid and exists.
+	if ( ! is_int( $post_id ) || get_post( $post_id ) === null ) {
+		return wp_send_json_error(
+			[
+				'message' => __( 'Invalid post ID provided.', 'unlock-protocol' ),
+			]
+		);
+	}
+
+	// Get the existing unlockpfullpp attributes for the post.
+	$unlockpfullpp_attributes = get_post_meta( $post_id, 'unlockp_fullpp_attributes', true );
+
+	// Check if the lock index exists in the unlockpfullpp attributes.
+	if ( ! isset( $unlockpfullpp_attributes['locks'][ $lock_index ] ) ) {
+		return wp_send_json_error(
+			[
+				'message' => __( 'Lock index not found.', 'unlock-protocol' ),
+			]
+		);
+	}
+
+	// Remove the lock attributes for the specified index.
+	unset( $unlockpfullpp_attributes['locks'][ $lock_index ] );
+
+	// Re-index the array to remove any gaps caused by deleting the element.
+	$unlockpfullpp_attributes['locks'] = array_values( $unlockpfullpp_attributes['locks'] );
+
+	// Update the unlockpfullpp attributes for the post with the modified array.
+	$saved_unlockpfullpp_attributes = update_post_meta( $post_id, 'unlockp_fullpp_attributes', $unlockpfullpp_attributes );
+
+
+
+	// Retrieve the "attributes" object again to either leave it or delete it from the database.
+	// delete if the lock deleted above is the only lock left in the attributes object's lock(s) array.
+	// leave the attributes object undeleted if there still remain at least 1 lock in its lock(s) array
+	$fullppAttributesObject = get_post_meta( $post_id, 'unlockp_fullpp_attributes', true );
+
+	// Check if any locks are still present in the locks array
+	$locks_present = false;
+	if ( isset( $fullppAttributesObject['locks'] ) && is_array( $fullppAttributesObject['locks'] ) && count( $fullppAttributesObject['locks'] ) > 0 ) {
+		$locks_present = true;
+	}
+
+	// Delete the attributes object entirely if no locks are present in the locks array
+	if ( ! $locks_present ) {
+		delete_post_meta( $post_id, 'unlockp_fullpp_attributes' );
+	}
+
+
+
+	// Return the response as either success or error.
+	if ( $saved_unlockpfullpp_attributes ) {
+		return wp_send_json_success(
+			[
+				'message' => sprintf( __( 'Deleted lock id %s from unlockpfullpp attributes successfully.', 'unlock-protocol' ), $lock_index ),
+			]
+		);
+	} else {
+		return wp_send_json_error(
+			[
+				'message' => sprintf( __( 'Failed to deleted lock id %s from Unlockpfullpp attributes.', 'unlock-protocol' ), $lock_index ),
+			]
+		);
+	}
+
+}
+
+
+
 }

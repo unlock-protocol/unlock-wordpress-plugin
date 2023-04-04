@@ -1,13 +1,13 @@
 <?php
 /**
- * Unlock box dynamic full post/page content class.
+ * Unlock box dynamic class for full post/page.
  *
  * @since 3.0.0
  *
  * @package unlock-protocol
  */
 
- namespace Unlock_Protocol\Inc\Fullpostpage;
+namespace Unlock_Protocol\Inc\FullPostPage;
 
 use Unlock_Protocol\Inc\Traits\Singleton;
 use Unlock_Protocol\Inc\Unlock;
@@ -19,84 +19,60 @@ use Unlock_Protocol\Inc\Unlock;
  */
 class Unlock_Box_Fullpp {
 
-	use Singleton;
+    use Singleton;
 
-	/**
-	 * Construct method.
-	 *
-	 * @since 3.0.0
-	 */
-	protected function __construct() {
+    /**
+     * Construct method.
+     *
+     * @since 3.0.0
+     */
+    protected function __construct() {
 
-		$this->setup_hooks();
+        $this->setup_hooks();
 
-	}
+    }
 
-	/**
-	 * Setup hooks.
-	 *
-	 * @since 3.0.0
-	 */
-	protected function setup_hooks() {
+    /**
+     * Setup hooks.
+     *
+     * @since 3.0.0
+     */
+    protected function setup_hooks() {
 		/**
-		 * Actions.
+		 * Filters.
 		 */
-		add_filter('the_content', array( $this, 'unlock_box_fullpp_filter' ));
-
-	}
-
+		add_filter( 'the_content', array( $this, 'trigger_unlockprotocol_flow' ) );	
+    }
+	
 	/**
-	 * Filter the content of locked posts/pages.
-	 *
-	 * @param string $content Post/Page Content.
+	 * Trigger the Unlock Protocol flow
 	 *
 	 * @since 3.0.0
 	 *
-	 * @return string HTML elements.
+	 * @param string $content The original post content.
+	 * 
 	 */
-	public function unlock_box_fullpp_filter($content) {
-		global $post;
+	public function trigger_unlockprotocol_flow( $content ) {
+		// Get the current post ID.
+		$post_id = get_the_ID();
 
-		// Step 1: Retrieve the attributes from the database
-		$attributes = get_post_meta($post->ID, 'unlock_box_attributes', true);
+		// Retrieve the saved attributes.
+		$attributes = get_post_meta( $post_id, 'unlockp_fullpp_attributes', true );
 
-		// Step 2: Retrieve the current up-to-date network list from the database
-		$networkList = get_option('unlock_protocol_settings');
-		$networks = $networkList['networks'];
-
-		// Step 3: Iterate through the network list to locate the corresponding network ID
-		$formattedNetworks = array_map(function ($net) {
-			return array(
-				'name' => $net['network_name'],
-				'value' => $net['network_id'],
-			);
-		}, array_values($networks));
-
-		// Check if the attributes are valid
-		if (!$attributes || !isset($attributes['locks']) || !isset($attributes['ethereumNetworks'])) {
+		// Check if the attributes are not empty.
+		if ( ! empty( $attributes ) ) {
+			// Call render_block() to trigger the Unlock Protocol flow.
+			return $this->render_block( $attributes, $content );
+		}else{
+			
+			//it is essential to return content when lock(s) not set for a post/page
+			// because this is hooking to the full post content "the_content" wp hook
+			// if not, even post/pages without lock(s) applied will have there content hidden
+			//without a way to access or unlock there hidden content
 			return $content;
 		}
-
-
-		// Step 4: Reconstruct a new attributes format to match the old structure
-		$locks = array();
-		foreach ($attributes['locks'] as $index => $lock) {
-			$network_id = $formattedNetworks[array_search($attributes['ethereumNetworks'][$index], array_column($formattedNetworks, 'value'))]['value'];
-			$locks[] = array(
-				'address' => $lock['lockAddress'],
-				'network' => $network_id,
-			);
-		}
-
-		// Pass the reconstructed attributes to the render_fullpp_content function
-		$new_attributes = array(
-			'locks' => $locks,
-			'ethereumNetworks' => $formattedNetworks,
-		);
-		return $this->render_fullpp_content($new_attributes, $content);
-		
 	}
-
+	
 	/**
 	 * Render block.
 	 *
@@ -107,7 +83,7 @@ class Unlock_Box_Fullpp {
 	 *
 	 * @return string HTML elements.
 	 */
-	public function render_fullpp_content( $attributes, $content ) {
+	public function render_block( $attributes, $content ) {
 		// Bail out if current user is admin or the author.
 		if ( current_user_can( 'manage_options' ) || ( get_the_author_meta( 'ID' ) === get_current_user_id() ) ) {
 			return $content;

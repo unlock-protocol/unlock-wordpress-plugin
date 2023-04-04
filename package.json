@@ -1,7 +1,7 @@
 {
   "name": "unlock-protocol-plugin",
   "version": "4.0.0",
-  "description": "A plugin to add lock(s) to blocks of content inside of Wordpress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.",
+  "description": "A plugin to add lock(s) to full post/page content or blocks of content inside of Wordpress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.",
   "main": "src/js/index.js",
   "scripts": {
     "build": "wp-scripts build ./src/assets/js/main.js --output-path=./unlock-wordpress-plugin/assets/build/js",
@@ -12,9 +12,11 @@
     "start": "wp-scripts start ./src/assets/js/main.js --output-path=./unlock-wordpress-plugin/assets/build/js",
     "start:blocks": "wp-scripts start ./src/assets/js/blocks.js --output-path=./unlock-wordpress-plugin/assets/build/js",
     "build:blocks": "wp-scripts build ./src/assets/js/blocks.js --output-path=./unlock-wordpress-plugin/assets/build/js",
+    "start:fullpostpage": "wp-scripts start ./src/assets/js/fullpostpage.js --output-path=./unlock-wordpress-plugin/assets/build/js",
+    "build:fullpostpage": "wp-scripts build ./src/assets/js/fullpostpage.js --output-path=./unlock-wordpress-plugin/assets/build/js",    
     "start:admin": "wp-scripts start ./src/assets/js/admin/admin.js --output-path=./unlock-wordpress-plugin/assets/build/js",
     "build:admin": "wp-scripts build ./src/assets/js/admin/admin.js --output-path=./unlock-wordpress-plugin/assets/build/js",
-    "build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks && npm run make:pot",
+    "build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks && npm run build:fullpostpage && npm run make:pot",
     "clean": "rimraf ./unlock-wordpress-plugin/assets/build/css && rimraf ./unlock-wordpress-plugin/assets/build/js",
     "zip": "node zip",
     "release": "npm run build:all && npm run zip"
