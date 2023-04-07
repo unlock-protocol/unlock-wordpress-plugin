@@ -182,7 +182,6 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
   // Remove a lock and save the lock attributes
   const removeLock = async (id) => {
     const lockToDelete = locks[id];
-  
     try {
       const response = await deleteLock(lockToDelete, id);
       if (response && response.success) {
@@ -192,17 +191,22 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
         setRefresh(!refresh); // refresh the useEffect 1 to reload meta panel in post/page editor sidebar when publish/update button is clicked
         setSaveMessage("Lock deleted successfully");
       } else {
-        // If the lock is not found in saved attributes object, remove it from the UI
-        const newLocks = [...locks];
-        newLocks.splice(id, 1);
-        onUpdateLocks(newLocks);
-        setSaveMessage("Empty lock removed");
+        setSaveMessage(
+          `Failed to delete lock. Error: ${
+            response && response.data && response.data.message
+              ? response.data.message
+              : "Unknown error"
+          }`
+        );
       }
     } catch (error) {
       console.error("Error deleting lock:", error);
       setSaveMessage(`Failed to delete lock. Error: ${error.message}`);
     }
-  };  
+  };
+  
+
+
 
   return (
     <div>

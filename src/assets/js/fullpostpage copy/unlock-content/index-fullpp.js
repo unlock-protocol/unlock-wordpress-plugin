@@ -39,26 +39,6 @@ const FullPostPageLockWrapper = () => (
         "unlock-protocol"
       )}
     </p>
-    {/* Add the documentation links below the description */}
-    <div className="docs">
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href={unlockProtocol.unlock_docs.docs}
-      >
-        {__("Unlock's documentation", "unlock-protocol")}
-      </a>
-
-      <br />
-
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
-        href={unlockProtocol.unlock_docs.deploy_lock}
-      >
-        {__("Deploy a lock", "unlock-protocol")}
-      </a>
-    </div>
     <FullPostPageLock />
   </PluginDocumentSettingPanel>
 );
