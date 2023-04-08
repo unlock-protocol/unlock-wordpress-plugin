@@ -12,7 +12,7 @@ import apiFetch from "@wordpress/api-fetch";
 import { useSelect } from '@wordpress/data';
 import "../../../scss/admin/editor.scss";
 
-const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNetworks }) => {
+const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNetworks }) => {
   
   const [saveMessage, setSaveMessage] = useState(null);
   const [refresh, setRefresh] = useState(false); //refresh lock(s) meta panel to keep track of locks already added
@@ -42,7 +42,7 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
   const fetchLockSettings = async (post_id) => {
     try {
       const response = await apiFetch({
-        path: `/unlock-protocol/v1/get_unlockpfullpp_attributes?post_id=${post_id}`,
+        path: `/unlock-protocol/v1/get_unlockp_full_post_page_attributes?post_id=${post_id}`,
       });
 
       if (response && response.locks) {
@@ -118,11 +118,11 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
 
     try {
       const response = await apiFetch({
-        path: "/unlock-protocol/v1/save_unlockpfullpp_attributes",
+        path: "/unlock-protocol/v1/save_unlockp_full_post_page_attributes",
         method: "POST",
         data: {
           post_id: post_id,
-          unlockpfullpp_attributes: JSON.stringify(attributes),
+          unlockp_full_post_page_attributes: JSON.stringify(attributes),
         },
       });
       
@@ -165,7 +165,7 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
   const deleteLock = async (lock, lockIndex) => {
     try {
       const response = await apiFetch({
-        path: `/unlock-protocol/v1/delete_unlockpfullpp_attributes`,
+        path: `/unlock-protocol/v1/delete_unlockp_full_post_page_attributes`,
         method: "POST",
         data: {
           post_id: getpost.id,
@@ -182,6 +182,7 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
   // Remove a lock and save the lock attributes
   const removeLock = async (id) => {
     const lockToDelete = locks[id];
+  
     try {
       const response = await deleteLock(lockToDelete, id);
       if (response && response.success) {
@@ -191,22 +192,17 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
         setRefresh(!refresh); // refresh the useEffect 1 to reload meta panel in post/page editor sidebar when publish/update button is clicked
         setSaveMessage("Lock deleted successfully");
       } else {
-        setSaveMessage(
-          `Failed to delete lock. Error: ${
-            response && response.data && response.data.message
-              ? response.data.message
-              : "Unknown error"
-          }`
-        );
+        // If the lock is not found in saved attributes object, remove it from the UI
+        const newLocks = [...locks];
+        newLocks.splice(id, 1);
+        onUpdateLocks(newLocks);
+        setSaveMessage("Empty lock removed");
       }
     } catch (error) {
       console.error("Error deleting lock:", error);
       setSaveMessage(`Failed to delete lock. Error: ${error.message}`);
     }
-  };
-  
-
-
+  };  
 
   return (
     <div>
@@ -283,4 +279,4 @@ const EditFullPP = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNe
   );    
 };
 
-export default EditFullPP;
+export default EditFullPostPage;

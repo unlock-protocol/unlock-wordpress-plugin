@@ -17,7 +17,7 @@ use Unlock_Protocol\Inc\Unlock;
  *
  * @since 3.0.0
  */
-class Unlock_Box_Fullpp {
+class Unlock_Box_Full_Post_Page {
 
     use Singleton;
 
@@ -57,7 +57,7 @@ class Unlock_Box_Fullpp {
 		$post_id = get_the_ID();
 
 		// Retrieve the saved attributes.
-		$attributes = get_post_meta( $post_id, 'unlockp_fullpp_attributes', true );
+		$attributes = get_post_meta( $post_id, 'unlockp_full_post_page_attributes', true );
 
 		// Check if the attributes are not empty.
 		if ( ! empty( $attributes ) ) {

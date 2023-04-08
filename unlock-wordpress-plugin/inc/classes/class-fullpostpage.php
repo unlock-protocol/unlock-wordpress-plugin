@@ -7,15 +7,15 @@
 
 namespace Unlock_Protocol\Inc;
 
-use Unlock_Protocol\Inc\Fullpostpage\Unlock_Box_Fullpp;
+use Unlock_Protocol\Inc\FullPostPage\Unlock_Box_Full_Post_Page;
 use Unlock_Protocol\Inc\Traits\Singleton;
 
 /**
- * Class FullPostPage
+ * Class Full-Post-Page
  *
  * @since 3.0.0
  */
-class Fullpostpage {
+class FullPostPage {
 
 	use Singleton;
 
@@ -27,7 +27,7 @@ class Fullpostpage {
 	protected function __construct() {
 
 		$this->setup_hooks();
-		Unlock_Box_Fullpp::get_instance();
+		Unlock_Box_Full_Post_Page::get_instance();
 
 	}
 
@@ -63,17 +63,17 @@ class Fullpostpage {
 	 */
 	private function enqueue_scripts() {
 		// Automatically load dependencies and version.
-		$asset_file = include UNLOCK_PROTOCOL_BUILD_DIR . '/js/fullpostpage.asset.php';
+		$asset_file = include UNLOCK_PROTOCOL_BUILD_DIR . '/js/full-post-page.asset.php';
 
 		wp_register_script(
-			'unlock-protocol-fullpostpage',
-			UNLOCK_PROTOCOL_URL . '/assets/build/js/fullpostpage.js',
+			'unlock-protocol-full-post-page',
+			UNLOCK_PROTOCOL_URL . '/assets/build/js/full-post-page.js',
 			$asset_file['dependencies'],
-			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/js/fullpostpage.js' ),
+			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/js/full-post-page.js' ),
 			true
 		);
 
-		wp_enqueue_script( 'unlock-protocol-fullpostpage' );
+		wp_enqueue_script( 'unlock-protocol-full-post-page' );
 	}
 
 	/**
@@ -85,12 +85,12 @@ class Fullpostpage {
 	 */
 	private function enqueue_styles() {
 		wp_register_style(
-			'unlock-protocol-fullpostpage',
-			UNLOCK_PROTOCOL_URL . '/assets/build/css/fullpostpage.css',
+			'unlock-protocol-full-post-page',
+			UNLOCK_PROTOCOL_URL . '/assets/build/css/full-post-page.css',
 			array(),
-			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/css/fullpostpage.css' )
+			filemtime( UNLOCK_PROTOCOL_PATH . '/assets/build/css/full-post-page.css' )
 		);
 
-		wp_enqueue_style( 'unlock-protocol-fullpostpage' );
+		wp_enqueue_style( 'unlock-protocol-full-post-page' );
 	}
 }
