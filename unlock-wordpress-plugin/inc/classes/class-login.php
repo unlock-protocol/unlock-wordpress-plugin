@@ -92,8 +92,16 @@ class Login {
 			return $user;
 		}
 
-		$code  = Helper::filter_input( INPUT_GET, 'code', FILTER_SANITIZE_STRING );
-		$state = Helper::filter_input( INPUT_GET, 'state', FILTER_SANITIZE_STRING );
+		// Sanitize input values using filter_input and Helper class
+		$code = Helper::filter_input(INPUT_GET, 'code', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH);
+		if ($code !== null) {
+			$code = preg_replace('/<[^>]*>/', '', $code);  // Remove any HTML tags
+		}
+
+		$state = Helper::filter_input(INPUT_GET, 'state', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH);
+		if ($state !== null) {
+			$state = preg_replace('/<[^>]*>/', '', $state);  // Remove any HTML tags
+		}
 
 		if ( '' === $code || false === wp_verify_nonce( $state, 'unlock_login_state' ) ) {
 			return $user;
