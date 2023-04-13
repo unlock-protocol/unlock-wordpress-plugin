@@ -13,16 +13,16 @@ import { useSelect } from '@wordpress/data';
 import "../../../scss/admin/editor.scss";
 
 const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthereumNetworks }) => {
-  
+
   const [saveMessage, setSaveMessage] = useState(null);
   const [refresh, setRefresh] = useState(false); //refresh lock(s) meta panel to keep track of locks already added
 
 
   //get current post id
-  const getpost = useSelect((select) => {
+  const post = useSelect((select) => {
     const { getCurrentPostId } = select("core/editor");
     const id = getCurrentPostId();
-  
+
     return {
       id,
     };
@@ -77,10 +77,10 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
         onUpdateEthereumNetworks(selectOptions);
 
         // Fetch lock settings from the post meta after networks are fetched
-        fetchLockSettings(getpost.id);
+        fetchLockSettings(post.id);
       })
       .catch((err) => { });
-  }, [getpost.id, refresh]); // refresh the useEffect anytime either of this changes
+  }, [post.id, refresh]); // refresh the useEffect anytime either of this changes
 
 
   //useEffect 2: called when post/page publish/update button clicked
@@ -88,9 +88,9 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
     if (!isSavingPost && didPostSaveRequestSucceed) {
 
       // refresh the useEffect 1 to reload meta panel in post/page editor sidebar when publish/update button is clicked
-      setRefresh(!refresh); 
+      setRefresh(!refresh);
     }
-  }, [isSavingPost, didPostSaveRequestSucceed, getpost.id]);
+  }, [isSavingPost, didPostSaveRequestSucceed, post.id]);
 
 
   // Check if the Ethereum address is valid
@@ -107,7 +107,7 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
     );
 
     if (validLocks.length === 0) {
-      setSaveMessage("No valid lock(s) attributes to save.");
+      setSaveMessage("No valid lock(s) to save.");
       return;
     }
 
@@ -125,16 +125,15 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
           unlockp_full_post_page_attributes: JSON.stringify(attributes),
         },
       });
-      
 
-      if (response.success) { 
+
+      if (response.success) {
         setSaveMessage("Lock attributes saved successfully");
         setRefresh(!refresh); // refresh the useEffect 1 to reload meta panel in post/page editor sidebar when publish/update button is clicked
       } else {
         const errorData = response.data; // Directly access the `data` property in the response object
         setSaveMessage(
-          `Failed to save Lock attributes. Error: ${
-            errorData.message || "Unknown error"
+          `Failed to save Lock attributes. Error: ${errorData.message || "Unknown error"
           }`
         );
       }
@@ -160,7 +159,7 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
     onUpdateLocks(updatedLocks);
   };
 
-  
+
   // Delete a lock from the database
   const deleteLock = async (lock, lockIndex) => {
     try {
@@ -168,7 +167,7 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
         path: `/unlock-protocol/v1/delete_unlockp_full_post_page_attributes`,
         method: "POST",
         data: {
-          post_id: getpost.id,
+          post_id: post.id,
           lock_index: lockIndex,
         },
       });
@@ -182,7 +181,7 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
   // Remove a lock and save the lock attributes
   const removeLock = async (id) => {
     const lockToDelete = locks[id];
-  
+
     try {
       const response = await deleteLock(lockToDelete, id);
       if (response && response.success) {
@@ -202,7 +201,7 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
       console.error("Error deleting lock:", error);
       setSaveMessage(`Failed to delete lock. Error: ${error.message}`);
     }
-  };  
+  };
 
   return (
     <div>
@@ -218,7 +217,7 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
                   onChangeLockValue(id, "network", parseInt(value))
                 }
               />
-  
+
               {-1 !== lock.network ? (
                 <>
                   <p className="block-label">
@@ -234,6 +233,17 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
               ) : (
                 ""
               )}
+
+              {/* save lock button */}
+              <Button
+                isSmall
+                className="save-lock"
+                variant="primary"
+                style={{ backgroundColor: "green", marginLeft: "5px" }}
+                onClick={() => saveAttributes(locks, post.id, id)}
+              >
+                Save
+              </Button>
               {/* remove lock button */}
               <Button
                 isSmall
@@ -243,15 +253,6 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
                 }}
               >
                 Remove
-              </Button>
-              {/* save lock button */}
-              <Button
-                className="save-lock"
-                variant="primary"
-                style={{ backgroundColor: "green", marginLeft: "5px" }}
-                onClick={() => saveAttributes(locks, getpost.id, id)}
-              >
-                Save
               </Button>
             </div>
           );
@@ -269,14 +270,13 @@ const EditFullPostPage = ({ locks, ethereumNetworks, onUpdateLocks, onUpdateEthe
           </Notice>
         )}
         <PanelRow>
-          {/* add lock(s) button */}
-          <Button className="add-lock" variant="primary" onClick={addLock}>
+          <Button isSmall className="add-lock" variant="primary" onClick={addLock}>
             Add Lock
           </Button>
         </PanelRow>
       </PanelBody>
     </div>
-  );    
+  );
 };
 
 export default EditFullPostPage;

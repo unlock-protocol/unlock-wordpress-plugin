@@ -7,21 +7,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-24T19:45:21+00:00\n"
+"POT-Creation-Date: 2023-04-13T18:15:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unlock-protocol\n"
 
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:95
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:96
 msgid "Login with Unlock"
 msgstr ""
 
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:110
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:160
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:111
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:161
 msgid "To view this content please"
 msgstr ""
 
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:145
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:146
 msgid "Purchase this"
 msgstr ""
 
@@ -63,19 +67,63 @@ msgstr ""
 msgid "You have no permission to do that"
 msgstr ""
 
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:135
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:203
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:192
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:260
 msgid "Inputs can not be empty!"
 msgstr ""
 
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:219
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:276
 msgid "This network ID already exists."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:317
+msgid "Inputs cannot be empty!"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:326
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:382
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:420
+msgid "Invalid post ID provided."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:336
+msgid "Invalid format for unlockp full post page attribute."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:346
+msgid "Unlockp full post page attributes saved successfully"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:352
+msgid "Failed to update Unlockp full post page attributes."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:373
+msgid "Post ID cannot be empty!"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:410
+msgid "Either Post id and Lock index (or both) inputs cannot be empty!"
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:432
+msgid "Lock index not found."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:470
+msgid "Deleted lock id %s from unlockp full post page attributes successfully."
+msgstr ""
+
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:476
+msgid "Failed to deleted lock id %s from unlockp full post page attributes."
 msgstr ""
 
 #: src/assets/js/admin/App.js:14
 #: src/assets/js/blocks/unlock-content/index.js:10
+#: src/assets/js/full-post-page/unlock-content/index-full-post-page.js:34
 #: unlock-wordpress-plugin/assets/build/js/admin.js:1
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "Unlock Protocol"
 msgstr ""
 
@@ -313,7 +361,9 @@ msgid "Unlock Protocol Image"
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/edit.js:73
+#: src/assets/js/full-post-page/unlock-content/edit-full-post-page.js:65
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "None"
 msgstr ""
 
@@ -323,17 +373,23 @@ msgid "Please configure the lock(s) on this block."
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/edit.js:136
+#: src/assets/js/full-post-page/unlock-content/edit-full-post-page.js:208
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "Locks"
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/edit.js:141
+#: src/assets/js/full-post-page/unlock-content/edit-full-post-page.js:213
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "Network"
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/edit.js:152
+#: src/assets/js/full-post-page/unlock-content/edit-full-post-page.js:224
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "Lock Address"
 msgstr ""
 
@@ -343,16 +399,25 @@ msgid "Lock address is not valid"
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/edit.js:194
+#: src/assets/js/full-post-page/unlock-content/index-full-post-page.js:49
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "Unlock's documentation"
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/edit.js:204
+#: src/assets/js/full-post-page/unlock-content/index-full-post-page.js:59
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
 msgid "Deploy a lock"
 msgstr ""
 
 #: src/assets/js/blocks/unlock-content/index.js:16
 #: unlock-wordpress-plugin/assets/build/js/blocks.js:1
 msgid "A block to add lock(s) to the content inside of WordPress."
+msgstr ""
+
+#: src/assets/js/full-post-page/unlock-content/index-full-post-page.js:37
+#: unlock-wordpress-plugin/assets/build/js/full-post-page.js:1
+msgid "Add lock(s) to restrict access to the full post/page content inside of WordPress."
 msgstr ""
