@@ -29,6 +29,3 @@ node_modules
 psysh_history
 /cache
 /wordpress
-
-# Ignore contents of the build folder inside unlock-wordpress-plugin folder
-/unlock-wordpress-plugin/assets/build/*
