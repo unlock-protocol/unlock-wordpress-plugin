@@ -46,12 +46,18 @@ class Helper {
 			 * Code is not running on PHP Cli and we are in clear.
 			 * Use the PHP method and bail out.
 			 */
-			switch ( $filter ) {
-				case FILTER_SANITIZE_STRING:
-					$sanitized_variable = filter_input( $type, $variable_name, $filter );
+			switch ($filter) {
+				case FILTER_SANITIZE_FULL_SPECIAL_CHARS:
+					$sanitized_variable = filter_input($type, $variable_name, $filter, $options);
+					if ($sanitized_variable !== null) {
+						$sanitized_variable = preg_replace('/<[^>]*>/', '', $sanitized_variable);
+					}
 					break;
 				default:
-					$sanitized_variable = filter_input( $type, $variable_name, $filter, $options );
+					$sanitized_variable = filter_input($type, $variable_name, $filter);
+					if ($sanitized_variable !== null) {
+						$sanitized_variable = preg_replace('/<[^>]*>/', '', $sanitized_variable);
+					}
 					break;
 			}
 
