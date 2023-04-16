@@ -46,7 +46,7 @@
 
 <div class="login-button-container <?php echo $blurred_image_activated ? esc_attr( 'blurred' ) : ''; ?>">
 	<?php
-	if ( $blurred_image_activated ) {
+	if ( isset($blurred_image_activated )) {
 		printf( '<p>%s</p>', esc_html( $login_button_description ) );
 	}
 	?>
