@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-17T02:31:59+00:00\n"
+"POT-Creation-Date: 2023-04-17T02:50:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unlock-protocol\n"
@@ -67,55 +67,13 @@ msgstr ""
 msgid "You have no permission to do that"
 msgstr ""
 
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:192
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:260
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:135
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:203
 msgid "Inputs can not be empty!"
 msgstr ""
 
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:276
+#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:219
 msgid "This network ID already exists."
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:317
-msgid "Inputs cannot be empty!"
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:326
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:382
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:420
-msgid "Invalid post ID provided."
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:336
-msgid "Invalid format for unlockp full post page attribute."
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:346
-msgid "Unlockp full post page attributes saved successfully"
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:352
-msgid "Failed to update Unlockp full post page attributes."
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:373
-msgid "Post ID cannot be empty!"
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:410
-msgid "Either Post id and Lock index (or both) inputs cannot be empty!"
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:432
-msgid "Lock index not found."
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:470
-msgid "Deleted lock id %s from unlockp full post page attributes successfully."
-msgstr ""
-
-#: unlock-wordpress-plugin/inc/classes/rest-api/class-settings.php:476
-msgid "Failed to deleted lock id %s from unlockp full post page attributes."
 msgstr ""
 
 #: src/assets/js/admin/App.js:14

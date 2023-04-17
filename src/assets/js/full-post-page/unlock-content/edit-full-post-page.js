@@ -171,9 +171,7 @@ const Lock = ({ lock, onRemove }) => {
     <Button
       isSmall
       isDestructive
-      onClick={() => {
-        removeLock(id);
-      }}
+      onClick={onRemove}
     >
       remove
     </Button>
