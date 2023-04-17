@@ -13,7 +13,7 @@ const FullPostPageLockWrapper = () => (
   >
     <p>
       {__(
-        "Add lock(s) to restrict access to the full post/page content inside of WordPress.",
+        "Add lock(s) to restrict access to the full post content inside of WordPress.",
         "unlock-protocol"
       )} <a
         rel="noopener noreferrer"
