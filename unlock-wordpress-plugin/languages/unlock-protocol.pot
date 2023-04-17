@@ -7,25 +7,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-17T02:50:05+00:00\n"
+"POT-Creation-Date: 2023-04-17T12:59:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: unlock-protocol\n"
 
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:93
-#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:96
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:97
 msgid "Login with Unlock"
 msgstr ""
 
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:108
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:158
-#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:111
-#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:161
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:112
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:160
 msgid "To view this content please"
 msgstr ""
 
 #: unlock-wordpress-plugin/inc/classes/blocks/class-unlock-box-block.php:143
-#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:146
+#: unlock-wordpress-plugin/inc/classes/fullpostpage/class-unlock-box-full-post-page.php:145
 msgid "Purchase this"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgid "Connect Your Crypto Wallet"
 msgstr ""
 
 #: unlock-wordpress-plugin/inc/classes/class-login.php:114
-#: unlock-wordpress-plugin/inc/classes/class-unlock.php:239
+#: unlock-wordpress-plugin/inc/classes/class-unlock.php:242
 msgid "Invalid Account"
 msgstr ""
 

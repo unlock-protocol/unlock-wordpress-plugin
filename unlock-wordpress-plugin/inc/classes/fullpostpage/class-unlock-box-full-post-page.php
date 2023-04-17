@@ -2,7 +2,7 @@
 /**
  * Unlock box dynamic class for full post/page.
  *
- * @since 3.0.0
+ * @since 4.0.0
  *
  * @package unlock-protocol
  */
@@ -15,7 +15,7 @@ use Unlock_Protocol\Inc\Unlock;
 /**
  * Class Unlock_Box_Fullpp
  *
- * @since 3.0.0
+ * @since 4.0.0
  */
 class Unlock_Box_Full_Post_Page {
 
@@ -24,7 +24,7 @@ class Unlock_Box_Full_Post_Page {
     /**
      * Construct method.
      *
-     * @since 3.0.0
+     * @since 4.0.0
      */
     protected function __construct() {
 
@@ -35,7 +35,7 @@ class Unlock_Box_Full_Post_Page {
     /**
      * Setup hooks.
      *
-     * @since 3.0.0
+     * @since 4.0.0
      */
     protected function setup_hooks() {
 		/**
@@ -47,7 +47,7 @@ class Unlock_Box_Full_Post_Page {
 	/**
 	 * Trigger the Unlock Protocol flow
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @param string $content The original post content.
 	 * 
@@ -57,12 +57,13 @@ class Unlock_Box_Full_Post_Page {
 		$post_id = get_the_ID();
 
 		// Retrieve the saved attributes.
-		$attributes = get_post_meta( $post_id, 'unlockp_full_post_page_attributes', true );
+		$attributes = get_post_meta( $post_id, 'unlock_protocol_post_locks', true );
 
 		// Check if the attributes are not empty.
 		if ( ! empty( $attributes ) ) {
+			$locks = json_decode($attributes, true);
 			// Call render_block() to trigger the Unlock Protocol flow.
-			return $this->render_block( $attributes, $content );
+			return $this->render_block( $locks, $content );
 		}else{
 			
 			//it is essential to return content when lock(s) not set for a post/page
@@ -79,11 +80,11 @@ class Unlock_Box_Full_Post_Page {
 	 * @param array  $attributes List of attributes passed in block.
 	 * @param string $content Block Content.
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @return string HTML elements.
 	 */
-	public function render_block( $attributes, $content ) {
+	public function render_block( $locks, $content ) {
 		// Bail out if current user is admin or the author.
 		if ( current_user_can( 'manage_options' ) || ( get_the_author_meta( 'ID' ) === get_current_user_id() ) ) {
 			return $content;
@@ -120,8 +121,6 @@ class Unlock_Box_Full_Post_Page {
 			return apply_filters( 'unlock_protocol_login_content', $html_template, $template_data );
 		}
 
-		$locks = $attributes['locks'];
-
 		$settings = get_option( 'unlock_protocol_settings', array() );
 		$networks = isset( $settings['networks'] ) ? $settings['networks'] : array();
 
@@ -129,19 +128,19 @@ class Unlock_Box_Full_Post_Page {
 			return $content;
 		}
 
-		return $this->get_checkout_url( $attributes );
+		return $this->get_checkout_url( $locks );
 	}
 
 	/**
 	 * Get checkout url for block
 	 *
-	 * @param array $attributes attributes.
+	 * @param array $locks locks.
 	 * @param array $networks networks from configuration.
 	 *
 	 * @return mixed|void
 	 */
-	private function get_checkout_url( $attributes ) {
-		$checkout_url = Unlock::get_checkout_url( $attributes["locks"], get_permalink() );
+	private function get_checkout_url( $locks ) {
+		$checkout_url = Unlock::get_checkout_url( $locks, get_permalink() );
 
 		$checkout_button_text       = up_get_general_settings( 'checkout_button_text', __( 'Purchase this', 'unlock-protocol' ) );
 		$checkout_button_bg_color   = up_get_general_settings( 'checkout_button_bg_color', '#000' );

@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import EditFullPostPage from "./edit-full-post-page";
+import EditFullPostPage from "./edit";
 
 
 // FullPostPageLockWrapper wraps the FullPostPageLock component inside the PluginDocumentSettingPanel

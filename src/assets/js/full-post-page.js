@@ -5,4 +5,4 @@
  */
 
 // Fullpostpage
-import "./full-post-page/unlock-content/index-full-post-page";
+import "./full-post-page/unlock-content/index";

@@ -10,6 +10,9 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import "../../../scss/admin/editor.scss";
 import { getEthereumNetworksFromSettings, formatAddress } from "../../admin/utils";
 
+/**
+ * 
+ */
 const EditFullPostPage = (props) => {
   const [showForm, setShowForm] = useState(false); //show/hide add lock form
 
@@ -149,6 +152,11 @@ const AddLockForm = ({ handleSave }) => {
 
 }
 
+/**
+ * Component to show a lock
+ * @param {*} param0 
+ * @returns 
+ */
 const Lock = ({ lock, onRemove }) => {
   const [lockDescription, setLockDescription] = useState()
 
