@@ -1,5 +1,6 @@
 build/*
 dist
+unlock-wordpress-plugin/assets/build
 
 # Ignore editor config
 .idea/

@@ -13,8 +13,8 @@ import {
   InnerBlocks,
 } from "@wordpress/block-editor";
 import { getBlockTypes } from "@wordpress/blocks";
-import apiFetch from "@wordpress/api-fetch";
 import "../../../scss/admin/editor.scss";
+import { getEthereumNetworksFromSettings } from "../../admin/utils";
 
 /**
  * Helper function to check if locks are all set and valid
@@ -63,28 +63,9 @@ export default function Edit({ attributes, setAttributes }) {
     .filter((blockName) => blockName !== "unlock-protocol/unlock-box");
 
   useEffect(() => {
-    apiFetch({
-      path: "/unlock-protocol/v1/settings",
+    getEthereumNetworksFromSettings().then((ethereumNetworks) => {
+      setAttributes({ ethereumNetworks });
     })
-      .then((resp) => {
-        let networks = resp.networks;
-        let selectOptions = [
-          {
-            label: __("None", "unlock-protocol"),
-            value: -1,
-          },
-        ];
-
-        Object.entries(networks).forEach(([key, item]) => {
-          selectOptions.push({
-            label: item.network_name,
-            value: item.network_id,
-          });
-        });
-
-        setAttributes({ ethereumNetworks: selectOptions });
-      })
-      .catch((err) => { });
   }, []);
 
   /**

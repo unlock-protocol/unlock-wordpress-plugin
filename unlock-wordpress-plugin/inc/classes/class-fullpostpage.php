@@ -13,39 +13,58 @@ use Unlock_Protocol\Inc\Traits\Singleton;
 /**
  * Class Full-Post-Page
  *
- * @since 3.0.0
+ * @since 4.0.0
  */
 class FullPostPage {
 
 	use Singleton;
 
+
 	/**
 	 * Construct method.
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 */
 	protected function __construct() {
-
 		$this->setup_hooks();
 		Unlock_Box_Full_Post_Page::get_instance();
-
 	}
 
 	/**
 	 * Setup hooks.
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
 	public function setup_hooks() {
+		add_action( 'init', [ $this, 'meta_fields_register_meta' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_assets' ] );
+	}
+
+	/**
+	 * Register meta fields.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return void
+	 */
+	public function meta_fields_register_meta() {
+		register_meta(
+			'post',
+			'unlock_protocol_post_locks',
+			array(
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			)
+		);
 	}
 
 	/**
 	 * Enqueue assets.
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
@@ -57,7 +76,7 @@ class FullPostPage {
 	/**
 	 * Enqueue scripts for full post/page functionality.
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
@@ -79,7 +98,7 @@ class FullPostPage {
 	/**
 	 * Enqueue styles for full post/page functionality.
 	 *
-	 * @since 3.0.0
+	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
