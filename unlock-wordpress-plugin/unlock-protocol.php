@@ -5,7 +5,7 @@
  * Plugin URI:  https://github.com/unlock-protocol/unlock-wordpress-plugin
  * Author:      Unlock
  * Author URI:  https://unlock-protocol.com
- * Version:     3.2.3
+ * Version:     4.0.0
  * Text Domain: unlock-protocol
  *
  * @package unlock-protocol
