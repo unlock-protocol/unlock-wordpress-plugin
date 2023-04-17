@@ -33,3 +33,5 @@ psysh_history
 
 # Ignore contents of the build folder inside unlock-wordpress-plugin folder
 /unlock-wordpress-plugin/assets/build/*
+
+/unlock-wordpress-plugin/languages/unlock-protocol.pot
