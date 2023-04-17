@@ -14,7 +14,7 @@ registerBlockType("unlock-protocol/unlock-box", {
   icon: "lock",
 
   description: __(
-    "A block to add lock(s) to the content inside of WordPress.",
+    "A block to add lock(s) to the content inside of WordPress. This lets you restrict access to some section in your post.",
     "unlock-protocol"
   ),
 

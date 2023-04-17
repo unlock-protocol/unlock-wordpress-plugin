@@ -15,6 +15,7 @@ import {
 import { getBlockTypes } from "@wordpress/blocks";
 import "../../../scss/admin/editor.scss";
 import { getEthereumNetworksFromSettings } from "../../admin/utils";
+import { AdminLocks } from "../../admin-locks";
 
 /**
  * Helper function to check if locks are all set and valid
@@ -55,28 +56,12 @@ const lockValid = (lock) => {
 };
 
 export default function Edit({ attributes, setAttributes }) {
-  const { locks, ethereumNetworks } = attributes;
-
+  const { locks } = attributes;
   // Preventing the own block.
   const ALLOWED_BLOCKS = getBlockTypes()
     .map((block) => block.name)
     .filter((blockName) => blockName !== "unlock-protocol/unlock-box");
 
-  useEffect(() => {
-    getEthereumNetworksFromSettings().then((ethereumNetworks) => {
-      setAttributes({ ethereumNetworks });
-    })
-  }, []);
-
-  /**
-   * Set values in state attribute.
-   * @param {*} key
-   * @param {*} value
-   */
-  const onChangeLockValue = (id, key, value) => {
-    locks[id][key] = value;
-    setAttributes({ locks: [...locks] });
-  };
 
   const showInnerBlock = () => {
     wp.data.dispatch("core/editor").unlockPostSaving("my-lock");
@@ -96,11 +81,11 @@ export default function Edit({ attributes, setAttributes }) {
     );
   };
 
-  const addLock = () => {
+  const addLock = (lock) => {
     if (!locks) {
-      setAttributes({ locks: [{ address: "", network: -1 }] });
+      setAttributes({ locks: [lock] });
     } else {
-      setAttributes({ locks: [...locks, { address: "", network: -1 }] });
+      setAttributes({ locks: [...locks, lock] });
     }
   };
 
@@ -111,87 +96,16 @@ export default function Edit({ attributes, setAttributes }) {
   };
 
   return (
-    <>
-      <div {...useBlockProps()}>
-        <InspectorControls>
-          <PanelBody title={__("Locks", "unlock-protocol")}>
-            {locks.map((lock, id) => {
-              return (
-                <div class="setting-lock">
-                  <SelectControl
-                    label={__("Network", "unlock-protocol")}
-                    value={lock.network}
-                    options={ethereumNetworks}
-                    onChange={(value) =>
-                      onChangeLockValue(id, "network", parseInt(value))
-                    }
-                  />
+    <div {...useBlockProps()}>
+      <InspectorControls>
+        <PanelBody title={__("Locks", "unlock-protocol")}>
+          <AdminLocks onSaveNewLock={addLock} removeLock={removeLock} locks={locks} />
+        </PanelBody>
+      </InspectorControls>
 
-                  {-1 !== lock.network ? (
-                    <>
-                      <p className="block-label">
-                        {__("Lock Address", "unlock-protocol")}
-                      </p>
-                      <TextControl
-                        value={lock.address}
-                        onChange={(value) =>
-                          onChangeLockValue(id, "address", value)
-                        }
-                      />
-                    </>
-                  ) : (
-                    ""
-                  )}
+      <div className="unlock-header-icon"></div>
 
-                  {!lockValid(lock) && (
-                    <p className="lock-warning">
-                      {__("Lock address is not valid", "unlock-protocol")}
-                    </p>
-                  )}
-
-                  <Button
-                    isSmall
-                    isDestructive
-                    onClick={() => {
-                      removeLock(id);
-                    }}
-                  >
-                    Remove
-                  </Button>
-                </div>
-              );
-            })}
-            <PanelRow>
-              <Button className="add-lock" variant="primary" onClick={addLock}>
-                Add Lock
-              </Button>
-            </PanelRow>
-            <div className="docs">
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href={unlockProtocol.unlock_docs.docs}
-              >
-                {__("Unlock's documentation", "unlock-protocol")}
-              </a>
-
-              <br />
-
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href={unlockProtocol.unlock_docs.deploy_lock}
-              >
-                {__("Deploy a lock", "unlock-protocol")}
-              </a>
-            </div>
-          </PanelBody>
-        </InspectorControls>
-
-        <div className="unlock-header-icon"></div>
-
-        {locksValid(locks) ? showInnerBlock() : lockWarning()}
-      </div>
-    </>
+      {locksValid(locks) ? showInnerBlock() : lockWarning()}
+    </div>
   );
 }

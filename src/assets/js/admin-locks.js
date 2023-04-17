@@ -10,8 +10,9 @@ import "../scss/admin/editor.scss";
 
 
 export const AdminLocks = ({ onSaveNewLock, removeLock, locks }) => {
-  const [showForm, setShowForm] = useState(false); //show/hide add lock form
+  const [showForm, setShowForm] = useState(false);
 
+  /** Hides the form and call props */
   const onSave = async (lock) => {
     await onSaveNewLock(lock)
     setShowForm(false);
@@ -31,9 +32,7 @@ export const AdminLocks = ({ onSaveNewLock, removeLock, locks }) => {
       <Button className="components-button is-link" onClick={() => setShowForm(!showForm)}>
         Add Lock
       </Button>
-
       {showForm && <AddLockForm handleSave={onSave} />}
-
     </div>
   );
 }
