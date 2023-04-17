@@ -28,7 +28,9 @@ class Unlock_Box_Block {
 	 * @since 3.0.0
 	 */
 	protected function __construct() {
+
 		$this->setup_hooks();
+
 	}
 
 	/**

@@ -79,7 +79,7 @@ class Unlock {
 				$has_unlocked = hexdec( $validation['result'] ) == 1;
 			}
 		}
-		
+
 		return $has_unlocked;
 	}
 
