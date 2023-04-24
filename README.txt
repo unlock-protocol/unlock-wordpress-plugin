@@ -12,25 +12,27 @@ This plugin lets authors add locks to their posts and pages so that only paying 
 
 == Description ==
 
-[Unlock](https://unlock-protocol.com/) is a protocol for memberships that lets any creator monetize their content in a permissionless way.
+[Unlock](https://unlock-protocol.com/) is a protocol for memberships that lets any creator monetize their content permissionless.
 
-You can [try a demo on this site](https://wordpress-demo.unlock-protocol.com/), where the content of the post changes on whether the visitor is a member or not.
+In order to become members, visitors may need to be using a web3-enabled wallet such as [MetaMask](https://metamask.io/) or a web browser with an embedded wallet, such as [Opera](https://www.opera.com/crypto). They also need a balance of crypto-currency to purchase the memberships.
 
-In order to become members, visitors may need to be using a web3 enabled wallet such as [MetaMask](https://metamask.io/) or a web browser with an embedded wallet, such as [Opera](https://www.opera.com/crypto). They also need a balance of crypto-currency in order to purchase the memberships.
+The plugin enables "full-post" locking, or just block-level level locking, using the Gutemberg Editor.
+
+The plugin uses Unlock's default checkout UI, which means it lets users who do not have wallet create an Unlock account or even pay using credit card, if your lock supports this.
 
 == Getting Started ==
 
-If you'd like to add a lock to your site, start by [deploying your first lock]https://app.unlock-protocol.com/locks/create).
+If you'd like to add a lock to your site, start by [deploying your first lock]https://app.unlock-protocol.com/locks/create). We _strongly_ recommend starting with a test network such as Goerli.
 
-While the lock is deploying you should [download this plugin](https://wordpress.org/plugins/unlock-protocol/) from the WordPress site. Then, from the administration of your WordPress.org website, in the `Plugins` section, click on the `Add New` button and then on the `Upload Plugin` button to upload the plugin.
+While the lock is deploying, you should [download this plugin](https://wordpress.org/plugins/unlock-protocol/) from the WordPress site. Then, from the administration of your WordPress.org website, in the `Plugins` section, click on the `Add New button and then on the `Upload Plugin` button to upload the plugin.
 
-Note: To allow new users to log in using their Ethereum wallet with a single click, make sure that __Settings > General > Anyone can register__ (for single sites) or __Network Settings > Allow new registrations > User accounts__ may be registered (for multisites) is enabled. Your existing users can link their wallets to their WordPress user account regardless of this setting.
+Note: To allow new users to log in using their Ethereum wallet with a single click, make sure that __Settings > General > Anyone can register__ (for single sites) or __Network Settings > Allow new registrations > User accounts__ may be registered (for multisites) is enabled. Your existing users can link their wallets to their WordPress accounts regardless of this setting.
 
 == Writing locked stories ==
 
-The plugin provides you with "Block" which can be used in the Gutenberg Editor, for posts and pages.
+You can either choose to lock the whole post, using the post-level settings, or to lock specific Blocks in the UI with the Gutenberg Editor, for posts and pages.
 
-Unlock Protocol: This block is used to add a lock(s) to the content inside the page/post. To add the block inside the page/post please follow the below steps:
+To add the Unlock Protocol block inside the page/post please follow the below steps:
 
 1. Click on Post -> Add New
 2. To add a block you just need to click on “+” in the editor.
@@ -89,11 +91,11 @@ To be completed with questions!
 = 4.0.0 =
 
 * Re-architected plugin
+* Adding support for fully locked posts
 
 = 3.2.3 =
 
 * Updated RPC endpoints
-
 
 = 3.2.2 =
 
@@ -102,9 +104,9 @@ To be completed with questions!
 = 3.2.1 =
 
 * Changed default RPC endpoint for gnosis chain
-* support for PHP7.0
-* checkout URL customization
-* endpoint customization
+* Support for PHP7.0
+* Checkout URL customization
+* Endpoint customization
 
 = 3.2.0 =
 
