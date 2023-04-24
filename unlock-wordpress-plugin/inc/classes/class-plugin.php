@@ -35,6 +35,7 @@ class Plugin {
 		Blocks::get_instance();
 		Menu::get_instance();
 		API::get_instance();
+		FullPostPage::get_instance();
 
 	}
 

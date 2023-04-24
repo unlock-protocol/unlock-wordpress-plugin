@@ -1,7 +1,7 @@
 {
   "name": "unlock-protocol-plugin",
   "version": "4.0.0",
-  "description": "A plugin to add lock(s) to blocks of content inside of Wordpress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.",
+  "description": "A plugin to add lock(s) to full post/page content or blocks of content inside of Wordpress, on both pages and posts. See https://www.ibenic.com/enable-inner-blocks-gutenberg/ for details about the implementation.",
   "main": "src/js/index.js",
   "scripts": {
     "build": "wp-scripts build ./src/assets/js/main.js --output-path=./unlock-wordpress-plugin/assets/build/js",
@@ -10,8 +10,8 @@
     "wp": "wp",
     "make:pot": "wp i18n make-pot . ./unlock-wordpress-plugin/languages/unlock-protocol.pot --exclude='dist,node_modules,vendors' --slug='unlock-protocol' --domain='unlock-protocol' ",
     "start": "wp-scripts start ./src/assets/js/main.js --output-path=./unlock-wordpress-plugin/assets/build/js",
-    "start:blocks": "wp-scripts start ./src/assets/js/blocks.js --output-path=./unlock-wordpress-plugin/assets/build/js",
-    "build:blocks": "wp-scripts build ./src/assets/js/blocks.js --output-path=./unlock-wordpress-plugin/assets/build/js",
+    "start:blocks": "wp-scripts start ./src/assets/js/blocks.js ./src/assets/js/full-post-page.js --output-path=./unlock-wordpress-plugin/assets/build/js",
+    "build:blocks": "wp-scripts build ./src/assets/js/blocks.js ./src/assets/js/full-post-page.js --output-path=./unlock-wordpress-plugin/assets/build/js",
     "start:admin": "wp-scripts start ./src/assets/js/admin/admin.js --output-path=./unlock-wordpress-plugin/assets/build/js",
     "build:admin": "wp-scripts build ./src/assets/js/admin/admin.js --output-path=./unlock-wordpress-plugin/assets/build/js",
     "build:all": "npm run clean && npm run build && npm run build:admin && npm run build:blocks && npm run make:pot",
