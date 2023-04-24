@@ -74,7 +74,7 @@ Then, tag the new version (replace X and Y!) to release it:
     svn cp trunk tags/X.Y
     svn ci -m "tagging version X.Y"
 
-Additionaly, please make sure you tag the version on Github:
+Additionally, please make sure you tag the version on Github:
 
     git tag -a X.Y -m "tagging version X.Y"
     git push origin X.Y
