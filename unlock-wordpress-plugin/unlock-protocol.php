@@ -5,13 +5,13 @@
  * Plugin URI:  https://github.com/unlock-protocol/unlock-wordpress-plugin
  * Author:      Unlock
  * Author URI:  https://unlock-protocol.com
- * Version:     4.0.1
+ * Version:     4.0.2
  * Text Domain: unlock-protocol
  *
  * @package unlock-protocol
  */
 
-define( 'UNLOCK_PLUGIN_VERSION', '4.0.1' );
+define( 'UNLOCK_PLUGIN_VERSION', '4.0.2' );
 define( 'UNLOCK_PROTOCOL_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'UNLOCK_PROTOCOL_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'UNLOCK_PROTOCOL_BUILD_DIR', UNLOCK_PROTOCOL_PATH . '/assets/build' );

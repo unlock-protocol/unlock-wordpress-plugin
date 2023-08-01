@@ -4,7 +4,7 @@ Tags: paywall, ethereum, monetization, unlock, membership, subscription, member
 Requires at least: 5.1
 Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 License: GPLv3
 License URI: https://github.com/unlock-protocol/unlock-wordpress-plugin/blob/master/LICENSE
 
@@ -87,6 +87,10 @@ And finally, create the release on Github'si UI
 To be completed with questions!
 
 == Changelog ==
+
+= 4.0.2 =
+
+* handling postMeta undefined
 
 = 4.0.1 =
 
