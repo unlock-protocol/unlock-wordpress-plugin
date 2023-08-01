@@ -13,7 +13,7 @@ const EditFullPostPage = (props) => {
     const { getCurrentPostId, getEditedPostAttribute } = select("core/editor");
     const postMeta = getEditedPostAttribute('meta');
     let savedPosts = []
-    if (postMeta.unlock_protocol_post_locks) {
+    if (postMeta && postMeta.unlock_protocol_post_locks) {
       savedPosts = JSON.parse(postMeta.unlock_protocol_post_locks)
     }
     return {
